@@ -22,7 +22,7 @@ const MyHeader = () => {
                 <MyLink to="/page1">페이지1</MyLink>
                 <MyLink to="/page2">페이지2</MyLink>
                 <MyLink to="/page3">페이지3</MyLink>
-                <MyLink to="/page4">페이지4</MyLink>
+                <MyLink to="/userInfo">UserInfo</MyLink>
             </MenuDiv>
         </LinkDiv>
     );

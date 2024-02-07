@@ -1,8 +1,11 @@
+import { RecoilRoot } from "recoil";
 import MyRoutes from "./MyRoutes";
 
 function App() {
   return (
-    <MyRoutes/>
+    <RecoilRoot>
+      <MyRoutes />
+    </RecoilRoot>
   );
 }
 
