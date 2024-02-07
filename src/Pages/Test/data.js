@@ -1,4 +1,4 @@
-export const data = [
+export const data1 = [
     {
         name: '1차',
         total: 83,
@@ -49,5 +49,35 @@ export const data = [
         total: 60,
         data1: 69,
         data2: 69
+    }
+];
+
+
+
+export const data2 = [
+    {
+        subject: '수치1',
+        data: 120,
+        fullMark: 150
+    }, {
+        subject: '수치2',
+        data: 98,
+        fullMark: 150
+    }, {
+        subject: '수치3',
+        data: 86,
+        fullMark: 150
+    }, {
+        subject: '수치4',
+        data: 99,
+        fullMark: 150
+    }, {
+        subject: '수치5',
+        data: 85,
+        fullMark: 150
+    }, {
+        subject: '수치6',
+        data: 65,
+        fullMark: 150
     }
 ];
