@@ -59,8 +59,12 @@ const LinkTable = styled.table `
         border-left: 1px solid black;
     }
 
-    & > tr > td > a {
+    & > tr > td > A {
         font-size: 16px;
+
+        &:hover{
+            color : #FFD984;
+        }
 
     }
 
