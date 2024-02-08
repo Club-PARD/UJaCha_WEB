@@ -1,5 +1,5 @@
 import {useRecoilValue } from "recoil";
-import { userInfo } from "../Atoms";
+import { userInfo } from "../../Atoms";
 
 function HomePage() {
     const userInfoData = useRecoilValue(userInfo);
