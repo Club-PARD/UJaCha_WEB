@@ -10,7 +10,7 @@ function TestPageAnswer() {
     };
 
     useEffect(() => {
-        console.log(selectedButtonIndex);
+        console.log("selectedButtonIndex", selectedButtonIndex);
     }, [selectedButtonIndex]);
 
     return (
