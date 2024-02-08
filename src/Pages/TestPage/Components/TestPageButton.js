@@ -10,7 +10,7 @@ function TestPageButton() {
 }
 
 const TestPageButtonContainer = styled(Container)`
-    height : 30px;
+    height : 200px;
 `;
 
 export default TestPageButton;

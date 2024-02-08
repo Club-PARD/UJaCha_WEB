@@ -10,7 +10,7 @@ function TestPageHeader() {
 }
 
 const TestPageHeaderContainer = styled(Container)`
-    height : 30px;
+    height : 200px;
 `;
 
 export default TestPageHeader;

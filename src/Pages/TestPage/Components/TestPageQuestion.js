@@ -10,7 +10,7 @@ function TestPageQuestion() {
 }
 
 const TestPageQuestionContainer = styled(Container)`
-    height : 30px;
+    height : 200px;
 `;
 
 export default TestPageQuestion;
