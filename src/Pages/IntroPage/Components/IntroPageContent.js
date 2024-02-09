@@ -11,8 +11,9 @@ function IntroPageContent() {
 }
 
 const IntroPageContentContainer = styled(Container)`
-    height : 1666px;
-    background-color : yellow;
+    width: 100%;
+    height : 883px;
+    background-color : #FFCFBB;
     border-radius : 36px;
 `
 export default IntroPageContent;

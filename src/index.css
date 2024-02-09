@@ -1,6 +1,16 @@
+@font-face {
+  font-family: "PretendardVariable";
+  src: url("./font/PretendardVariable.ttf");
+}
+
+@font-face {
+  font-family: "PretendardVariable2";
+  src: url("./font/PretendardVariable2.ttf");
+}
+
 * {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "PretendardVariable", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
