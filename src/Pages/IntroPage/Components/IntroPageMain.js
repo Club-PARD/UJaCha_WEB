@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Container, Img, P} from "../../../Layout/Layout";
+import { theme } from "../../../Styles/theme";
 
 function IntroPageMain() {
 
@@ -28,7 +29,7 @@ function IntroPageMain() {
 const IntroPageMainContainer = styled(Container)`
     width: 100%;
     height : 660px;
-    background-color: #B9B9D7;
+    background-color: ${theme.colors.purple_100};
 
     border-radius: 36px;
 
