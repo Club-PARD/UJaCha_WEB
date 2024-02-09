@@ -6,12 +6,19 @@ export const Container = styled.div`
 
     margin : 0 auto;
 `
-export const P = styled.div`
+export const P = styled.p`
     font-size: ${props => props.fontSize || "11px"};
     font-weight: ${props => props.fontWeight};
+    
+
 `
 
 export const A = styled.a`
     text-decoration: none;
     color: black;
+`
+
+export const Img = styled.img`
+    width : ${props => props.width};
+    height : ${props => props.height};
 `
