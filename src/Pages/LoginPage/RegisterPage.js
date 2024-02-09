@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ButtonOpacity50, Container, ImgOpacity50} from "../../Layout/Layout";
+import { theme } from "../../Styles/theme";
 
 function RegisterPage() {
     return (
@@ -94,6 +95,11 @@ const Input = styled.input `
     font-weight: 500;
     line-height: 24px;
     color : white;
+
+    &:focus{
+        outline: none;
+        border-bottom :  1px solid ${theme.colors.lemon_100};
+    }
 `
 
 const WrapperHeader = styled.div`
