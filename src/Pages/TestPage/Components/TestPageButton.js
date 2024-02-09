@@ -42,14 +42,14 @@ const TestPageButtonContainer = styled(Container)`
 `;
 
 const WrapperButton = styled.div`
-  width: 86vw;
+  width: 342px;
   display: flex;
   justify-content: space-between;
 `;
 
 const Button = styled.button`
-  width: 42vw;
-  height: 6.29vh;
+  width: 167px;
+  height: 56px;
   font-size: 15px;
   background: none;
   border: 1px solid black;

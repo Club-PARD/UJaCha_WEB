@@ -12,7 +12,7 @@ function TestPage() {
         {/* <TestPageQuestion /> */}
         {/* <TestPageHeader /> */}
         {/* <TestPageAnswer /> */}
-        <TestPageButton />
+        {/* <TestPageButton /> */}
       </QuestionContainer>
     </TestPageContainer>
   );
@@ -33,7 +33,7 @@ const QuestionContainer = styled.div`
   bottom: 0px;
 
   /* 애니메이션 부분 */
-  animation: transY 1.8s ease-out;
+  animation: transY 1.5s ease-out;
 
   @keyframes transY {
     0% {
