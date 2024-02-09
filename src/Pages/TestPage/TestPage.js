@@ -8,16 +8,17 @@ import TestPageButton from "./Components/TestPageButton";
 function TestPage() {
   return (
     <TestPageContainer>
-      <TestPageHeader />
-      <TestPageQuestion />
-      <TestPageAnswer />
-      <TestPageButton />
+      {/* <TestPageHeader /> */}
+      {/* <TestPageQuestion /> */}
+      {/* <TestPageAnswer /> */}
+      {/* <TestPageButton /> */}
     </TestPageContainer>
   );
 }
 
 const TestPageContainer = styled(Container)`
-  height: 844px;
-  background-color: gray;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
 `;
 export default TestPage;
