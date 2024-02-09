@@ -9,6 +9,8 @@ export const Container = styled.div`
 export const P = styled.p`
     font-size: ${props => props.fontSize || "11px"};
     font-weight: ${props => props.fontWeight};
+
+    letter-spacing: ${props => props.letterSpacing};
     
 
 `
