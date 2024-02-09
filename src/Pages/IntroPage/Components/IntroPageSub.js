@@ -11,8 +11,9 @@ function IntroPageSub() {
 }
 
 const IntroPageSubContainer = styled(Container)`
-    height : 726px;
-    background-color: green;
+    width: 100%;
+    height : 555px;
+    background-color: #CEE7F6;
 
     border-radius: 36px;
 `

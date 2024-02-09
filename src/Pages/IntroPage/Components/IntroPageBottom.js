@@ -11,8 +11,9 @@ function IntroPageBottom() {
 }
 
 const IntroPageBottonContainer = styled(Container)`
+    width: 100%;
     height : 122px;
-    background-color: gray;
+    /* background-color: gray; */
 
     display: flex;
     justify-content: space-around;
@@ -30,13 +31,13 @@ const WrapperLinkTable = () => {
         <LinkTable>
             <tr>
                 <td>
-                    <A href = "" onClick={hanlderOnClick}>tune</A>
+                    <LinkA href = "" onClick={hanlderOnClick}>tune</LinkA>
                 </td>
                 <td>
-                    <A href = "" onClick={hanlderOnClick}>Instargram</A>
+                    <LinkA href = "" onClick={hanlderOnClick}>Instargram</LinkA>
                 </td>
                 <td>
-                    <A href = "" onClick={hanlderOnClick}>Team</A>
+                    <LinkA href = "" onClick={hanlderOnClick}>Team</LinkA>
                 </td>
             </tr>
         </LinkTable>
@@ -52,11 +53,11 @@ const LinkTable = styled.table `
     margin-top : 30px;
 
     & > tr > td:first-child{
-        border-right: 1px solid black;
+        border-right: 1px solid white;
     }
 
     & > tr > td:last-child{
-        border-left: 1px solid black;
+        border-left: 1px solid white;
     }
 
     & > tr > td > A {
@@ -72,5 +73,11 @@ const LinkTable = styled.table `
 const Copyright = styled.p`
     font-size: 11px;
     margin-bottom: 20px;
+
+    color : white;
+`
+
+const LinkA = styled(A)`
+    color : white;
 `
 export default IntroPageBottom;
