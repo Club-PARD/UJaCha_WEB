@@ -6,18 +6,18 @@ import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
 
 function TestPage() {
-    return (
-        <TestPageContainer>
-            <TestPageHeader />
-            <TestPageQuestion />
-            <TestPageAnswer />
-            <TestPageButton/>
-        </TestPageContainer>
-    );
+  return (
+    <TestPageContainer>
+      <TestPageHeader />
+      <TestPageQuestion />
+      <TestPageAnswer />
+      <TestPageButton />
+    </TestPageContainer>
+  );
 }
 
 const TestPageContainer = styled(Container)`
-    height : 844px;
-    background-color: gray;
-`
+  height: 844px;
+  background-color: gray;
+`;
 export default TestPage;
