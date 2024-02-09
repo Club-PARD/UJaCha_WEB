@@ -28,8 +28,7 @@ function IntroPageMain() {
 
             {/* Button 영역 */}
             <DivContent height="120px">
-                <Button backgroundColor="black" color="white">테스트 시작</Button>
-                <Button backgroundColor="transparent" color="black">카카오 로그인</Button>
+                <ButtonItems/>
             </DivContent>
         </IntroPageMainContainer>
     );
@@ -95,6 +94,19 @@ const Button = styled.button `
     font-size: 20px;
     border : 1px solid black;
     box-sizing: border-box;
+
+    &:first-child {
+        margin-bottom: 10px;
+    }
 `;
 
+
+export const ButtonItems = () => {
+    return (
+        <div>
+            <Button backgroundColor="black" color="white">테스트 시작</Button>
+            <Button backgroundColor="transparent" color="black">카카오 로그인</Button>
+        </div>
+    );
+}
 export default IntroPageMain;
