@@ -38,7 +38,7 @@ const TestPageButtonContainer = styled.div`
   position: absolute;
   height: 60px;
   width: 100vw;
-  top: 75%;
+  top: 80%;
   display: flex;
   justify-content: center;
 `;
