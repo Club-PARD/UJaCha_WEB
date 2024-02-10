@@ -23,4 +23,17 @@ export const A = styled.a`
 export const Img = styled.img`
     width : ${props => props.width};
     height : ${props => props.height};
+
+`
+
+export const ButtonOpacity50 = styled.button`
+    &:hover{
+        opacity: 50%;
+    }
+`
+
+export const ImgOpacity50 = styled(Img)`
+    &:hover{
+        opacity: 50%;
+    }
 `

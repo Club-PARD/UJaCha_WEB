@@ -9,12 +9,14 @@ import GraphTest from "./Pages/Test/GraphTest";
 import UserInfoChange from "./Pages/UserInfo/UserInfoChange";
 import IntroPage from "./Pages/IntroPage/IntroPage";
 import TestPage from "./Pages/TestPage/TestPage";
+import RegisterPage from "./Pages/LoginPage/RegisterPage";
 
 function MyRoutes() {
     return (
         <Routes>
             <Route path="/" index element={<IntroPage />} />
-            <Route path="/test" element={<TestPage/> }/>
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/register" element={<RegisterPage/>}/>
             <Route element={<Header/>}>
                 <Route path="/home" element={<HomePage />}/>
                 <Route path="/page1" element={<Page1 />}/>
