@@ -104,8 +104,8 @@ const Button = styled.button `
 export const ButtonItems = () => {
     return (
         <div>
-            <Button backgroundColor="black" color="white">테스트 시작</Button>
-            <Button backgroundColor="transparent" color="black">카카오 로그인</Button>
+            <Button backgroundcolor="black" color="white">테스트 시작</Button>
+            <SocialKakao/>
         </div>
     );
 }
