@@ -2,33 +2,35 @@ import styled from "styled-components";
 import { Container } from "../../../Layout/Layout";
 import { useEffect, useState } from "react";
 
-function TestPageButton() {
-  const [questionCount, setQuestionCount] = useState(1);
+function TestPageButton({ page, handlePage }) {
+  const [questionCount, setQuestionCount] = useState(page);
 
   useEffect(() => {
     console.log("questionCount", questionCount);
   }, [questionCount]);
 
   const handleDecreaseQuestionCount = () => {
-    if (questionCount === 1) {
+    if (questionCount === 0) {
       alert("첫 페이지입니다.");
     } else {
-      setQuestionCount(questionCount - 1);
+      handlePage(page - 1);
+      setQuestionCount(page - 1);
     }
   };
 
   const handleIncreaseQuestionCount = () => {
-    if (questionCount === 10) {
+    if (questionCount === 11) {
       alert("마지막 페이지입니다.");
     } else {
-      setQuestionCount(questionCount + 1);
+      handlePage(page + 1);
+      setQuestionCount(page + 1);
     }
   };
   return (
     <TestPageButtonContainer>
       <WrapperButton>
-        <Button onClick={handleDecreaseQuestionCount}>이전</Button>
-        <Button onClick={handleIncreaseQuestionCount}>다음</Button>
+        <ButtonBack onClick={handleDecreaseQuestionCount}>이전</ButtonBack>
+        <ButtonNext onClick={handleIncreaseQuestionCount}>다음</ButtonNext>
       </WrapperButton>
     </TestPageButtonContainer>
   );
@@ -38,28 +40,34 @@ const TestPageButtonContainer = styled.div`
   position: absolute;
   height: 60px;
   width: 100vw;
-  top: 80%;
+  top: 78%;
   display: flex;
   justify-content: center;
 `;
 
 const WrapperButton = styled.div`
-  width: 342px;
+  width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
-const Button = styled.button`
+const ButtonBack = styled.button`
   width: 167px;
   height: 56px;
   font-size: 15px;
   background: none;
   border: 1px solid black;
   border-radius: 16px;
+  margin-right: 8px;
+`;
 
-  &:hover {
-    opacity: 50%;
-    background-color: #00000050;
-  }
+const ButtonNext = styled.button`
+  width: 167px;
+  height: 56px;
+  font-size: 15px;
+  background: black;
+  border: 1px solid black;
+  border-radius: 16px;
+  color: white;
 `;
 export default TestPageButton;

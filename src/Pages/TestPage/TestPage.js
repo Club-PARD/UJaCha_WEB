@@ -4,15 +4,27 @@ import TestPageHeader from "./Components/TestPageHeader";
 import TestPageQuestion from "./Components/TestPageQuestion";
 import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
+import { useState } from "react";
 
 function TestPage() {
+  const totalPage = 12;
+  const [page, setPage] = useState(0);
+
+  const handlePage = (newPage) => {
+    console.log("언제?", newPage);
+    newPage === -1
+      ? setPage(0)
+      : newPage === totalPage
+      ? setPage(newPage - 1)
+      : setPage(newPage);
+  };
+
   return (
     <TestPageContainer>
       <QuestionContainer>
-        {/* <TestPageQuestion /> */}
-        {/* <TestPageHeader /> */}
+        <TestPageQuestion page={page} />
         <TestPageAnswer />
-        <TestPageButton />
+        <TestPageButton page={page} handlePage={handlePage} />
       </QuestionContainer>
     </TestPageContainer>
   );

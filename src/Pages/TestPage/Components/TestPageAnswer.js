@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 function TestPageAnswer() {
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleButtonClick = (hoverColor, index) => {
     setSelectedButtonIndex(index);
@@ -21,8 +21,8 @@ function TestPageAnswer() {
         />
       </WrapperRoundButton>
       <WrapperRoundButtonTitle>
-        <ButtonTitle>아니다</ButtonTitle>
-        <ButtonTitle>그렇다</ButtonTitle>
+        <ButtonTitle style={{ marginRight: "116.5px" }}>아니다</ButtonTitle>
+        <ButtonTitle style={{ marginLeft: "116.5px" }}>그렇다</ButtonTitle>
       </WrapperRoundButtonTitle>
     </TestPageAnswerContainer>
   );
@@ -39,9 +39,9 @@ const TestPageAnswerContainer = styled.div`
 `;
 
 const WrapperRoundButton = styled.div`
-  width: 342px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -49,7 +49,7 @@ const RoundButton = styled.button`
   width: ${(props) => props.width};
   height: ${(props) => props.width};
   background: none;
-
+  margin: 0px 14px 0px 14px;
   border-radius: 50%;
   border: 2px solid ${(props) => props.borderColor};
   background-color: ${(props) =>
@@ -61,9 +61,9 @@ const RoundButton = styled.button`
 `;
 
 const WrapperRoundButtonTitle = styled.div`
-  width: 342px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 10px;
 `;
 
@@ -74,7 +74,6 @@ const ButtonTitle = styled.p`
 
 const WrapperRoundButtonItems = (props) => {
   const [focusedIndex, setFocusedIndex] = useState(null);
-
   return [1, 2, 3, 4, 5].map((index) => {
     return (
       <RoundButton
@@ -92,6 +91,12 @@ const WrapperRoundButtonItems = (props) => {
                 : "#FF94A2"
               : "transparent",
         }}
+        onClick={() =>
+          props.handleButtonClick(
+            index === 4 || index === 5 ? "#8280FF50" : "#FF294650",
+            index
+          )
+        }
         selected={props.selectedButtonIndex === index}
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
