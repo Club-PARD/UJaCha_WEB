@@ -5,7 +5,7 @@ function IntroPageBottom() {
     return (
         <IntroPageBottonContainer>
             <WrapperLinkTable/>
-            <Copyright>ⓒ 2024. PARD. All right reserved.</Copyright>
+            <Copyright>ⓒ 2024. Yujacha. All right reserved.</Copyright>
         </IntroPageBottonContainer>
     );
 }
@@ -31,13 +31,13 @@ const WrapperLinkTable = () => {
         <LinkTable>
             <tr>
                 <td>
-                    <LinkA href = "" onClick={hanlderOnClick}>tune</LinkA>
+                    <LinkA href = "" onClick={hanlderOnClick}>tune&nbsp;</LinkA>
                 </td>
                 <td>
                     <LinkA href = "" onClick={hanlderOnClick}>Instargram</LinkA>
                 </td>
                 <td>
-                    <LinkA href = "" onClick={hanlderOnClick}>Team</LinkA>
+                    <LinkA href = "" onClick={hanlderOnClick}>&nbsp;Team</LinkA>
                 </td>
             </tr>
         </LinkTable>
