@@ -87,7 +87,7 @@ const Button = styled.button `
     width : 342px;
     height : 56px;
 
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.backgroundcolor};
     color: ${props => props.color};
 
     border : none;
