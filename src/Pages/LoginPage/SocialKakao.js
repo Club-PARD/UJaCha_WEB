@@ -12,7 +12,7 @@ export const SocialKakao = () =>
     return(
     <>
 
-    <KakaoLoginButton backgroundColor="transparent" color="black" onClick={handleLogin}>카카오 로그인</KakaoLoginButton>
+    <KakaoLoginButton color="black" onClick={handleLogin}>카카오 로그인</KakaoLoginButton>
     </>
     )
 }
@@ -21,7 +21,7 @@ const KakaoLoginButton = styled.button`
     width : 342px;
     height : 56px;
 
-    background-color: ${props => props.backgroundcolor};
+    background: none;
     color: ${props => props.color};
 
     border : none;
