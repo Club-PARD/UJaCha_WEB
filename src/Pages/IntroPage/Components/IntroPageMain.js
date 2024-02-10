@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Container, Img, P} from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
+import SocialKakao from "../../LoginPage/SocialKakao";
 
 // 바로가기
 // Container - Main 영역 Container
