@@ -34,9 +34,11 @@ function TestPageButton() {
   );
 }
 
-const TestPageButtonContainer = styled(Container)`
-  height: 200px;
-
+const TestPageButtonContainer = styled.div`
+  position: absolute;
+  height: 60px;
+  width: 100vw;
+  top: 75%;
   display: flex;
   justify-content: center;
 `;
