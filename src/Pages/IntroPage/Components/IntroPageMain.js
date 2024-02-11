@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {Container, Img, P} from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
 import SocialKakao from "../../LoginPage/SocialKakao";
+import { Link } from "react-router-dom";
 
 // 바로가기
 // Container - Main 영역 Container
@@ -105,7 +106,7 @@ const Button = styled.button `
 export const ButtonItems = () => {
     return (
         <div>
-            <Button backgroundcolor="black" color="white">테스트 시작</Button>
+            <Link to = "/test"><Button backgroundcolor="black" color="white">테스트 시작</Button></Link>
             <SocialKakao/>
         </div>
     );
