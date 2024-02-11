@@ -1,39 +1,63 @@
-import styled from "styled-components";
+import KakaoLogin from "react-kakao-login";
+import React from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import { Button } from "../IntroPage/Components/IntroPageMain";
 
-export const SocialKakao = () =>
-{
-    const Rest_api_key = process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const redirect_uri = 'http://localhost:3000' //Redirect URI
-    // oauth 요청 URL
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
-    const handleLogin = ()=>{
-        window.location.href = kakaoURL
+const SocialKakao = () => {
+    const kakaoClientId = process.env.REACT_APP_REST_API_KEY;
+    const navigate = useNavigate();
+
+    const KakaoOnSuccess = async (data) => {
+        console.log(data);
+        window
+            .localStorage
+            .clear();
+        sessionStorage.setItem("userKakaoId", data.profile.id);
+        sessionStorage.setItem("kakaoAccessToken", data.response.access_token);
+        const loginData = {
+            // kakaoAccessToken: data.response.access_token
+            email: data.profile.kakao_account.email,
+            uid: data.profile.id
+        };
+        console.log("loginData", loginData);
+        // 로그인 성공 시 SignupPage 페이지로 이동
+        try {
+            const response = await axios.post(
+                process.env.REACT_APP_URL + "/api/member/login",
+                loginData,
+                {withCredentials: true} // 요청에 인증 정보를 포함하여 보냄
+            );
+            console.log("유자차 response", response);
+            // if (response.data.message === "Sign In Success") {     console.log("Server
+            // Response:", response.data);     로그인 성공 시, 로그인 후 메인 화면 이동
+            // navigate("/SettingPage"); } else {     navigate("../Signup"); }
+        } catch (error) {
+            console.error("Error sending login data:", error);
+        }
+    };
+
+    const kakaoOnFailure = (error) => {
+        console.log(error);
+    };
+
+    return (<> < KakaoLogin token = {
+        kakaoClientId
     }
-    return(
-    <>
-
-    <KakaoLoginButton color="black" onClick={handleLogin}>카카오 로그인</KakaoLoginButton>
-    </>
-    )
-}
-
-const KakaoLoginButton = styled.button`
-    width : 342px;
-    height : 56px;
-
-    background: none;
-    color: ${props => props.color};
-
-    border : none;
-    border-radius: 16px;
-    font-size: 20px;
-    border : 1px solid black;
-    box-sizing: border-box;
-
-    &:hover{
-        background-color: gray;
-        border : none;
-        color : white;
+    onSuccess = {
+        KakaoOnSuccess
     }
-`;
-export default SocialKakao
+    onFail = {
+        kakaoOnFailure
+    }
+    render = {
+        ({onClick}) => (
+            <Button onClick={onClick}>
+                {/* <img src={KakaoBtn} alt="KakaoBtn"/> */}
+                카카오 로그인
+            </Button>
+        )
+    } /> </>);
+};
+
+export default SocialKakao;
