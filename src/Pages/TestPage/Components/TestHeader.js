@@ -1,9 +1,20 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Img } from "../../../Layout/Layout";
 
 function TestHeader({ page }) {
+  const [showHeader, setShowHeader] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHeader(true);
+    }, 1500);
+
+    return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머 해제
+  }, []); // 초기 렌더링 시 한 번만 실행
+
   return (
-    <HeaderContainer>
+    <HeaderContainer style={{ opacity: showHeader ? 1 : 0 }}>
       <Img src="img/x-close.png" alt="x-close" width="30px" height="30px" />
       <ProgressBar>
         <progress value={page / 12} />
@@ -15,10 +26,12 @@ function TestHeader({ page }) {
 
 const HeaderContainer = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: row;
-  width: 90%;
+  width: 100%;
   top: 6%;
   position: absolute;
+  transition: opacity 1s ease;
 `;
 
 const ProgressBar = styled.div`
