@@ -21,6 +21,7 @@ function TestPage() {
 
   return (
     <TestPageContainer>
+      <TestPageHeader/>
       <QuestionContainer>
         <TestPageQuestion page={page} />
         <TestPageAnswer />
@@ -34,12 +35,15 @@ const TestPageContainer = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: black;
+
+  display: flex;
+  justify-content: center;
 `;
 
 const QuestionContainer = styled.div`
-  width: 100vw;
-  height: 88vh;
-  border-radius: 24px 24px 0px 0px;
+  width: 374px;
+  height: calc(100% - 100px);
+  border-radius: 36px 36px 0px 0px;
   background-color: ${({ theme }) => theme.colors.purple_100};
   position: absolute;
   bottom: 0px;
@@ -58,5 +62,10 @@ const QuestionContainer = styled.div`
     }
   }
   /* 애니메이션 끝 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 `;
 export default TestPage;
