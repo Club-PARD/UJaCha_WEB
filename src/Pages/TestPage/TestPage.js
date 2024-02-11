@@ -5,6 +5,7 @@ import TestPageQuestion from "./Components/TestPageQuestion";
 import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
 import { useState } from "react";
+import TestHeader from "./Components/TestHeader";
 
 function TestPage() {
   const totalPage = 12;
@@ -21,6 +22,7 @@ function TestPage() {
 
   return (
     <TestPageContainer>
+      <TestHeader page={page} />
       <QuestionContainer>
         <TestPageQuestion page={page} />
         <TestPageAnswer />
@@ -31,6 +33,8 @@ function TestPage() {
 }
 
 const TestPageContainer = styled.div`
+  display: flex;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
   background-color: black;

@@ -58,6 +58,20 @@ const RoundButton = styled.button`
   &:hover {
     background-color: ${(props) => props.hoverColor};
   }
+
+  img {
+    width: 28px;
+    height: 28px;
+    background-image: url(${process.env.PUBLIC_URL}/img/check.png);
+    background-size: cover; // 이미지 크기 조정
+    position: relative;
+    border-radius: 100%;
+    top: ${(props) =>
+      props.width === "34px" ? "50%" : props.width === "41px" ? "40%" : "35%"};
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: ${(props) => (props.selected ? "inline" : "none")};
+  }
 `;
 
 const WrapperRoundButtonTitle = styled.div`
@@ -100,7 +114,9 @@ const WrapperRoundButtonItems = (props) => {
         selected={props.selectedButtonIndex === index}
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
-      />
+      >
+        <img />
+      </RoundButton>
     );
   });
 };
