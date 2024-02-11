@@ -84,7 +84,7 @@ const ContentP = styled(P)`
     font-size: 20px;
 `
 // Component - Content 중 Button으로 사용하는 스타일
-const Button = styled.button `
+export const Button = styled.button `
     width : 342px;
     height : 56px;
 
@@ -99,6 +99,10 @@ const Button = styled.button `
 
     &:first-child {
         margin-bottom: 10px;
+    }
+
+    &:hover{
+        opacity: 50%;
     }
 `;
 
