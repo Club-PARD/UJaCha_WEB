@@ -20,7 +20,10 @@ const contentData = "조기 발견을 위해서는\n빠른 사전 진단이\n필
 const IntroPageSubContainer = styled(Container)`
     width: 100%;
     height : 555px;
-    background-color: ${theme.colors.sky_100};
+
+    background-image: url("img/section3BG.png"); // 배경 이미지 추가
+    background-size: cover; // 이미지를 컨테이너에 맞게 조절
+    background-position: center; // 이미지를 가운데 정렬
 
     border-radius: 36px;
 

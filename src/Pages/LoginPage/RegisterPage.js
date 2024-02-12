@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {Modal} from "../../Layout/Modal";
 import { BlackContainer } from "../IntroPage/IntroPage";
+import { Button } from "../IntroPage/Components/IntroPageMain";
 
 function RegisterPage() {
     const [userInfoData, setUserInfoData] = useRecoilState(userInfo); // 유저 정보 저장
@@ -126,7 +127,7 @@ const RegisterPageContainer = styled(Container)`
     justify-content: space-between;
 `
 
-const WrapperButton = styled(ButtonOpacity50)`
+const WrapperButton = styled(Button)`
     width: 100%;
     height : 56px;
 
@@ -138,6 +139,11 @@ const WrapperButton = styled(ButtonOpacity50)`
     line-height: 30px;
 
     margin-bottom: 10px;
+    background-color: ${theme.colors.purple_100};
+
+    &:hover{
+        background-color : #8280FF;
+    }
 `
 
 const WrapperInput = styled.div `

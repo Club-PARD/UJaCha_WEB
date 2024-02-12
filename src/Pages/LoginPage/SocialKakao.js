@@ -68,7 +68,7 @@ const SocialKakao = () => {
     }
     render = {
         ({onClick}) => (
-            <Button onClick={onClick}>
+            <Button onClick={onClick} backgroundcolor = "transparent">
                 {/* <img src={KakaoBtn} alt="KakaoBtn"/> */}
                 카카오 로그인
             </Button>
