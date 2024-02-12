@@ -4,7 +4,6 @@ import { Questions } from "../Utils/Questions.js";
 import { useState } from "react";
 
 function TestPageQuestion({ page }) {
-  console.log(page);
   return (
     <TestPageQuestionContainer>
       <Order>{Questions[page].order}</Order>
@@ -42,5 +41,6 @@ const Question = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 33.6px */
+  white-space: pre-wrap;
 `;
 export default TestPageQuestion;

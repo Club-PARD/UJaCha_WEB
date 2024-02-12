@@ -5,10 +5,6 @@ import { useEffect, useState } from "react";
 function TestPageButton({ page, handlePage }) {
   const [questionCount, setQuestionCount] = useState(page);
 
-  useEffect(() => {
-    console.log("questionCount", questionCount);
-  }, [questionCount]);
-
   const handleDecreaseQuestionCount = () => {
     if (questionCount === 0) {
       alert("첫 페이지입니다.");
@@ -20,7 +16,8 @@ function TestPageButton({ page, handlePage }) {
 
   const handleIncreaseQuestionCount = () => {
     if (questionCount === 11) {
-      alert("마지막 페이지입니다.");
+      // alert("마지막 페이지입니다.");
+      handlePage(page + 1);
     } else {
       handlePage(page + 1);
       setQuestionCount(page + 1);

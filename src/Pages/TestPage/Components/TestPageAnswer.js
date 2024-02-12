@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function TestPageAnswer() {
+function TestPageAnswer({ page, form, setForm }) {
+  const [answer, setAnswer] = useState(0);
+
+  useEffect(() => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [`question${page + 1}`]: answer,
+    }));
+    console.log(form);
+  }, [answer]);
+
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleButtonClick = (hoverColor, index) => {
     setSelectedButtonIndex(index);
+    setAnswer(index);
   };
-
-  useEffect(() => {
-    console.log("selectedButtonIndex", selectedButtonIndex);
-  }, [selectedButtonIndex]);
 
   return (
     <TestPageAnswerContainer>
@@ -18,6 +25,8 @@ function TestPageAnswer() {
         <WrapperRoundButtonItems
           selectedButtonIndex={selectedButtonIndex}
           handleButtonClick={handleButtonClick}
+          form={form}
+          page={page}
         />
       </WrapperRoundButton>
       <WrapperRoundButtonTitle>
@@ -65,12 +74,13 @@ const RoundButton = styled.button`
     background-image: url(${process.env.PUBLIC_URL}/img/check.png);
     background-size: cover; // 이미지 크기 조정
     position: relative;
-    border-radius: 100%;
+
     top: ${(props) =>
       props.width === "34px" ? "50%" : props.width === "41px" ? "40%" : "35%"};
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     display: ${(props) => (props.selected ? "inline" : "none")};
+    outline-style: none;
   }
 `;
 
@@ -97,6 +107,7 @@ const WrapperRoundButtonItems = (props) => {
         }
         style={{
           backgroundColor:
+            props.form[`question${props.page + 1}`] === index ||
             focusedIndex === index
               ? index === 4 || index === 5
                 ? "#8280FF"
@@ -111,7 +122,7 @@ const WrapperRoundButtonItems = (props) => {
             index
           )
         }
-        selected={props.selectedButtonIndex === index}
+        selected={props.form[`question${props.page + 1}`] === index}
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
       >
