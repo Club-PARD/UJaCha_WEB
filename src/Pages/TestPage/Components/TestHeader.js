@@ -8,7 +8,7 @@ function TestHeader({ page }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeader(true);
-    }, 1500);
+    }, 1100);
 
     return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머 해제
   }, []); // 초기 렌더링 시 한 번만 실행
