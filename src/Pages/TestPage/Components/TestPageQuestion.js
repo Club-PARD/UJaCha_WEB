@@ -41,5 +41,6 @@ const Question = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 33.6px */
+  white-space: pre-wrap;
 `;
 export default TestPageQuestion;
