@@ -10,9 +10,22 @@ import TestHeader from "./Components/TestHeader";
 function TestPage() {
   const totalPage = 12;
   const [page, setPage] = useState(0);
+  const [form, setForm] = useState({
+    question1: 0,
+    question2: 0,
+    question3: 0,
+    question4: 0,
+    question5: 0,
+    question6: 0,
+    question7: 0,
+    question8: 0,
+    question9: 0,
+    question10: 0,
+    question11: 0,
+    question12: 0,
+  });
 
   const handlePage = (newPage) => {
-    console.log("언제?", newPage);
     newPage === -1
       ? setPage(0)
       : newPage === totalPage
@@ -25,7 +38,7 @@ function TestPage() {
       <TestHeader page={page} />
       <QuestionContainer>
         <TestPageQuestion page={page} />
-        <TestPageAnswer />
+        <TestPageAnswer page={page} form={form} setForm={setForm} />
         <TestPageButton page={page} handlePage={handlePage} />
       </QuestionContainer>
     </TestPageContainer>

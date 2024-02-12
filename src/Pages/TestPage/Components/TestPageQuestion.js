@@ -4,7 +4,6 @@ import { Questions } from "../Utils/Questions.js";
 import { useState } from "react";
 
 function TestPageQuestion({ page }) {
-  console.log(page);
   return (
     <TestPageQuestionContainer>
       <Order>{Questions[page].order}</Order>

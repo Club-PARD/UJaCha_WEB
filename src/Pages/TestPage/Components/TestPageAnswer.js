@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function TestPageAnswer() {
+function TestPageAnswer({ page, form, setForm }) {
+  const [answer, setAnswer] = useState(0);
+
+  useEffect(() => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [`question${page + 1}`]: answer,
+    }));
+    console.log(form);
+  }, [answer]);
+
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleButtonClick = (hoverColor, index) => {
     setSelectedButtonIndex(index);
+    setAnswer(index);
   };
-
-  useEffect(() => {
-    console.log("selectedButtonIndex", selectedButtonIndex);
-  }, [selectedButtonIndex]);
 
   return (
     <TestPageAnswerContainer>
@@ -18,6 +25,8 @@ function TestPageAnswer() {
         <WrapperRoundButtonItems
           selectedButtonIndex={selectedButtonIndex}
           handleButtonClick={handleButtonClick}
+          form={form}
+          page={page}
         />
       </WrapperRoundButton>
       <WrapperRoundButtonTitle>
@@ -97,6 +106,7 @@ const WrapperRoundButtonItems = (props) => {
         }
         style={{
           backgroundColor:
+            props.form[`question${props.page + 1}`] === index ||
             focusedIndex === index
               ? index === 4 || index === 5
                 ? "#8280FF"
@@ -111,7 +121,7 @@ const WrapperRoundButtonItems = (props) => {
             index
           )
         }
-        selected={props.selectedButtonIndex === index}
+        selected={props.form[`question${props.page + 1}`] === index}
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
       >
