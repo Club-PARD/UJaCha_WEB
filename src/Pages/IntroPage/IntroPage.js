@@ -29,7 +29,7 @@ const IntroPageContainer = styled(Container)`
     box-sizing: border-box;
 `
 
-const BlackContainer = styled.div`
+export const BlackContainer = styled.div`
     width: 100vw;
 
     background-color: black;
@@ -37,5 +37,7 @@ const BlackContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-direction: ${props => props.flexDirection};
 `
 export default IntroPage;
