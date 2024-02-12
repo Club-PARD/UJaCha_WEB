@@ -2,9 +2,15 @@ import {useRecoilValue} from "recoil";
 import {userInfo} from "../../Atoms";
 import styled from "styled-components";
 import {theme} from "../../Styles/theme";
+import { useEffect } from "react";
+import { BlackContainer } from "../IntroPage/IntroPage";
 
 function HomePage() {
     const userInfoData = useRecoilValue(userInfo);
+
+    useEffect(() => {
+        console.log(userInfoData);
+    })
     return (
         <HomePageContainer>
             <HomePageWrapper height="225px" backgroundColor="white"></HomePageWrapper>

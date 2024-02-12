@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { Container, Img, P } from "../../../Layout/Layout";
+import { Container, Img, ImgOpacity50, P } from "../../../Layout/Layout";
 
 function IntroPageHeader() {
     return (
         <IntroPageHeaderContainer>
             <IntroPageHeaderWrapper>
-                <TuneLogoP>tune</TuneLogoP>
-                <Img src = "img/user-02.png" alt = "user-02" width = "24px" height = "24px"/>
+                {/* <TuneLogoP>tune</TuneLogoP> */}
+                <ImgOpacity50 src = "img/tune_logo.png" alt = "logo_tune" height = "21px"/>
+                <ImgOpacity50 src = "img/user-02.png" alt = "user-02" width = "24px" height = "24px"/>
             </IntroPageHeaderWrapper>
         </IntroPageHeaderContainer>
     );

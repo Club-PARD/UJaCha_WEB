@@ -12,6 +12,7 @@ export const P = styled.p`
 
     letter-spacing: ${props => props.letterSpacing};
     
+    text-align: ${props => props.textAlign};
 
 `
 

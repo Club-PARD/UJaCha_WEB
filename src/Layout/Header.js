@@ -1,16 +1,20 @@
 import {Link, Outlet} from "react-router-dom";
 import styled from "styled-components";
-import { BlackContainer } from "../Pages/IntroPage/IntroPage";
-import { Img, ImgOpacity50 } from "./Layout";
-import { theme } from "../Styles/theme";
+import {BlackContainer} from "../Pages/IntroPage/IntroPage";
+import {Img, ImgOpacity50} from "./Layout";
+import {theme} from "../Styles/theme";
+import IntroPageHeader from "../Pages/IntroPage/Components/IntroPageHeader";
 
 function Header() {
     return (
-        <BlackContainer flexDirection = "column">
-            <MyHeader/>
-            <ContainerOutletMain>
-                <Outlet/>
-            </ContainerOutletMain>
+        <BlackContainer flexDirection="row" height="100vh">
+            <HeaderContainer>
+                <MyHeader/>
+                {/* <IntroPageHeader/> */}
+                <ContainerOutletMain>
+                    <Outlet/>
+                </ContainerOutletMain>
+            </HeaderContainer>
         </BlackContainer>
     );
 }
@@ -19,8 +23,10 @@ const MyHeader = () => {
     return (
         <ContainerHeader>
             <WrapperHeader>
-                <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" />
-                <ImgOpacity50 src="img/user-02.png" alt ="user-02" width = "24px" height= "24px"/>
+                <DivHeader>
+                <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/>
+                    <ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" />
+                </DivHeader>
             </WrapperHeader>
             <WrapperButton>
                 <Span>요약</Span>
@@ -31,13 +37,19 @@ const MyHeader = () => {
 
 }
 
-const ContainerHeader = styled.div`
+const HeaderContainer = styled.div`
     width : 390px;
+`
+const ContainerHeader = styled.div `
+    width : 100%;
     height: 165px;
+    padding : 0px 8px;
+
 
     /* background-color: red; */
-
-    padding : 0px 25px;
+    
+    /* padding : 0px 20px; */
+    /* margin : 0px 8px; */
     box-sizing: border-box;
 
     display: flex;
@@ -45,38 +57,49 @@ const ContainerHeader = styled.div`
 
 `
 
-const ContainerOutletMain = styled.div`
+const ContainerOutletMain = styled.div `
     width: 390px;
     height : 679px;
 
     /* background-color: yellow; */
 
-    padding : 0px 20px;
+    padding : 0px 8px;
     box-sizing: border-box;
 `
 
-const WrapperHeader = styled.div`
+const WrapperHeader = styled.div `
 
     width: 100%;
-    height : 24px;
+    height : 100px;
     /* background-color: skyblue; */
-
-    margin-top: 55px;
-    margin-bottom: 35px;
+    padding : 20px 20px 15px 20px;
+    box-sizing: border-box;
+    
 
     display: flex;
-    justify-content: space-between;
+    align-items: end;
 `
-
-const WrapperButton = styled.div`
+const DivHeader = styled.div`
     width: 100%;
-    height : 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+const WrapperButton = styled.div `
+    /* width: 100%; */
+    height : 65px;
     /* background-color: green; */
 
+    margin: 0px 20px;
+    box-sizing: border-box;
+
     font-size: 32px;
+
+    display: flex;
+    align-items: center;
 `
 
-const Span = styled.span`
+const Span = styled.span `
     color : #727272;
 
     &:first-child{

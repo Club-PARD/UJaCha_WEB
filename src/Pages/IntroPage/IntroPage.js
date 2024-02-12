@@ -23,7 +23,7 @@ function IntroPage() {
 const IntroPageContainer = styled(Container)`
     height : auto;
 
-    background-color: black;
+    /* background-color: red; */
 
     padding : 0px 8px;
     box-sizing: border-box;
@@ -31,12 +31,13 @@ const IntroPageContainer = styled(Container)`
 
 export const BlackContainer = styled.div`
     width: 100vw;
+    height: ${props => props.height};
 
     background-color: black;
     
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: ${props => props.alignItems};
 
     flex-direction: ${props => props.flexDirection};
 `
