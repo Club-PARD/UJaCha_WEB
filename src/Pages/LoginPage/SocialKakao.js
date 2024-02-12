@@ -2,7 +2,7 @@ import KakaoLogin from "react-kakao-login";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import { Button } from "../IntroPage/Components/IntroPageMain";
+import {Button} from "../IntroPage/Components/IntroPageMain";
 
 const SocialKakao = () => {
     const kakaoClientId = process.env.REACT_APP_REST_API_KEY;
@@ -27,12 +27,15 @@ const SocialKakao = () => {
             const response = await axios.post(
                 process.env.REACT_APP_URL + "/api/member/login",
                 loginData,
-                {withCredentials: true} // 요청에 인증 정보를 포함하여 보냄
+                // {withCredentials: true}  요청에 인증 정보를 포함하여 보냄
             );
             console.log("유자차 response", response);
-            // if (response.data.message === "Sign In Success") {     console.log("Server
-            // Response:", response.data);     로그인 성공 시, 로그인 후 메인 화면 이동
-            // navigate("/SettingPage"); } else {     navigate("../Signup"); }
+            if (response.data.first === true) {
+                console.log("Server Response:", response.data);
+                navigate("/register");
+            } else {
+                navigate("/home");
+            }
         } catch (error) {
             console.error("Error sending login data:", error);
         }
