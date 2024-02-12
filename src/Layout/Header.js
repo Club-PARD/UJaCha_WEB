@@ -1,79 +1,91 @@
 import {Link, Outlet} from "react-router-dom";
 import styled from "styled-components";
+import { BlackContainer } from "../Pages/IntroPage/IntroPage";
+import { Img, ImgOpacity50 } from "./Layout";
+import { theme } from "../Styles/theme";
 
 function Header() {
     return (
-        <div>
+        <BlackContainer flexDirection = "column">
             <MyHeader/>
-            <main>
+            <ContainerOutletMain>
                 <Outlet/>
-            </main>
-        </div>
+            </ContainerOutletMain>
+        </BlackContainer>
     );
 }
 
 const MyHeader = () => {
     return (
-        <LinkDiv>
-            <LogoDiv to="/">
-                유자차
-            </LogoDiv>
-            <MenuDiv>
-                <MyLink to="/page1">페이지1</MyLink>
-                <MyLink to="/page2">페이지2</MyLink>
-                <MyLink to="/page3">페이지3</MyLink>
-                <MyLink to="/userInfo">UserInfo</MyLink>
-            </MenuDiv>
-        </LinkDiv>
+        <ContainerHeader>
+            <WrapperHeader>
+                <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" />
+                <ImgOpacity50 src="img/user-02.png" alt ="user-02" width = "24px" height= "24px"/>
+            </WrapperHeader>
+            <WrapperButton>
+                <Span>요약</Span>
+                <Span>커뮤니티</Span>
+            </WrapperButton>
+        </ContainerHeader>
     );
 
 }
 
-// 헤더바 전체 영역
-const LinkDiv = styled.div `
-    width: 100%;
-    height : 60px;
+const ContainerHeader = styled.div`
+    width : 390px;
+    height: 165px;
+
+    /* background-color: red; */
+
+    padding : 0px 25px;
+    box-sizing: border-box;
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 
-    background-color: gray;
 `
 
-// 헤더바 내부 로고 영역
-const LogoDiv = styled(Link)`
-    width : 10%;
-    font-size : 30px;
-    font-weight: bold;
-    color : #ffcc33;
-    text-align: center;
+const ContainerOutletMain = styled.div`
+    width: 390px;
+    height : 679px;
 
-    text-decoration: none;
+    /* background-color: yellow; */
+
+    padding : 0px 20px;
+    box-sizing: border-box;
+`
+
+const WrapperHeader = styled.div`
+
+    width: 100%;
+    height : 24px;
+    /* background-color: skyblue; */
+
+    margin-top: 55px;
+    margin-bottom: 35px;
+
+    display: flex;
+    justify-content: space-between;
+`
+
+const WrapperButton = styled.div`
+    width: 100%;
+    height : 38px;
+    /* background-color: green; */
+
+    font-size: 32px;
+`
+
+const Span = styled.span`
+    color : #727272;
+
+    &:first-child{
+        color : ${theme.colors.lemon_100};
+        margin-right: 20px;
+    }
 
     &:hover{
         opacity: 50%;
     }
 `
-
-const MenuDiv = styled.div `
-    width : 90%;
-
-    display: flex;
-    justify-content: end;
-`
-const MyLink = styled(Link)`
-    text-decoration: none;
-    color : white;
-    background-color: black;
-    margin : 0 20px;
-
-    font-size: 20px;
-
-    &:hover{
-        color : yellow;
-        background-color: gray;
-    }
-`;
-
 export default Header;
