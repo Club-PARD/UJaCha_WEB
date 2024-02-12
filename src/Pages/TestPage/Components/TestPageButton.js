@@ -17,6 +17,7 @@ function TestPageButton({ page, handlePage }) {
   const handleIncreaseQuestionCount = () => {
     if (questionCount === 11) {
       // alert("마지막 페이지입니다.");
+      handlePage(page + 1);
     } else {
       handlePage(page + 1);
       setQuestionCount(page + 1);

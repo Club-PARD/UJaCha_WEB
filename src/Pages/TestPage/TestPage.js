@@ -6,9 +6,11 @@ import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
 import { useState } from "react";
 import TestHeader from "./Components/TestHeader";
+import TestLoading from "./Components/TestLoading";
 
 function TestPage() {
-  const totalPage = 12;
+  const totalPage = 13;
+  const totalQuestion = 12;
   const [page, setPage] = useState(0);
   const [form, setForm] = useState({
     question1: 0,
@@ -37,9 +39,15 @@ function TestPage() {
     <TestPageContainer>
       <TestHeader page={page} />
       <QuestionContainer>
-        <TestPageQuestion page={page} />
-        <TestPageAnswer page={page} form={form} setForm={setForm} />
-        <TestPageButton page={page} handlePage={handlePage} />
+        {page !== totalQuestion ? (
+          <>
+            <TestPageQuestion page={page} />
+            <TestPageAnswer page={page} form={form} setForm={setForm} />
+            <TestPageButton page={page} handlePage={handlePage} />
+          </>
+        ) : (
+          <TestLoading />
+        )}
       </QuestionContainer>
     </TestPageContainer>
   );
