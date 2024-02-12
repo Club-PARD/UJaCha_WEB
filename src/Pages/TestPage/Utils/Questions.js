@@ -37,7 +37,7 @@ export const Questions = [
   },
   {
     order: "10",
-    item: "가끔 누구나 터무니없다고 생각할만한\n내용을 사실로 주장한다.",
+    item: "가끔 터무니 없는 내용을\n사실로 주장한다.",
   },
   {
     order: "11",

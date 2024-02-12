@@ -65,7 +65,7 @@ const TestPageContainer = styled.div`
 `;
 
 const QuestionContainer = styled.div`
-  width: 374px;
+  width: 390px;
   height: calc(100% - 100px);
   border-radius: 36px 36px 0px 0px;
   background-color: ${({ theme }) => theme.colors.purple_100};
