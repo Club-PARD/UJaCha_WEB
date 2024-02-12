@@ -23,6 +23,7 @@ const SocialKakao = () => {
         console.log("loginData", loginData);
         // 로그인 성공 시 SignupPage 페이지로 이동
         try {
+            console.log("test", process.env.REACT_APP_URL + "/api/member/login");
             const response = await axios.post(
                 process.env.REACT_APP_URL + "/api/member/login",
                 loginData,
