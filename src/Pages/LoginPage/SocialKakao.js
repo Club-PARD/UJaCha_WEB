@@ -3,8 +3,11 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {Button} from "../IntroPage/Components/IntroPageMain";
-
+import {useRecoilState} from "recoil";
+import {userInfo} from "../../Atoms";
 const SocialKakao = () => {
+    const [userInfoData, setUserInfoData] = useRecoilState(userInfo); // 유저 정보 저장
+
     const kakaoClientId = process.env.REACT_APP_REST_API_KEY;
     const navigate = useNavigate();
 
@@ -19,8 +22,10 @@ const SocialKakao = () => {
             // kakaoAccessToken: data.response.access_token
             email: data.profile.kakao_account.email,
             uid: data.profile.id
+
         };
         console.log("loginData", loginData);
+
         // 로그인 성공 시 SignupPage 페이지로 이동
         try {
             console.log("test", process.env.REACT_APP_URL + "/api/member/login");
@@ -32,6 +37,13 @@ const SocialKakao = () => {
             console.log("유자차 response", response);
             if (response.data.first === true) {
                 console.log("Server Response:", response.data);
+                const tempUserInfoData = {
+                    nickname: "",
+                    reliableName: "",
+                    childAge: 0,
+                    uid : data.profile.id,
+                }
+                setUserInfoData(tempUserInfoData);
                 navigate("/register");
             } else {
                 navigate("/home");

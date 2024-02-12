@@ -4,8 +4,9 @@ import { atom } from "recoil";
 export const userInfo = atom({
     key: "userInfo",
     default: {
-        id: null, // 유저 id
-        name: "홍길동", // 유저 name
-        isLoggedIn: false, // 유저 로그인 여부
+        nickname: "",
+        reliableName: "",
+        childAge: 0,
+        uid : "",
     },
 })
