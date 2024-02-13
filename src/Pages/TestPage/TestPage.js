@@ -41,7 +41,7 @@ function TestPage() {
           <>
             <TestPageQuestion page={page} />
             <TestPageAnswer page={page} form={form} setForm={setForm} />
-            <TestPageButton page={page} handlePage={handlePage} />
+            <TestPageButton page={page} handlePage={handlePage} form={form} />
           </>
         ) : (
           <TestLoading />
