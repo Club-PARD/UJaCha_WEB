@@ -14,6 +14,7 @@ export const postFirstData = async (data) => {
       },
     });
     console.log(response);
+    return response;
   } catch (error) {
     console.log("post error");
   }

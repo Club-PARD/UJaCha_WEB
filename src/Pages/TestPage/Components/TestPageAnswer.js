@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { formState, pageState } from "../../../Atoms";
 
-function TestPageAnswer({ page, form, setForm }) {
+function TestPageAnswer() {
   const [answer, setAnswer] = useState(0);
+  const [page, setPage] = useRecoilState(pageState);
+  const [form, setForm] = useRecoilState(formState);
 
   useEffect(() => {
     setForm((prevForm) => ({
