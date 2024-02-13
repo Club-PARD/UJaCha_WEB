@@ -18,8 +18,7 @@ function IntroPageMain() {
             <DivContent margin="55px 0px 70px 0px" height="375px">
                 <Img
                     src="img/onePercent.png"
-                    width="167px"
-                    height="130px"
+                    width="206px"
                     alt="1 percent logo"/>
                 <DivContentP>
                     <ContentP>100명 중 1명은<br/>
@@ -91,7 +90,6 @@ export const Button = styled.button `
     background-color: ${props => props.backgroundcolor};
     color: ${props => props.color};
 
-    border : none;
     border-radius: 16px;
     font-size: 20px;
     border : 1px solid black;
@@ -101,9 +99,6 @@ export const Button = styled.button `
         margin-bottom: 10px;
     }
 
-    &:hover{
-        opacity: 50%;
-    }
 `;
 
 
