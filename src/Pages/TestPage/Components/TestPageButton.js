@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import { Container } from "../../../Layout/Layout";
 import { useEffect, useState } from "react";
-import { postFirstData } from "../../../Api/test";
+import { useRecoilState } from "recoil";
+import { pageState } from "../../../Atoms";
 
-function TestPageButton({ page, handlePage, form }) {
+function TestPageButton() {
+  const totalPage = 13;
+  const [page, setPage] = useRecoilState(pageState);
   const [questionCount, setQuestionCount] = useState(page);
+
+  const handlePage = (newPage) => {
+    newPage === -1
+      ? setPage(0)
+      : newPage === totalPage
+      ? setPage(newPage - 1)
+      : setPage(newPage);
+  };
 
   const handleDecreaseQuestionCount = () => {
     if (questionCount === 0) {
@@ -19,7 +30,6 @@ function TestPageButton({ page, handlePage, form }) {
     if (questionCount === 11) {
       // alert("마지막 페이지입니다.");
       handlePage(page + 1);
-      const response = postFirstData(form);
     } else {
       handlePage(page + 1);
       setQuestionCount(page + 1);

@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Img } from "../../../Layout/Layout";
+import { useRecoilValue } from "recoil";
+import { pageState } from "../../../Atoms";
 
-function TestHeader({ page }) {
+function TestHeader() {
+  const page = useRecoilValue(pageState);
   const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {

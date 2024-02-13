@@ -1,6 +1,15 @@
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { resultState } from "../../../Atoms";
 
-function ResultContents({ result }) {
+function ResultContents() {
+  const result = useRecoilValue(resultState);
+  if (!result) {
+    return null; // 결과가 없을 때 렌더링하지 않음
+  }
+
+  console.log(result);
+
   const getBackgroundColor = () => {
     if (result.total >= 60) {
       return "#FEE28D";
