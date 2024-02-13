@@ -67,8 +67,6 @@ const RoundButton = styled.button`
   img {
     width: 28px;
     height: 28px;
-    background-image: url(${process.env.PUBLIC_URL}/img/check.png);
-    background-size: cover;
     position: relative;
     top: ${(props) =>
       props.width === "34px" ? "50%" : props.width === "41px" ? "40%" : "35%"};
@@ -120,7 +118,7 @@ const WrapperRoundButtonItems = (props) => {
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
       >
-        <img />
+        <img src={process.env.PUBLIC_URL + "/img/check.png"} />
       </RoundButton>
     );
   });
