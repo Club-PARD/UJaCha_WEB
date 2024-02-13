@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { Container } from "../../../Layout/Layout";
 import { useEffect, useState } from "react";
+import { postFirstData } from "../../../Api/test";
 
-function TestPageButton({ page, handlePage }) {
+function TestPageButton({ page, handlePage, form }) {
   const [questionCount, setQuestionCount] = useState(page);
 
   const handleDecreaseQuestionCount = () => {
@@ -18,6 +19,7 @@ function TestPageButton({ page, handlePage }) {
     if (questionCount === 11) {
       // alert("마지막 페이지입니다.");
       handlePage(page + 1);
+      const response = postFirstData(form);
     } else {
       handlePage(page + 1);
       setQuestionCount(page + 1);
