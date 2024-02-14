@@ -56,9 +56,10 @@ function RegisterPage() {
                     // 들어, 응답에 따라 조건부로 다른 동작을 수행할 수 있습니다.
                     if (response.data === false) {
                         alert("가능한 이름입니다.");
-                        // const response = axios.post(     process.env.REACT_APP_URL +
-                        // "/api/member/first", tempUserInfo ); console.log("post result",
-                        // response.data);
+                        const response = axios.post(     process.env.REACT_APP_URL +
+                        "/api/member/first", tempUserInfo ); console.log("post result",
+                            response.data);
+                        navigate("/home");
                     } else {
                         alert("중복된 이름입니다.");
                     }
