@@ -8,19 +8,19 @@ function ResultContents() {
   const korResult = [
     {
       symptom: "환각/환청",
-      outcome: result.abnormalBehavior,
-    },
-    {
-      symptom: "이상행동",
-      outcome: result.delusion,
-    },
-    {
-      symptom: "감정 변화",
       outcome: result.hallucination,
     },
     {
-      symptom: "망상",
+      symptom: "이상행동",
+      outcome: result.abnormalBehavior,
+    },
+    {
+      symptom: "감정 변화",
       outcome: result.moody,
+    },
+    {
+      symptom: "망상",
+      outcome: result.delusion,
     },
   ];
 

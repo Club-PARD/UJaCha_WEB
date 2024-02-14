@@ -19,3 +19,19 @@ export const postFirstData = async (data) => {
     console.log("post error");
   }
 };
+
+export const postData = async (data) => {
+  try {
+    const jwtToken = sessionStorage.getItem("jwtToken");
+    const response = await instance.post("/api/test", data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: jwtToken,
+      },
+    });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log("post error");
+  }
+};
