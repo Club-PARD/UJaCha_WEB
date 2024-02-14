@@ -4,9 +4,9 @@ import { atom } from "recoil";
 export const userInfo = atom({
     key: "userInfo",
     default: {
-        nickname: "",
+        nickname: "홍길동",
         reliableName: "",
-        childAge: 0,
+        childAge: 100,
         uid : "",
     },
 })

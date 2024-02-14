@@ -40,12 +40,14 @@ const SocialKakao = () => {
                 const tempUserInfoData = {
                     nickname: "",
                     reliableName: "",
-                    childAge: 0,
+                    childAge: null,
                     uid : data.profile.id,
                 }
                 setUserInfoData(tempUserInfoData);
                 navigate("/register");
             } else {
+                console.log(response.data);
+                sessionStorage.setItem("jwtToken", response.data);
                 navigate("/home");
             }
         } catch (error) {
