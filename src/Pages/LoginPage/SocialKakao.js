@@ -43,8 +43,8 @@ const SocialKakao = () => {
         setUserInfoData(tempUserInfoData);
         navigate("/register");
       } else {
-        console.log(response.data);
-        sessionStorage.setItem("jwtToken", response.data);
+        console.log(response.data.token);
+        sessionStorage.setItem("jwtToken", response.data.token);
         navigate("/home");
       }
     } catch (error) {
