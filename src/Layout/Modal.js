@@ -8,19 +8,26 @@ export const Modal = ({ isOpen, closeModal, navigate, page }) => {
         <div>
           <BlackOverlay onClick={closeModal} />
           <DivModal>
-            <P fontSize="17px" fontWeight="700">
+            <MainText>
               {page === "test"
                 ? "테스트를 중단하시겠어요?"
                 : "회원가입을 중단하시겠습니까?"}
-            </P>
-            <P fontSize="17px" fontWeight="500" textAlign="center">
+            </MainText>
+            <SubText>
               {page === "test"
                 ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
                 : "지금 나가시면, 회원가입이\n완료되지 않습니다."}
-            </P>
+            </SubText>
             <DivButtonItems>
               <Button onClick={closeModal}>취소</Button>
-              <Button onClick={() => navigate("/")}>확인</Button>
+              <Button
+                style={{ color: "#FF2946" }}
+                onClick={() =>
+                  page === "test" ? navigate("/") : navigate("/home")
+                }
+              >
+                나가기
+              </Button>
             </DivButtonItems>
           </DivModal>
         </div>
@@ -41,11 +48,30 @@ const DivModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 30px 0px;
+  justify-content: center;
   box-sizing: border-box;
   z-index: 1000;
+  border-radius: 24px;
   white-space: pre-wrap;
+`;
+
+const MainText = styled.p`
+  font-family: "Pretendard Variable";
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 10px 0px 18px 0px;
+`;
+
+const SubText = styled.p`
+  font-family: "Pretendard Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 const DivButtonItems = styled.div``;
@@ -54,11 +80,10 @@ const Button = styled.button`
   width: 128px;
   height: 35px;
   border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 19px;
-  background-color: #dedede;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 150%;
+  background-color: white;
   &:hover {
     opacity: 0.5;
   }
