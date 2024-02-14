@@ -2,15 +2,34 @@ import styled from "styled-components";
 import TestPageQuestion from "./Components/TestPageQuestion";
 import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TestHeader from "./Components/TestHeader";
 import TestLoading from "./Components/TestLoading";
-import { useRecoilValue } from "recoil";
-import { pageState } from "../../Atoms";
+import { useRecoilState } from "recoil";
+import { pageState, formState } from "../../Atoms";
 
 function TestPage() {
   const totalQuestion = 12;
-  const page = useRecoilValue(pageState);
+  const [page, setPage] = useRecoilState(pageState);
+  const [form, setForm] = useRecoilState(formState);
+
+  useEffect(() => {
+    setPage(0);
+    setForm({
+      question1: 0,
+      question2: 0,
+      question3: 0,
+      question4: 0,
+      question5: 0,
+      question6: 0,
+      question7: 0,
+      question8: 0,
+      question9: 0,
+      question10: 0,
+      question11: 0,
+      question12: 0,
+    });
+  }, []);
 
   return (
     <TestPageContainer>
