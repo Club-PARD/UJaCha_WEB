@@ -28,11 +28,11 @@ function ResultContents() {
     if (result.total >= 70) {
       return `조현병 증상이 ${result.total}% 의심됩니다.\n증상이 매우 위험한 정도로 보여지므로\n증상을 꾸준히 기록해 보시는 것과\n정신과 내원을 권고합니다.`;
     } else if (result.total >= 40) {
-      return `조현병 증상이 ${result.total}% 의심됩니다.\n경각심이 필요한 수준입니다.\n로그인하여 지속적으로 관찰하세요.`;
+      return `조현병 증상이 ${result.total}% 의심됩니다.\n약간의 경각심이 필요한 수준입니다.\n지속적으로 관찰하기를 추천드립니다.`;
     } else if (result.total >= 20) {
-      return `조현병 증상이 ${result.total}% 의심됩니다.\n아직은 안전하지만 약간의 증상이\n있으니 로그인하여 지속적으로\n매일을 기록해보세요.`;
+      return `조현병 증상이 ${result.total}% 의심됩니다.\n아직은 안전하지만 약간의 증상이\n있으니 지속적으로 기록해보세요.`;
     } else {
-      return `조현병 증상이 ${result.total}% 의심됩니다.\n증상이 거의 없는 상태이며\n조현병 위험이 거의 없다고 생각됩니다. `;
+      return `조현병 증상이 ${result.total}% 의심됩니다.\n증상이 거의 없는 상태이며 조현병의\n발병 위험이 거의 없다고 생각됩니다.`;
     }
   };
 
