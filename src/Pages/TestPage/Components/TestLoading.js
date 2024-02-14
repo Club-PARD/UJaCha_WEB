@@ -1,7 +1,7 @@
 import { Img } from "../../../Layout/Layout";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { postFirstData } from "../../../Api/test";
+import { postFirstData, postData } from "../../../Api/test";
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 import { formState, resultState } from "../../../Atoms";
 import { useNavigate } from "react-router-dom";
@@ -18,9 +18,13 @@ function TestLoading() {
     }, 100);
 
     const timeout = setTimeout(async () => {
-      const response = await postFirstData(form);
-      setResult(response.data);
-      console.log(response.data);
+      if (sessionStorage.getItem("jwtToken")) {
+        const response = await postData(form);
+        setResult(response.data);
+      } else {
+        const response = await postFirstData(form);
+        setResult(response.data);
+      }
       console.log(result);
       movePage("/result");
     }, 3000);
