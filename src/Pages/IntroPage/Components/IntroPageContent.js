@@ -35,7 +35,7 @@ const contentData = {
                     "없습니다."
         }, {
             title: "03.\n조현병은 치료가 어려운\n고질병인가?",
-            content: "조현병은 주로 10대 후반부터 30대까지\n발병하는데,약물치료가 가장 중요하며,\n심리치료나 행동치료를 병행하기도 합니다.\n또한, 일찍 치료할수록 뇌 기능을 더 잘\n회복할 수 있습니다."
+            content: "조현병은 주로 10대 후반부터 20대에 시작하여\n만성적 경과를 보입니다. 그러나 발병 초기인\n청소년기에 치료하면 안정적인 성인으로\n성장할 수 있습니다."
         }
     ]
 }
@@ -90,6 +90,7 @@ const ContentContent = styled.p `
     font-weight: 500;
     line-height: 22.4px;
     white-space: pre-line;
+    opacity: 80%;
 `
 
 const WrapperContentItem = styled.div `
