@@ -8,7 +8,7 @@ function ResultHeader() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeader(true);
-    }, 1100);
+    }, 300);
 
     return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머 해제
   }, []); // 초기 렌더링 시 한 번만 실행
@@ -29,7 +29,7 @@ const HeaderContainer = styled.div`
   width: 342px;
   top: 6%;
   position: absolute;
-  transition: opacity 1s ease;
+  transition: opacity 1.5s ease;
 `;
 
 export default ResultHeader;
