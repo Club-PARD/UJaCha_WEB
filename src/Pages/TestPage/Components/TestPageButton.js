@@ -1,9 +1,21 @@
 import styled from "styled-components";
 import { Container } from "../../../Layout/Layout";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { pageState } from "../../../Atoms";
 
-function TestPageButton({ page, handlePage }) {
+function TestPageButton() {
+  const totalPage = 13;
+  const [page, setPage] = useRecoilState(pageState);
   const [questionCount, setQuestionCount] = useState(page);
+
+  const handlePage = (newPage) => {
+    newPage === -1
+      ? setPage(0)
+      : newPage === totalPage
+      ? setPage(newPage - 1)
+      : setPage(newPage);
+  };
 
   const handleDecreaseQuestionCount = () => {
     if (questionCount === 0) {

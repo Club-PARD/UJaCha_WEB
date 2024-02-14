@@ -1,9 +1,12 @@
 import styled from "styled-components";
-import { Container } from "../../../Layout/Layout";
 import { Questions } from "../Utils/Questions.js";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { pageState } from "../../../Atoms";
 
-function TestPageQuestion({ page }) {
+function TestPageQuestion() {
+  const page = useRecoilValue(pageState);
+
   return (
     <TestPageQuestionContainer>
       <Order>{Questions[page].order}</Order>

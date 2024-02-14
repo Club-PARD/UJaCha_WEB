@@ -1,49 +1,26 @@
 import styled from "styled-components";
-import { Container } from "../../Layout/Layout";
-import TestPageHeader from "./Components/TestPageHeader";
 import TestPageQuestion from "./Components/TestPageQuestion";
 import TestPageAnswer from "./Components/TestPageAnswer";
 import TestPageButton from "./Components/TestPageButton";
 import { useState } from "react";
 import TestHeader from "./Components/TestHeader";
 import TestLoading from "./Components/TestLoading";
+import { useRecoilValue } from "recoil";
+import { pageState } from "../../Atoms";
 
 function TestPage() {
-  const totalPage = 13;
   const totalQuestion = 12;
-  const [page, setPage] = useState(0);
-  const [form, setForm] = useState({
-    question1: 0,
-    question2: 0,
-    question3: 0,
-    question4: 0,
-    question5: 0,
-    question6: 0,
-    question7: 0,
-    question8: 0,
-    question9: 0,
-    question10: 0,
-    question11: 0,
-    question12: 0,
-  });
-
-  const handlePage = (newPage) => {
-    newPage === -1
-      ? setPage(0)
-      : newPage === totalPage
-      ? setPage(newPage - 1)
-      : setPage(newPage);
-  };
+  const page = useRecoilValue(pageState);
 
   return (
     <TestPageContainer>
-      <TestHeader page={page} />
+      <TestHeader />
       <QuestionContainer>
         {page !== totalQuestion ? (
           <>
-            <TestPageQuestion page={page} />
-            <TestPageAnswer page={page} form={form} setForm={setForm} />
-            <TestPageButton page={page} handlePage={handlePage} />
+            <TestPageQuestion />
+            <TestPageAnswer />
+            <TestPageButton />
           </>
         ) : (
           <TestLoading />

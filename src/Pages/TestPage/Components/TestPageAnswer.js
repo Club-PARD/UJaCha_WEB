@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { formState, pageState } from "../../../Atoms";
 
-function TestPageAnswer({ page, form, setForm }) {
+function TestPageAnswer() {
   const [answer, setAnswer] = useState(0);
+  const [page, setPage] = useRecoilState(pageState);
+  const [form, setForm] = useRecoilState(formState);
 
   useEffect(() => {
     setForm((prevForm) => ({
@@ -59,28 +63,20 @@ const RoundButton = styled.button`
   height: ${(props) => props.width};
   background: none;
   margin: 0px 14px 0px 14px;
-  border-radius: 50%;
+  border-radius: 100%;
   border: 2px solid ${(props) => props.borderColor};
   background-color: ${(props) =>
     props.selected ? props.hoverColor : "transparent"};
 
-  &:hover {
-    background-color: ${(props) => props.hoverColor};
-  }
-
   img {
     width: 28px;
     height: 28px;
-    background-image: url(${process.env.PUBLIC_URL}/img/check.png);
-    background-size: cover; // 이미지 크기 조정
     position: relative;
-
     top: ${(props) =>
       props.width === "34px" ? "50%" : props.width === "41px" ? "40%" : "35%"};
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     display: ${(props) => (props.selected ? "inline" : "none")};
-    outline-style: none;
   }
 `;
 
@@ -126,7 +122,7 @@ const WrapperRoundButtonItems = (props) => {
         onFocus={() => setFocusedIndex(index)}
         onBlur={() => setFocusedIndex(null)}
       >
-        <img />
+        <img src={process.env.PUBLIC_URL + "/img/check.png"} />
       </RoundButton>
     );
   });
