@@ -97,7 +97,7 @@ const Ratio = styled.div`
     props.total >= 70
       ? "#FF2946"
       : props.total >= 40
-      ? "#868686"
+      ? "#FF7339"
       : props.total >= 20
       ? "#8280FF"
       : "#0FA958"};
@@ -110,7 +110,7 @@ const Line = styled.hr`
     props.total >= 70
       ? "#FF2946"
       : props.total >= 40
-      ? "#868686"
+      ? "#FF7339"
       : props.total >= 20
       ? "#8280FF"
       : "#0FA958"};
