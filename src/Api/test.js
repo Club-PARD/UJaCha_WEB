@@ -22,7 +22,7 @@ export const postFirstData = async (data) => {
 
 export const postData = async (data) => {
   try {
-    const jwtToken = sessionStorage.getItem("jwtToken ");
+    const jwtToken = sessionStorage.getItem("jwtToken");
     console.log(jwtToken);
     const response = await instance.post("/api/test", data, {
       headers: {
