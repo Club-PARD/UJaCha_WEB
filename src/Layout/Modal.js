@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {P} from "./Layout";
 
 export const Modal = ({isOpen, closeModal, navigate, page}) => {
     return (
@@ -47,67 +46,82 @@ export const Modal = ({isOpen, closeModal, navigate, page}) => {
 };
 
 const DivModal = styled.div `
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 297px;
-  height: 203px;
-  background-color: white;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  z-index: 1000;
-  border-radius: 24px;
-  white-space: pre-wrap;
+    width: 297px;
+    height: 203px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    
+    color: black;
+    background-color: white;
+    
+    border-radius: 24px;
+    
+    box-sizing: border-box;
+
+    white-space: pre-wrap;
 `;
 
 const MainText = styled.p `
-  font-family: "Pretendard Variable";
-  font-size: 19px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 10px 0px 18px 0px;
+    margin: 10px 0px 18px 0px;
+
+    font-family: "Pretendard Variable";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 `;
 
 const SubText = styled.p `
-  font-family: "Pretendard Variable";
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  text-align: center;
-  margin-bottom: 30px;
+    margin-bottom: 30px;
+
+    font-family: "Pretendard Variable";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
 `;
 
 const DivButtonItems = styled.div ``;
 
 const Button = styled.button `
-  width: 128px;
-  height: 35px;
-  border: none;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 150%;
-  background-color: white;
-  &:hover {
-    opacity: 0.5;
-  }
-  &:first-child {
-    margin-right: 10px;
-  }
+    width: 128px;
+    height: 35px;
+
+    border: none;
+    
+    background-color: white;
+    
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 150%;
+    
+    &:hover {
+        opacity: 0.5;
+    }
+    
+    &:first-child {
+        margin-right: 10px;
+    }
 `;
 
 const BlackOverlay = styled.div `
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    
+    background-color: rgba(0, 0, 0, 0.5);
 `;
