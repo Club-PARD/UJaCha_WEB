@@ -11,6 +11,7 @@ import IntroPage from "./Pages/IntroPage/IntroPage";
 import TestPage from "./Pages/TestPage/TestPage";
 import RegisterPage from "./Pages/LoginPage/RegisterPage";
 import ResultPage from "./Pages/ResultPage/ResultPage";
+import CommunityPage from "./Pages/CommunityPage/CommunityPage";
 
 function MyRoutes() {
   return (
@@ -27,6 +28,7 @@ function MyRoutes() {
         <Route path="/userInfo" element={<UserInfo />} />
         <Route path="/userInfoChange" element={<UserInfoChange />} />
         <Route path="/test1" element={<GraphTest />} />
+        <Route path="/community" element={<CommunityPage/>}/>
       </Route>
     </Routes>
   );
