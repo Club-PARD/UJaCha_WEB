@@ -1,12 +1,27 @@
 import styled from "styled-components";
 import {Container} from "../../../Layout/Layout";
-import {theme} from "../../../Styles/theme";
+import { theme } from "../../../Styles/theme";
+
+// [ 바로가기 ]
+// Data : Content
+// Container : IntroPageContent
+// Wrapper : Title
+// Component : Title (조현병에 관한 진실)
+// Wrapper : Content
+// Wrapper : ContentItem
+// Component : Content의 Title
+// Component : Content
+
 function IntroPageContent() {
     return (
         <IntroPageContentContainer>
+
+            {/* 조현병에 관한 사실 */}
             <WrapperTitle>
                 <TitleP>{contentData.title}</TitleP>
             </WrapperTitle>
+
+            {/* Content 영역 */}
             <WrapperContent>
             {
                 contentData.content.map((contents, index) => (
@@ -22,6 +37,7 @@ function IntroPageContent() {
 
 }
 
+// Data : Content
 const contentData = {
     title: "조현병에 관한 진실",
     content: [
@@ -40,51 +56,81 @@ const contentData = {
     ]
 }
 
+// Container : IntroPageContent
 const IntroPageContentContainer = styled(Container)`
     width: 100%;
     height : 833px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-bottom: 8px;
+    padding : 15px;
+    box-sizing: border-box;
+
     /* background-color: ${theme.colors.peach_100}; */
     background-image: url("img/section2BG.png"); // 배경 이미지 추가
     background-size: cover; // 이미지를 컨테이너에 맞게 조절
     background-position: center; // 이미지를 가운데 정렬
+    
     border-radius : 36px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding : 15px;
-    box-sizing: border-box;
-    margin-bottom: 8px;
 `
+
+// Wrapper : Title
 const WrapperTitle = styled.div `
     width: 100%;
     height : auto;
-    /* background-color: wheat; */
-
+    
     margin : 40px 0px;
+
+    /* background-color: wheat; */
 `
 
+// Component : Title (조현병에 관한 진실)
 const TitleP = styled.p `
     font-size: 28px;
     font-weight: 500;
     line-height: 39.2px;
 `
 
+// Wrapper : Content
 const WrapperContent = styled.div `
     width: 100%;
     height : auto;
 
     /* background-color: white; */
 `
+
+// Wrapper : ContentItem
+const WrapperContentItem = styled.div `
+    width: 100%;
+    height: auto;
+
+    margin-bottom: 50px;
+
+    /* background-color: green; */
+    
+    text-align: ${props => props.textAlign};
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+
+`;
+
+// Component : Content의 Title
 const ContentTitle = styled.p `  
+    margin-bottom: 18px;
+
     font-size: 20px;
     font-weight: 500;
     line-height: 28px;
 
-    margin-bottom: 18px;
     white-space: pre-line;
 `
+
+// Component : Content
 const ContentContent = styled.p `
     font-size: 16px;
     font-weight: 500;
@@ -93,17 +139,4 @@ const ContentContent = styled.p `
     opacity: 80%;
 `
 
-const WrapperContentItem = styled.div `
-    width: 100%;
-    height: auto;
-
-    /* background-color: green; */
-
-    margin-bottom: 50px;
-    &:last-child{
-        margin-bottom: 0;
-    }
-
-    text-align: ${props => props.textAlign};
-`;
 export default IntroPageContent;
