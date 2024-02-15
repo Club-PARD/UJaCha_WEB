@@ -8,6 +8,11 @@ import { userInfo } from "../../Atoms";
 import styled from "styled-components";
 import { theme } from "../../Styles/theme";
 
+// [ 바로가기 ]
+// Variables
+// sessionStorage 초기화
+// sessionStorage 저장
+// sessionStorage에 jwtToken 저장
 const SocialKakao = ({ page }) => {
   // Variables
   const [userInfoData, setUserInfoData] = useRecoilState(userInfo); // 유저 정보 저장
