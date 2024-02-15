@@ -9,6 +9,7 @@ import TestPage from "./Pages/TestPage/TestPage";
 import RegisterPage from "./Pages/LoginPage/RegisterPage";
 import ResultPage from "./Pages/ResultPage/ResultPage";
 import CommunityPage from "./Pages/CommunityPage/CommunityPage";
+import MyPage from "./Pages/MyPage/MyPage";
 
 function MyRoutes() {
   return (
@@ -17,12 +18,13 @@ function MyRoutes() {
       <Route path="/test" element={<TestPage />} />
       <Route path="/result" element={<ResultPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/mypage" element={<MyPage />} />
       <Route element={<Header />}>
         <Route path="/home" element={<HomePage />} />
         <Route path="/userInfo" element={<UserInfo />} />
         <Route path="/userInfoChange" element={<UserInfoChange />} />
         <Route path="/test1" element={<GraphTest />} />
-        <Route path="/community" element={<CommunityPage/>}/>
+        <Route path="/community" element={<CommunityPage />} />
       </Route>
     </Routes>
   );
