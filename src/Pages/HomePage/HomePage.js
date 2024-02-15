@@ -2,9 +2,9 @@ import styled from "styled-components";
 import {theme} from "../../Styles/theme";
 import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
-import {MiniSquare, getLatestData, tempChartData} from "./Components/tempChartData";
+import {getLatestData, tempChartData} from "./Components/tempChartData";
 import { Link } from "react-router-dom";
-import { LeftRightPadding20px } from "../../Layout/Layout";
+import { LeftRightPadding20px, MiniSquare } from "../../Layout/Layout";
 
 // [ 바로가기 ]
 // Container : HomePage

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// variable : 목 데이터 (차트를 위한)
 export const tempChartData = [
     {
         "testId": 1,
@@ -84,6 +85,7 @@ export const tempChartData = [
     }
 ];
 
+// handler : date를 기준으로 test 정보 정렬
 export const getLatestData = (data) => {
     // 데이터를 date를 기준으로 오름차순으로 정렬합니다.
     const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -91,17 +93,6 @@ export const getLatestData = (data) => {
     const latestData = sortedData.slice(-7);
     return latestData;
 };
-
-// 사용 예시
-
-export const MiniSquare = styled.div `
-    background-color: ${props => props.backgroundColor};
-    width: 12px;
-    height : 12px;
-    margin-right : 10px;
-
-    display: inline-block;
-`
 
 export const sortByMaxValue = (data) => {
     // 주어진 데이터에서 total 값을 제외한 각 속성값 추출

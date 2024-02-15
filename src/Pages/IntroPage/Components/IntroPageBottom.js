@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import {A, Container} from "../../../Layout/Layout";
+import {A, Container, MyLink} from "../../../Layout/Layout";
+
+// [ 바로가기 ]
+// Container : IntroPageBottom
+// ComponentList : Link Table
+// Container : Link Table 
+// Component : Copyright
+// Component : Link
 
 function IntroPageBottom() {
     return (
@@ -10,17 +17,20 @@ function IntroPageBottom() {
     );
 }
 
+// Container : IntroPageBottom
 const IntroPageBottonContainer = styled(Container)`
     width: 100%;
     height : 122px;
-    /* background-color: gray; */
-
+    
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
+
+    /* background-color: gray; */
 `;
 
+// ComponentList : Link Table
 const WrapperLinkTable = () => {
 
     const hanlderOnClick = (e) => {
@@ -44,13 +54,15 @@ const WrapperLinkTable = () => {
     );
 }
 
+// Container : Link Table 
 const LinkTable = styled.table `
-
     width : 195px;
-    text-align: center;
-    border-spacing: 0px;
 
     margin-top : 30px;
+
+    border-spacing: 0px;
+    
+    text-align: center;
 
     & > tr > td:first-child{
         border-right: 1px solid white;
@@ -66,17 +78,19 @@ const LinkTable = styled.table `
         &:hover{
             color : #FFD984;
         }
-
     }
-
 `
+
+// Component : Copyright
 const Copyright = styled.p`
-    font-size: 11px;
     margin-bottom: 20px;
+
+    font-size: 11px;
 
     color : white;
 `
 
+// Component : Link
 const LinkA = styled(A)`
     color : white;
 `

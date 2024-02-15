@@ -1,8 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
-import Page1 from "./Pages/Page1";
-import Page2 from "./Pages/Page2";
-import Page3 from "./Pages/Page3";
 import UserInfo from "./Pages/UserInfo/UserInfo";
 import Header from "./Layout/Header";
 import GraphTest from "./Pages/Test/GraphTest";
@@ -11,6 +8,7 @@ import IntroPage from "./Pages/IntroPage/IntroPage";
 import TestPage from "./Pages/TestPage/TestPage";
 import RegisterPage from "./Pages/LoginPage/RegisterPage";
 import ResultPage from "./Pages/ResultPage/ResultPage";
+import CommunityPage from "./Pages/CommunityPage/CommunityPage";
 
 function MyRoutes() {
   return (
@@ -21,12 +19,10 @@ function MyRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route element={<Header />}>
         <Route path="/home" element={<HomePage />} />
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-        <Route path="/page3" element={<Page3 />} />
         <Route path="/userInfo" element={<UserInfo />} />
         <Route path="/userInfoChange" element={<UserInfoChange />} />
         <Route path="/test1" element={<GraphTest />} />
+        <Route path="/community" element={<CommunityPage/>}/>
       </Route>
     </Routes>
   );

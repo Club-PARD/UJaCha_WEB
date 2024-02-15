@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonOpacity50, Container, ImgOpacity50 } from "../../Layout/Layout";
+import { BlackContainer, Container, ImgOpacity50 } from "../../Layout/Layout";
 import { theme } from "../../Styles/theme";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -7,7 +7,6 @@ import { userInfo } from "../../Atoms";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Modal } from "../../Layout/Modal";
-import { BlackContainer } from "../IntroPage/IntroPage";
 import { Button } from "../IntroPage/Components/IntroPageMain";
 import { useRecoilValue } from "recoil";
 import { formState } from "../../Atoms";

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -41,3 +42,30 @@ export const ImgOpacity50 = styled(Img)`
 export const LeftRightPadding20px = styled.div`
     padding : 0px 35px;
 `   
+
+export const MyLink = styled(Link)`
+    text-decoration:  none;
+    color : black;    
+`
+
+// Component : 증상을 나타내는 색상 사각형
+export const MiniSquare = styled.div `
+    background-color: ${props => props.backgroundColor};
+    width: 12px;
+    height : 12px;
+    margin-right : 10px;
+
+    display: inline-block;
+`
+
+export const BlackContainer = styled.div`
+    width: 100vw;
+    height: ${(props) => props.height};
+
+    display: flex;
+    justify-content: center;
+    align-items: ${(props) => props.alignItems};
+    flex-direction: ${(props) => props.flexDirection};
+    
+    background-color: black;
+`;
