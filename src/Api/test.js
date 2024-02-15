@@ -22,7 +22,7 @@ export const postFirstData = async (data) => {
 
 export const postData = async (data) => {
   try {
-    const jwtToken = await sessionStorage.getItem("jwtToken ");
+    const jwtToken = sessionStorage.getItem("jwtToken ");
     console.log(jwtToken);
     const response = await instance.post("/api/test", data, {
       headers: {
@@ -39,7 +39,7 @@ export const postData = async (data) => {
 
 export const deleteUser = async () => {
   try {
-    const jwtToken = await sessionStorage.getItem("jwtToken");
+    const jwtToken = sessionStorage.getItem("jwtToken");
     console.log(jwtToken);
     const response = await instance.delete("/api/member/delete", {
       headers: {
