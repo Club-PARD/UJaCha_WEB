@@ -37,3 +37,7 @@ export const ImgOpacity50 = styled(Img)`
         opacity: 50%;
     }
 `
+
+export const LeftRightPadding20px = styled.div`
+    padding : 0px 35px;
+`   
