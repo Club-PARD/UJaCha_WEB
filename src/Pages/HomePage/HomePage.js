@@ -21,15 +21,15 @@ function HomePage() {
     })
     return (
         <HomePageContainer>
-            <HomePageWrapper height="225px" backgroundColor="white">
+            <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
                 <LegendDiv/>
                 <HomePageChart tempChartData={latest7Data}/>
             </HomePageWrapper>
-            <HomePageWrapper height="215px" backgroundColor={theme.colors.peach_100}>
+            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
                 <HomePageChartResult lastedData={latest7Data[6]} />
             </HomePageWrapper>
             <Link to = "/test"><Button height="56px" backgroundColor={theme.colors.purple_100}>오늘의 증상 추가하기</Button></Link>
-            <Button height="56px" backgroundColor="white">기록 공유하기</Button>
+            <Button height="56px" backgroundColor={theme.colors.white_100}>기록 공유하기</Button>
         </HomePageContainer>
     );
 }
