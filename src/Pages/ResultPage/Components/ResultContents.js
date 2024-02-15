@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { resultState } from "../../../Atoms";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import SocialKakao from "../../LoginPage/SocialKakao";
 
 function ResultContents() {
+  const navigate = useNavigate();
   const result = useRecoilValue(resultState);
 
   const korResult = [
@@ -46,7 +49,11 @@ function ResultContents() {
     } else {
       setIsHasJwt(false);
     }
-  })
+  });
+
+  const handleUpdate = () => {
+    navigate("/home");
+  };
 
   return (
     <>
@@ -63,8 +70,11 @@ function ResultContents() {
           ))}
         </DetailContainer>
         <Explanation>{getExplanation()}</Explanation>
-        {!isHasJwt ? <Button>카카오 로그인</Button> : <Button>증상 추가하기</Button>}
-        {/* 증상 추가하기 버튼이 눌리면 포스트될 수 있게끔 수정하면 될듯 */}
+        {!isHasJwt ? (
+          <SocialKakao page="result" />
+        ) : (
+          <Button onClick={handleUpdate}>홈으로 가기</Button>
+        )}
       </Container>
     </>
   );
@@ -110,7 +120,7 @@ const Ratio = styled.div`
     props.total >= 70
       ? "#FF2946"
       : props.total >= 40
-      ? "#868686"
+      ? "#FF7339"
       : props.total >= 20
       ? "#8280FF"
       : "#0FA958"};
@@ -123,7 +133,7 @@ const Line = styled.hr`
     props.total >= 70
       ? "#FF2946"
       : props.total >= 40
-      ? "#868686"
+      ? "#FF7339"
       : props.total >= 20
       ? "#8280FF"
       : "#0FA958"};

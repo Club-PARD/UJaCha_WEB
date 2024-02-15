@@ -18,7 +18,8 @@ function TestLoading() {
     }, 100);
 
     const timeout = setTimeout(async () => {
-      if (sessionStorage.getItem("jwtToken")) {
+      const jwt = sessionStorage.getItem("jwtToken");
+      if (jwt) {
         const response = await postData(form);
         setResult(response.data);
       } else {

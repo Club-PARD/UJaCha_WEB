@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Container } from "../../../Layout/Layout";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { pageState } from "../../../Atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { pageState, formState } from "../../../Atoms";
 
 function TestPageButton() {
   const totalPage = 13;
+  const form = useRecoilValue(formState);
   const [page, setPage] = useRecoilState(pageState);
   const [questionCount, setQuestionCount] = useState(page);
 
@@ -38,8 +39,15 @@ function TestPageButton() {
   return (
     <TestPageButtonContainer>
       <WrapperButton>
-        <ButtonBack onClick={handleDecreaseQuestionCount}>이전</ButtonBack>
-        <ButtonNext onClick={handleIncreaseQuestionCount}>다음</ButtonNext>
+        <ButtonBack disabled={page === 0} onClick={handleDecreaseQuestionCount}>
+          이전
+        </ButtonBack>
+        <ButtonNext
+          disabled={form[`question${page + 1}`] === 0}
+          onClick={handleIncreaseQuestionCount}
+        >
+          다음
+        </ButtonNext>
       </WrapperButton>
     </TestPageButtonContainer>
   );
@@ -65,7 +73,8 @@ const ButtonBack = styled.button`
   height: 56px;
   font-size: 15px;
   background: none;
-  border: 1px solid black;
+  border: ${(props) =>
+    props.disabled ? "1px solid #868686" : "1px solid black"};
   border-radius: 16px;
   margin-right: 8px;
 `;
@@ -74,9 +83,10 @@ const ButtonNext = styled.button`
   width: 167px;
   height: 56px;
   font-size: 15px;
-  background: black;
-  border: 1px solid black;
+  background: ${(props) => (props.disabled ? "none" : "black")};
+  border: ${(props) =>
+    props.disabled ? "1px solid #868686" : "1px solid black"};
   border-radius: 16px;
-  color: white;
+  color: ${(props) => (props.disabled ? "#868686" : "white")};
 `;
 export default TestPageButton;
