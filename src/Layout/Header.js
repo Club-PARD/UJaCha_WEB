@@ -1,8 +1,9 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import styled, { css } from "styled-components";
 import {BlackContainer, ImgOpacity50, MyLink} from "./Layout";
 import {theme} from "../Styles/theme";
 import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
 
 
 // [ 바로가기 ]
@@ -18,7 +19,7 @@ function Header() {
     const location = useLocation();
     
     return (
-        <BlackContainer flexDirection="row" height="100vh">
+        <BlackContainer flexDirection="row" height="100vh" mobileHeight="auto" desktopHeight="100vh">
             <HeaderContainer>
                 <MyHeader location={location}/>
                 {/* <IntroPageHeader/> */}
@@ -32,14 +33,21 @@ function Header() {
 
 // Component : Header
 const MyHeader = ({ location }) => {
+    const navigate = useNavigate();
     const isActive = (path) => location.pathname === path;
-
+    
+    const jwtToken = sessionStorage.getItem("jwtToken");
+    useEffect(() => {
+        if (!jwtToken) {
+            navigate("/");
+        }
+    }, [jwtToken, navigate]);
     return (
         <ContainerMyHeader>
             {/* 로고/이미지 영역 */}
             <WrapperMyHeader>
                 <DivHeader>
-                    <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/>
+                    <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
                     <ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" />
                 </DivHeader>
             </WrapperMyHeader>
@@ -61,7 +69,7 @@ const HeaderContainer = styled.div`
 // Wrapper : Outlet 영역
 const WrapperOutletMain = styled.div `
     width: 390px;
-    height : 679px;
+    height : auto;
 
     padding : 0px 8px;
     box-sizing: border-box;

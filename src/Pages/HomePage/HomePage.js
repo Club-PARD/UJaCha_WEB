@@ -4,7 +4,7 @@ import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
 import {getLatestData, tempChartData} from "./Components/tempChartData";
 import { Link } from "react-router-dom";
-import { LeftRightPadding20px, MiniSquare } from "../../Layout/Layout";
+import { LeftRightPadding20px, MiniSquare, MyLink } from "../../Layout/Layout";
 
 // [ 바로가기 ]
 // Container : HomePage
@@ -32,7 +32,7 @@ function HomePage() {
             </HomePageWrapper>
 
             {/* Buttons */}
-            <Link to = "/test"><Button height="56px" backgroundColor={theme.colors.purple_100}>오늘의 증상 추가하기</Button></Link>
+            <MyLink to = "/test"><Button height="56px" backgroundColor={theme.colors.purple_100}>오늘의 증상 추가하기</Button></MyLink>
             <Button height="56px" backgroundColor={theme.colors.white_100}>기록 공유하기</Button>
         </HomePageContainer>
     );

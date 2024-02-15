@@ -41,6 +41,12 @@ function RegisterPage() {
     if (userInfoData.uid === "") navigate("/");
   });
 
+  const userKakaoId = sessionStorage.getItem("userKakaoId");
+  useEffect(() => {
+      if (!userKakaoId) {
+          navigate("/");
+      }
+  }, [userKakaoId, navigate]);
   // 회원가입 버튼 활성화 여부 확인
   useEffect(() => {
     if (!isDuplicate && isChildAgeValid) {

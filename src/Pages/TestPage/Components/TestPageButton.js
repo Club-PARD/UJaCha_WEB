@@ -73,6 +73,7 @@ const ButtonBack = styled.button`
   height: 56px;
   font-size: 15px;
   background: none;
+  color: ${(props) => (props.disabled ? "#868686" : "black")};
   border: ${(props) =>
     props.disabled ? "1px solid #868686" : "1px solid black"};
   border-radius: 16px;

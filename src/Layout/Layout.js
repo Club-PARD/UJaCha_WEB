@@ -68,4 +68,12 @@ export const BlackContainer = styled.div`
     flex-direction: ${(props) => props.flexDirection};
     
     background-color: black;
+
+    @media screen and (max-width: 768px) {
+        height: ${(props) => props.mobileHeight};
+    }
+
+    @media screen and (min-width: 769px) {
+        height: ${(props) => props.desktopHeight};
+    }
 `;
