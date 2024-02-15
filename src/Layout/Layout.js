@@ -47,3 +47,13 @@ export const MyLink = styled(Link)`
     text-decoration:  none;
     color : black;    
 `
+
+// Component : 증상을 나타내는 색상 사각형
+export const MiniSquare = styled.div `
+    background-color: ${props => props.backgroundColor};
+    width: 12px;
+    height : 12px;
+    margin-right : 10px;
+
+    display: inline-block;
+`
