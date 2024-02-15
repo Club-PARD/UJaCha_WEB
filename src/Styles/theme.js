@@ -8,6 +8,7 @@ export const theme = {
 
     purple_100: "#B9B9D7",
     purple_50: "#B9B9D750",
+    pruple_bold: "#8280FF",
     
     sky_100: "#CEE7F6",
     
