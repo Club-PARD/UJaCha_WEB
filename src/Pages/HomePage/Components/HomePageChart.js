@@ -51,11 +51,13 @@ const customTooltip = (data) => {
 
 // Div : Tooltip 영역
 const TooltipDiv = styled.div `
-    background-color: ${theme.colors.purple_100};
+    padding : 5px;
+
     border : 2px solid #8b8bb5;
     border-radius: 5px;
-    padding : 5px;
+    
     color : #454545 ;
+    background-color: ${theme.colors.purple_100};
 
     text-align: right;
 
