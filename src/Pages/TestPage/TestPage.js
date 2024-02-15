@@ -6,12 +6,13 @@ import { useEffect } from "react";
 import TestHeader from "./Components/TestHeader";
 import TestLoading from "./Components/TestLoading";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { pageState, formState } from "../../Atoms";
+import { pageState, formState, resultState } from "../../Atoms";
 
 function TestPage() {
   const totalQuestion = 12;
   const [page, setPage] = useRecoilState(pageState);
   const setForm = useSetRecoilState(formState);
+  const setResult = useSetRecoilState(resultState);
 
   useEffect(() => {
     setPage(0);
@@ -28,6 +29,13 @@ function TestPage() {
       question10: 0,
       question11: 0,
       question12: 0,
+    });
+    setResult({
+      abnormalBehavior: 0,
+      delusion: 0,
+      hallucination: 0,
+      moody: 0,
+      total: 0,
     });
   }, []);
 
