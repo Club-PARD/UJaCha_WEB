@@ -85,6 +85,14 @@ const SocialKakao = ({ page }) => {
     console.log(error);
   };
 
+  // 카카오 로그인 버튼
+  const KakaoLoginButton = styled(Button)`
+    background-color: transparent;
+    &:hover{
+      background-color: ${theme.colors.pruple_bold};
+    }
+  `
+
   return (
     <div>
       {" "}
@@ -104,12 +112,6 @@ const SocialKakao = ({ page }) => {
   );
 };
 
-// 카카오 로그인 버튼
-const KakaoLoginButton = styled(Button)`
-  background-color: transparent;
-  &:hover{
-    background-color: ${theme.colors.pruple_bold};
-  }
-`
+
 
 export default SocialKakao;
