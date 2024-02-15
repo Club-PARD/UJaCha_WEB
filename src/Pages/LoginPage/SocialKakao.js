@@ -87,7 +87,7 @@ const SocialKakao = ({ page }) => {
 
   // 카카오 로그인 버튼
   const KakaoLoginButton = styled(Button)`
-    background-color: transparent;
+    background-color: ${props => props.backgroundcolor || "transparent"};
     &:hover{
       background-color: ${theme.colors.pruple_bold};
     }
