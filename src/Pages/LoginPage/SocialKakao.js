@@ -104,7 +104,7 @@ const SocialKakao = ({ page }) => {
           page === "result" ? (
             <KakaoLoginButton onClick={onClick} backgroundcolor="black" color="white" margintop="57px" >카카오 로그인</KakaoLoginButton>
           ) : (
-            <KakaoLoginButton onClick={onClick} backgroundcolor="yellow"> 카카오 로그인</KakaoLoginButton>
+            <KakaoLoginButton onClick={onClick}> 카카오 로그인</KakaoLoginButton>
           )
         }
       />{" "}
