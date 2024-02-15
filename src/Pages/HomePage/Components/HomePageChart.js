@@ -1,30 +1,26 @@
 import React from 'react';
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend
-} from 'recharts';
+import {LineChart, Line, XAxis, CartesianGrid, Tooltip, YAxis} from 'recharts';
 import styled from 'styled-components';
 import { theme } from '../../../Styles/theme';
 
+// [ 바로가기 ]
+// Component : hover된 때의 모든 증상 보여주는 Tooltip
+// Div : Tooltip 영역
+
 const HomePageChart = (e) => {
-    const formatXAxis = (xTick) => {
-    return `${xTick.substring(4, 6)}차`;
-    };
     return (
-        <MyLineChart width={310} height={150} data={e.tempChartData} margin={{  right: 15, left:     15 }}>
+        <LineChart width={344} height={140} data={e.tempChartData} margin = {{left : 20, right : 20, top : 10}}>
 
             {/* 배경 Grid 지정 */}
-            <CartesianGrid stroke="gray" vertical={false} /> {/* 가로줄만 그리도록 strokeDasharray 설정 */}
-            {/* <XAxis type="number" dataKey="hallucination" tickCount={7} domain={[0, 7]} /> */}
-            {/* <XAxis type = "number" dataKey="testId" tickCount={7} domain={[0, 7]}/> */}
+            <CartesianGrid stroke="#1E1E1E" strokeOpacity={20} vertical={false} /> {/* 가로줄만 그리도록 strokeDasharray 설정 */}
 
-            <YAxis type="number" domain={[0, 99]} axisLine={false} hide={true} tickCount={10} />
-            <XAxis type="category" dataKey="testId" tickFormatter={(value) => `${value}차`} tick={{ fontSize: 15, fill: 'gray'}} />
+            {/* Y축 */}
+            {/* <YAxis type="number" domain={[0, 100]} axisLine={false} hide={true} ticks={[0, 25, 50, 75, 100]} /> */}
+
+            {/* X축 */}
+            <XAxis type="category" dataKey="testId" tickFormatter={(value) => `${value}차`} tick={{ fontSize: 12, fill: theme.colors.black_20 }} />
+            
+            {/* Tooltip */}
             <Tooltip content={customTooltip} /> 
             
             <Line type="monotone" dataKey="delusion" stroke={theme.colors.green_100} strokeWidth={2}/>
@@ -32,10 +28,11 @@ const HomePageChart = (e) => {
             <Line type="monotone" dataKey="abnormalBehavior" stroke={theme.colors.purple_100} strokeWidth={2} />
             <Line type="monotone" dataKey="moody" stroke={theme.colors.lemon_100} strokeWidth={2} />
             <Line type="monotone" dataKey="total" stroke={theme.colors.black_100} strokeWidth={2} />
-        </MyLineChart>
+        </LineChart>
     );
 }
 
+// Component : hover된 때의 모든 증상 보여주는 Tooltip
 const customTooltip = (data) => {
     if (data && data.payload && data.payload.length > 0) {
         const {payload} = data;
@@ -46,16 +43,16 @@ const customTooltip = (data) => {
                 <p>환각/환청 : {payload[0].payload.hallucination}%</p>
                 <p>이상행동 : {payload[0].payload.abnormalBehavior}%</p>
                 <p>감정변화 : {payload[0].payload.moody}%</p>
-                
             </TooltipDiv>
         );
     }
     return null;
 };
 
+// Div : Tooltip 영역
 const TooltipDiv = styled.div `
-    background-color: #F1FFFA;
-    border : 2px solid #93B7BE;
+    background-color: ${theme.colors.purple_100};
+    border : 2px solid #8b8bb5;
     border-radius: 5px;
     padding : 5px;
     color : #454545 ;
@@ -64,10 +61,7 @@ const TooltipDiv = styled.div `
 
     & > p{
         font-size : 15px;
+        font-weight: 500;
     }
-`
-
-const MyLineChart = styled(LineChart)`
-    width : 100%;
 `
 export default HomePageChart;
