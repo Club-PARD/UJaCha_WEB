@@ -63,9 +63,6 @@ const TestPageContainer = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: black;
-
-  display: flex;
-  justify-content: center;
 `;
 
 const QuestionContainer = styled.div`
