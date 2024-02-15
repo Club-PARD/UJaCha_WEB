@@ -1,9 +1,9 @@
 import {Outlet} from "react-router-dom";
 import styled, { css } from "styled-components";
-import {BlackContainer} from "../Pages/IntroPage/IntroPage";
-import {ImgOpacity50, MyLink} from "./Layout";
+import {BlackContainer, ImgOpacity50, MyLink} from "./Layout";
 import {theme} from "../Styles/theme";
 import { useLocation } from 'react-router-dom';
+
 
 // [ 바로가기 ]
 // Container : Header

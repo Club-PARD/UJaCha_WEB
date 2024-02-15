@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container } from "../../Layout/Layout";
+import { BlackContainer, Container } from "../../Layout/Layout";
 import IntroPageContent from "./Components/IntroPageContent";
 import IntroPageMain from "./Components/IntroPageMain";
 import IntroPageSub from "./Components/IntroPageSub";
@@ -16,9 +16,7 @@ function IntroPage() {
   return (
     <BlackContainer>
       <IntroPageContainer>
-        <button onClick={handleClick} style={{ color: "white" }}>
-          유저 삭제
-        </button>
+        <button onClick={handleClick} style={{ color: "black" }}> 유저 삭제</button>
         <IntroPageHeader />
         <IntroPageMain />
         <IntroPageContent />
@@ -29,25 +27,13 @@ function IntroPage() {
   );
 }
 
+// Container : IntroPage
 const IntroPageContainer = styled(Container)`
   height: auto;
 
-  /* background-color: red; */
-
   padding: 0px 8px;
   box-sizing: border-box;
-`;
-
-export const BlackContainer = styled.div`
-  width: 100vw;
-  height: ${(props) => props.height};
-
-  background-color: black;
-
-  display: flex;
-  justify-content: center;
-  align-items: ${(props) => props.alignItems};
-
-  flex-direction: ${(props) => props.flexDirection};
+  
+  /* background-color: red; */
 `;
 export default IntroPage;

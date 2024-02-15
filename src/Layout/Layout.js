@@ -57,3 +57,15 @@ export const MiniSquare = styled.div `
 
     display: inline-block;
 `
+
+export const BlackContainer = styled.div`
+    width: 100vw;
+    height: ${(props) => props.height};
+
+    display: flex;
+    justify-content: center;
+    align-items: ${(props) => props.alignItems};
+    flex-direction: ${(props) => props.flexDirection};
+    
+    background-color: black;
+`;
