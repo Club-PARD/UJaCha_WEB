@@ -1,90 +1,111 @@
-import {Link, Outlet} from "react-router-dom";
-import styled from "styled-components";
+import {Outlet} from "react-router-dom";
+import styled, { css } from "styled-components";
 import {BlackContainer} from "../Pages/IntroPage/IntroPage";
-import {Img, ImgOpacity50} from "./Layout";
+import {ImgOpacity50, MyLink} from "./Layout";
 import {theme} from "../Styles/theme";
-import IntroPageHeader from "../Pages/IntroPage/Components/IntroPageHeader";
+import { useLocation } from 'react-router-dom';
+
+// [ 바로가기 ]
+// Container : Header
+// Wrapper : Outlet 영역
+// Container : MyHeader
+// Wrapper : MyHeader 영역
+// Div : Header Item
+// Wrapper : Button
+// Component : MenuItem (요약 / 커뮤니티)
 
 function Header() {
+    const location = useLocation();
+    
     return (
         <BlackContainer flexDirection="row" height="100vh">
             <HeaderContainer>
-                <MyHeader/>
+                <MyHeader location={location}/>
                 {/* <IntroPageHeader/> */}
-                <ContainerOutletMain>
+                <WrapperOutletMain>
                     <Outlet/>
-                </ContainerOutletMain>
+                </WrapperOutletMain>
             </HeaderContainer>
         </BlackContainer>
     );
 }
 
-const MyHeader = () => {
+// Component : Header
+const MyHeader = ({ location }) => {
+    const isActive = (path) => location.pathname === path;
+
     return (
-        <ContainerHeader>
-            <WrapperHeader>
+        <ContainerMyHeader>
+            {/* 로고/이미지 영역 */}
+            <WrapperMyHeader>
                 <DivHeader>
-                <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/>
+                    <ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/>
                     <ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" />
                 </DivHeader>
-            </WrapperHeader>
-            <WrapperButton>
-                <Span>요약</Span>
-                <Span>커뮤니티</Span>
-            </WrapperButton>
-        </ContainerHeader>
-    );
+            </WrapperMyHeader>
 
+            {/* Link 영역 */}
+            <WrapperButton>
+                <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
+                <MenuItem to="/community" isActive={isActive("/community")}>커뮤니티</MenuItem>
+            </WrapperButton>
+        </ContainerMyHeader>
+    );
 }
 
+// Container : Header
 const HeaderContainer = styled.div`
     width : 390px;
 `
-const ContainerHeader = styled.div `
-    width : 100%;
-    height: 165px;
-    padding : 0px 8px;
 
-
-    /* background-color: red; */
-    
-    /* padding : 0px 20px; */
-    /* margin : 0px 8px; */
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-
-`
-
-const ContainerOutletMain = styled.div `
+// Wrapper : Outlet 영역
+const WrapperOutletMain = styled.div `
     width: 390px;
     height : 679px;
 
-    /* background-color: yellow; */
-
     padding : 0px 8px;
     box-sizing: border-box;
+    
+    /* background-color: yellow; */
 `
 
-const WrapperHeader = styled.div `
+// Container : MyHeader
+const ContainerMyHeader = styled.div `
+    width : 100%;
+    height: 165px;
 
-    width: 100%;
-    height : 100px;
-    /* background-color: skyblue; */
-    padding : 20px 20px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    
+    padding : 0px 8px;
     box-sizing: border-box;
     
+    /* background-color: red; */
+`
+
+// Wrapper : MyHeader 영역
+const WrapperMyHeader = styled.div `
+    width: 100%;
+    height : 100px;
 
     display: flex;
     align-items: end;
+
+    padding : 20px 20px 15px 20px;
+    box-sizing: border-box;
+    
+    /* background-color: skyblue; */
 `
+
+// Div : Header Item
 const DivHeader = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
+
+// Wrapper : Button
 const WrapperButton = styled.div `
     /* width: 100%; */
     height : 65px;
@@ -99,16 +120,15 @@ const WrapperButton = styled.div `
     align-items: center;
 `
 
-const Span = styled.span `
-    color : #727272;
-
-    &:first-child{
-        color : ${theme.colors.lemon_100};
-        margin-right: 20px;
-    }
-
-    &:hover{
+// Component : MenuItem (요약 / 커뮤니티)
+const MenuItem = styled(MyLink)`
+    color: ${props => props.isActive ? theme.colors.lemon_100 : '#727272'};
+    &:hover {
         opacity: 50%;
     }
-`
+
+    &:first-child {
+        margin-right: 15px;
+    }
+`;
 export default Header;

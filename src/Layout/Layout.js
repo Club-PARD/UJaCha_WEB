@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -41,3 +42,8 @@ export const ImgOpacity50 = styled(Img)`
 export const LeftRightPadding20px = styled.div`
     padding : 0px 35px;
 `   
+
+export const MyLink = styled(Link)`
+    text-decoration:  none;
+    color : black;    
+`
