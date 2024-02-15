@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {P} from "../../../Layout/Layout";
-import {MiniSquare, sortByMaxValue} from "./tempChartData";
+import {MiniSquare, P} from "../../../Layout/Layout";
+import {sortByMaxValue} from "./tempChartData";
 import {theme} from "../../../Styles/theme";
 
 // [ 바로가기 ]
@@ -115,5 +115,4 @@ const MyHr = styled.hr `
     border : none;
     border-bottom : 1px solid gray;
 `
-
 export default HomePageChartResult;
