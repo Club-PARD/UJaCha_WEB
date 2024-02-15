@@ -20,7 +20,7 @@ const HomePageChartResult = (e) => {
             <P fontSize="16px" fontWeight="500">가장 잦은 증상</P>
             <WrapperContent>
                 {topThreeSymptoms.map(([symptom, value], index) => (
-                   <P fontSize="16px" fontWeight="400" key={index}>
+                    <P fontSize="16px" fontWeight="400" key={index}>
                         <StyledMiniSquare backgroundColor={getBackgroundColor(symptom)} />
                         {getSymbol(symptom)} 증상이 {value}%로 {data[index]} 
                     </P>
