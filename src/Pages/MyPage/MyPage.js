@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import Header from "./Components/Header";
 import UserInfo from "./Components/UserInfo";
+import Record from "./Components/Record";
+import Account from "./Components/Account";
 
 function MyPage() {
   return (
     <Container>
       <Header />
       <UserInfo />
+      <Record />
+      <Account />
     </Container>
   );
 }
