@@ -1,42 +1,52 @@
 import styled from "styled-components";
-import { P } from "./Layout";
+import {P} from "./Layout";
 
-export const Modal = ({ isOpen, closeModal, navigate, page }) => {
-  return (
-    <div>
-      {isOpen && (
+export const Modal = ({isOpen, closeModal, navigate, page}) => {
+    return (
         <div>
-          <BlackOverlay onClick={closeModal} />
-          <DivModal>
-            <MainText>
-              {page === "test"
-                ? "테스트를 중단하시겠어요?"
-                : "회원가입을 중단하시겠습니까?"}
-            </MainText>
-            <SubText>
-              {page === "test"
-                ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
-                : "지금 나가시면, 회원가입이\n완료되지 않습니다."}
-            </SubText>
-            <DivButtonItems>
-              <Button onClick={closeModal}>취소</Button>
-              <Button
-                style={{ color: "#FF2946" }}
-                onClick={() =>
-                  page === "test" ? navigate("/") : navigate("/home")
-                }
-              >
-                나가기
-              </Button>
-            </DivButtonItems>
-          </DivModal>
+            {
+                isOpen && (
+                    <div>
+                        <BlackOverlay onClick={closeModal}/>
+                        <DivModal>
+                            <MainText>
+                                {
+                                    page === "test"
+                                        ? "테스트를 중단하시겠어요?"
+                                        : "회원가입을 중단하시겠습니까?"
+                                }
+                            </MainText>
+                            <SubText>
+                                {
+                                    page === "test"
+                                        ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
+                                        : "지금 나가시면, 회원가입이\n완료되지 않습니다."
+                                }
+                            </SubText>
+                            <DivButtonItems>
+                                <Button onClick={closeModal}>취소</Button>
+                                <Button
+                                    style={{
+                                        color: "#FF2946"
+                                    }}
+                                    onClick={(
+                                        ) => page === "test"
+                                        ? navigate("/")
+                                        : page === "register"
+                                            ? navigate("/")
+                                            : navigate("/home")}>
+                                    나가기
+                                </Button>
+                            </DivButtonItems>
+                        </DivModal>
+                    </div>
+                )
+            }
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
-const DivModal = styled.div`
+const DivModal = styled.div `
   position: fixed;
   top: 50%;
   left: 50%;
@@ -55,7 +65,7 @@ const DivModal = styled.div`
   white-space: pre-wrap;
 `;
 
-const MainText = styled.p`
+const MainText = styled.p `
   font-family: "Pretendard Variable";
   font-size: 19px;
   font-style: normal;
@@ -64,7 +74,7 @@ const MainText = styled.p`
   margin: 10px 0px 18px 0px;
 `;
 
-const SubText = styled.p`
+const SubText = styled.p `
   font-family: "Pretendard Variable";
   font-size: 15px;
   font-style: normal;
@@ -74,9 +84,9 @@ const SubText = styled.p`
   margin-bottom: 30px;
 `;
 
-const DivButtonItems = styled.div``;
+const DivButtonItems = styled.div ``;
 
-const Button = styled.button`
+const Button = styled.button `
   width: 128px;
   height: 35px;
   border: none;
@@ -92,7 +102,7 @@ const Button = styled.button`
   }
 `;
 
-const BlackOverlay = styled.div`
+const BlackOverlay = styled.div `
   position: fixed;
   top: 0;
   left: 0;

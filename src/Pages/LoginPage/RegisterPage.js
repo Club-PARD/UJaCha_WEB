@@ -88,9 +88,9 @@ function RegisterPage() {
                 setIsDuplicate(response.data); // 중복 여부 업데이트
                 console.log("responseDuplicate", response.data);
                 if (response.data) {
-                    setDuplicateErrorMessage("중복된 이름입니다."); // 중복일 경우 에러 메시지 설정
+                    setDuplicateErrorMessage("이미 존재하는 닉네임입니다."); // 중복일 경우 에러 메시지 설정
                 } else {
-                    setDuplicateErrorMessage("사용 가능한 이름입니다."); // 중복이 아닐 경우 에러 메시지 초기화
+                    setDuplicateErrorMessage("사용 가능한 닉네임입니다."); // 중복이 아닐 경우 에러 메시지 초기화
                 }
                 // 이제 response.data를 사용하여 false 값을 얻을 수 있습니다. 아래는 필요에 따라 추가적인 작업을 할 수 있습니다. 예를
                 // 들어, 응답에 따라 조건부로 다른 동작을 수행할 수 있습니다.
@@ -136,7 +136,11 @@ function RegisterPage() {
                         width="30px"
                         height="30px"
                         onClick={openModal}/>
-                    <Modal isOpen={isModalOpen} closeModal={closeModal} navigate={navigate}/>
+                    <Modal
+                        isOpen={isModalOpen}
+                        closeModal={closeModal}
+                        navigate={navigate}
+                        page="register"/>
                     <HeaderTitle>회원가입</HeaderTitle>
                 </WrapperHeader>
                 <WrapperInput>
@@ -199,7 +203,9 @@ const WrapperButton = styled(Button)`
     border :  ${props => props.isRegisterButtonEnabled === true
     ? 'none'
     : '1px solid white'};
-    color : white;
+    color : ${props => props.isRegisterButtonEnabled === true
+        ? "black"
+        : 'white'};
 
     font-size: 20px;
     font-weight: 500;
@@ -215,6 +221,7 @@ const WrapperButton = styled(Button)`
         background-color: ${props => props.isRegisterButtonEnabled === true
             ? '#8280FF'
             : theme.colors.purple_100};
+        color : black;
     }
 `
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { resultState } from "../../../Atoms";
+import { useEffect, useState } from "react";
 
 function ResultContents() {
   const result = useRecoilValue(resultState);
@@ -36,6 +37,17 @@ function ResultContents() {
     }
   };
 
+  const [isHasJwt, setIsHasJwt] = useState(false);
+
+  useEffect(() => {
+    const response = sessionStorage.getItem("jwtToken");
+    if (response !== null) {
+      setIsHasJwt(true);
+    } else {
+      setIsHasJwt(false);
+    }
+  })
+
   return (
     <>
       <Container total={result.total}>
@@ -51,7 +63,8 @@ function ResultContents() {
           ))}
         </DetailContainer>
         <Explanation>{getExplanation()}</Explanation>
-        <Button>카카오 로그인</Button>
+        {!isHasJwt ? <Button>카카오 로그인</Button> : <Button>증상 추가하기</Button>}
+        {/* 증상 추가하기 버튼이 눌리면 포스트될 수 있게끔 수정하면 될듯 */}
       </Container>
     </>
   );
