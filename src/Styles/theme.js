@@ -6,6 +6,7 @@ export const theme = {
     purple_100: "#B9B9D7",
     sky_100: "#CEE7F6",
     pink_100: "#FFD1DB",
-    red_100 : "#FF2946",
+    red_100: "#FF2946",
+    black_100 : "#1E1E1E",
   },
 };
