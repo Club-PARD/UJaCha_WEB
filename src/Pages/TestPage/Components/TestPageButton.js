@@ -80,6 +80,7 @@ const ButtonBack = styled.button`
     props.disabled ? "#868686" : props.theme.colors.black_100};
   border-radius: 16px;
   margin-right: 8px;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
 
 const ButtonNext = styled.button`
@@ -93,5 +94,6 @@ const ButtonNext = styled.button`
     props.disabled ? "#868686" : props.theme.colors.black_100};
   border-radius: 16px;
   color: ${(props) => (props.disabled ? "#868686" : "white")};
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
 export default TestPageButton;
