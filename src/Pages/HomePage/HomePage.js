@@ -18,6 +18,8 @@ function HomePage() {
     const [userData, setUserData] = useState([]);
     const latestSevenData = getLatestData(userData);
     const dataLength = latestSevenData.length;
+    const lastDataWithDate = latestSevenData.slice().reverse().find(item => item.date);
+
 
     const hanlderCheckDataLength = (data) => {
         console.log(data.length);
@@ -35,7 +37,7 @@ function HomePage() {
         const fetchData = async () => {
             try {
                 const userData1 = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
-                // console.log("result", userData1.data.test[0]);
+                console.log("result", userData1.data);
                 return userData1.data.test;
             } catch (error) {
                 console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
@@ -43,11 +45,25 @@ function HomePage() {
         };
 
         fetchData().then(data => {
-            setUserData(data); // fetchData 함수의 반환 값을 상태에 설정합니다.
-            hanlderCheckDataLength(data);
+            console.log("pangil", data);
+            // const limitedData = data.slice(-7);
+
+            // 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
+            const modifiedData2 = data.map((item, index) => ({ ...item, testId: index + 1 }));
+            const modifiedData = modifiedData2.slice(-7);
+            // fetchData 함수의 반환 값을 상태에 설정합니다.
+            setUserData(modifiedData);
+
+            // setUserData가 완료된 후에 hanlderCheckDataLength 함수를 호출합니다.
+            console.log("userData123", userData);
+            hanlderCheckDataLength(modifiedData);
             console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
+            
+            // setUserData가 완료된 후에 testId 값을 확인합니다.
+            console.log("testId!!!", modifiedData);
         });
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
+
 
     return (
         <HomePageContainer>
@@ -59,13 +75,12 @@ function HomePage() {
                 </LeftRightPadding20px>
             </HomePageWrapper>
 
-            {/* 증상 Result */}
+
+
             <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
-                <HomePageChartResult
-                    lastedData={latestSevenData.length !== 0
-                        ? latestSevenData[dataLength - 1]
-                        : []}/>
+                <HomePageChartResult lastedData={lastDataWithDate ? lastDataWithDate : []} />
             </HomePageWrapper>
+
 
             {/* Buttons */}
             <MyLink to="/test">
@@ -119,6 +134,7 @@ const Button = styled.button `
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
+    color : black;
     
     &:hover{
         background-color: #8280FF;
