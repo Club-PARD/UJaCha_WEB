@@ -18,7 +18,7 @@ const HomePageChart = (e) => {
             {/* <YAxis type="number" domain={[0, 100]} axisLine={false} hide={true} ticks={[0, 25, 50, 75, 100]} /> */}
 
             {/* X축 */}
-            <XAxis type="category" dataKey="testId" tickFormatter={(value) => value > 0 ? `${value}차` : ''}  tick={{ fontSize: 12, fill: theme.colors.black_20 }}/>
+            <XAxis type="category" dataKey="testId" tickFormatter={(value) => value > 0 ? `${value}차` : ''}  tick={{ fontSize: 12, fill: theme.colors.black_100 }}/>
             
             {/* Tooltip */}
             <Tooltip content={customTooltip} /> 
