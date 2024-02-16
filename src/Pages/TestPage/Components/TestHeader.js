@@ -30,10 +30,14 @@ function TestHeader() {
   };
 
   const handleCloseButton = () => {
+    const jwtToken = sessionStorage.getItem("jwtToken");
     if (form.question1 !== 0) {
       openModal();
     } else {
-      navigate("/");
+      if(jwtToken)
+        navigate("/home");
+      else
+        navigate("/");
     }
   };
 
