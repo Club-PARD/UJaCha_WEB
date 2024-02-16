@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../Styles/theme";
+import {theme} from "../../Styles/theme";
 import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
 import {getLatestData, tempChartData} from "./Components/tempChartData";
@@ -7,22 +7,19 @@ import {Link, useNavigate} from "react-router-dom";
 import {LeftRightPadding20px, MiniSquare, MyLink} from "../../Layout/Layout";
 import {useEffect, useState} from "react";
 import {getUserData} from "../../Api/test";
-import { Modal } from "../../Layout/Modal";
+import {Modal} from "../../Layout/Modal";
 
-// [ 바로가기 ]
-// Container: HomePage
-// Wrapper: HomePage(Chart / Result)
-// Component: Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리)
-// handler : 추가할 빈 데이터 생성 함수
+// [ 바로가기 ] Container: HomePage Wrapper: HomePage(Chart / Result) Component:
+// Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리) handler : 추가할 빈 데이터 생성 함수
 
 function HomePage() {
-  const [userData, setUserData] = useState([]);
-  const latestSevenData = getLatestData(userData);
-  const dataLength = latestSevenData.length;
-  const lastDataWithDate = latestSevenData
-    .slice()
-    .reverse()
-    .find((item) => item.date);
+    const [userData, setUserData] = useState([]);
+    const latestSevenData = getLatestData(userData);
+    const dataLength = latestSevenData.length;
+    const lastDataWithDate = latestSevenData
+        .slice()
+        .reverse()
+        .find((item) => item.date);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,9 +30,8 @@ function HomePage() {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
 
     const hanlderCheckDataLength = (data) => {
         console.log(data.length);
@@ -43,12 +39,15 @@ function HomePage() {
         console.log(dataLengthToAdd);
         if (dataLengthToAdd > 0) {
             const newData = generateEmptyData(dataLengthToAdd); // 추가할 빈 데이터 생성
-            const updatedData = [...data, ...newData]; // 기존 데이터와 새로운 데이터 합치기
+            const updatedData = [
+                ...data,
+                ...newData
+            ]; // 기존 데이터와 새로운 데이터 합치기
             setUserData(updatedData); // 상태 업데이트
         }
-        
+
     }
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -66,12 +65,11 @@ function HomePage() {
         fetchData().then(data => {
             if (data) {
                 console.log("pangil", data);
-                // const limitedData = data.slice(-7);
-
-                // 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
-                const modifiedData2 = data.map((item, index) => (
-                    { ...item, testId: index + 1 }
-                ));
+                // const limitedData = data.slice(-7); 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
+                const modifiedData2 = data.map((item, index) => ({
+                    ...item,
+                    testId: index + 1
+                }));
                 const modifiedData = modifiedData2.slice(-7);
                 // fetchData 함수의 반환 값을 상태에 설정합니다.
                 setUserData(modifiedData);
@@ -80,7 +78,7 @@ function HomePage() {
                 console.log("userData123", userData);
                 hanlderCheckDataLength(modifiedData);
                 console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
-            
+
                 // setUserData가 완료된 후에 testId 값을 확인합니다.
                 console.log("testId!!!", modifiedData);
             } else {
@@ -90,51 +88,54 @@ function HomePage() {
         });
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
 
+    return (
 
-  return (
-    <HomePageContainer>
-      {/* 카테고리 / Chart */}
-      <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
-        <LeftRightPadding20px>
-          <LegendDiv />
-          <HomePageChart tempChartData={latestSevenData} />
-        </LeftRightPadding20px>
-      </HomePageWrapper>
-
-      <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
-        <HomePageChartResult
-          lastedData={lastDataWithDate ? lastDataWithDate : []}
-        />
-      </HomePageWrapper>
-
-            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
-                <HomePageChartResult lastedData={lastDataWithDate ? lastDataWithDate : []} />
+        <HomePageContainer>
+            {/* 카테고리 / Chart */}
+            <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
+                <LeftRightPadding20px>
+                    <LegendDiv/>
+                    <HomePageChart tempChartData={latestSevenData}/>
+                </LeftRightPadding20px>
             </HomePageWrapper>
 
+            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
+                <HomePageChartResult
+                    lastedData={lastDataWithDate
+                        ? lastDataWithDate
+                        : []}/>
+            </HomePageWrapper>
 
             {/* Buttons */}
             <MyLink to="/test">
                 <Button height="56px" backgroundColor={theme.colors.purple_100}>오늘의 증상 추가하기</Button>
             </MyLink>
-            <Button height="56px" backgroundColor={theme.colors.white_100} onClick={openModal}>
+            <Button
+                height="56px"
+                backgroundColor={theme.colors.white_100}
+                onClick={openModal}>
                 기록 공유하기
             </Button>
-            <Modal isOpen={isModalOpen} closeModal={closeModal} navigate={navigate} page="home"/>
+            <Modal
+                isOpen={isModalOpen}
+                closeModal={closeModal}
+                navigate={navigate}
+                page="home"/>
         </HomePageContainer>
     );
 }
 
 // Container : HomePage
-const HomePageContainer = styled.div`
+const HomePageContainer = styled.div `
   width: 100%;
   height: auto;
   /* background-color: white; */
 `;
 
 // Wrapper : HomePage (Chart / Result)
-const HomePageWrapper = styled.div`
+const HomePageWrapper = styled.div `
   width: 100%;
-  height: ${(props) => props.height};
+  height: ${ (props) => props.height};
 
   display: flex;
   /* justify-content: center; */
@@ -145,22 +146,26 @@ const HomePageWrapper = styled.div`
   padding: 20px 30px;
   box-sizing: border-box;
 
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${ (
+    props
+) => props.backgroundColor};
 
   border-radius: 20px;
 `;
 
 // Component : Button (오늘의 증상 추가하기 / 기록 공유하기)
-const Button = styled.button`
+const Button = styled.button `
   width: 100%;
-  height: ${(props) => props.height};
+  height: ${ (props) => props.height};
 
   margin-bottom: 15px;
 
   border: none;
   border-radius: 20px;
 
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${ (
+    props
+) => props.backgroundColor};
 
   font-size: 20px;
   font-weight: 500;
@@ -174,8 +179,8 @@ const Button = styled.button`
 
 // Div : Legend (카테고리)
 const LegendDiv = () => {
-  // Container : LegendDiv
-  const LegendDivContainer = styled.div`
+    // Container : LegendDiv
+    const LegendDivContainer = styled.div `
     width: 100%;
     height: 50px;
 
@@ -185,8 +190,8 @@ const LegendDiv = () => {
     /* background-color: yellow; */
   `;
 
-  // Component : Row (두 개의 행)
-  const Row = styled.div`
+    // Component : Row (두 개의 행)
+    const Row = styled.div `
     display: flex;
     justify-content: end;
 
@@ -195,8 +200,8 @@ const LegendDiv = () => {
     }
   `;
 
-  // Componet : Item (각 카테고리)
-  const Item = styled.div`
+    // Componet : Item (각 카테고리)
+    const Item = styled.div `
     display: flex;
     align-items: center;
 
@@ -210,50 +215,50 @@ const LegendDiv = () => {
       margin-right: 0px;
     }
   `;
-  return (
-    <LegendDivContainer>
-      <Row>
-        <Item>
-          <MiniSquare backgroundColor={theme.colors.green_100} />
-          망상
-        </Item>
-        <Item>
-          <MiniSquare backgroundColor={theme.colors.pink_100} />
-          환각/환청
-        </Item>
-        <Item>
-          <MiniSquare backgroundColor={theme.colors.purple_100} />
-          이상 행동
-        </Item>
-      </Row>
-      <Row>
-        <Item>
-          <MiniSquare backgroundColor={theme.colors.lemon_100} />
-          감정 변화
-        </Item>
-        <Item>
-          <MiniSquare backgroundColor={theme.colors.black_100} />
-          의심 정도
-        </Item>
-      </Row>
-    </LegendDivContainer>
-  );
+    return (
+        <LegendDivContainer>
+            <Row>
+                <Item>
+                    <MiniSquare backgroundColor={theme.colors.green_100}/>
+                    망상
+                </Item>
+                <Item>
+                    <MiniSquare backgroundColor={theme.colors.pink_100}/>
+                    환각/환청
+                </Item>
+                <Item>
+                    <MiniSquare backgroundColor={theme.colors.purple_100}/>
+                    이상 행동
+                </Item>
+            </Row>
+            <Row>
+                <Item>
+                    <MiniSquare backgroundColor={theme.colors.lemon_100}/>
+                    감정 변화
+                </Item>
+                <Item>
+                    <MiniSquare backgroundColor={theme.colors.black_100}/>
+                    의심 정도
+                </Item>
+            </Row>
+        </LegendDivContainer>
+    );
 };
 
 // handler : 추가할 빈 데이터 생성 함수
 const generateEmptyData = (count) => {
-  const emptyData = [];
-  for (let i = 0; i < count; i++) {
-    emptyData.push({
-      testId: null,
-      hallucination: null,
-      abnormalBehavior: null,
-      moody: null,
-      delusion: null,
-      total: null,
-      date: null,
-    });
-  }
-  return emptyData;
+    const emptyData = [];
+    for (let i = 0; i < count; i++) {
+        emptyData.push({
+            testId: null,
+            hallucination: null,
+            abnormalBehavior: null,
+            moody: null,
+            delusion: null,
+            total: null,
+            date: null
+        });
+    }
+    return emptyData;
 };
 export default HomePage;
