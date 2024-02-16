@@ -26,8 +26,8 @@ function TestLoading() {
         const response = await postFirstData(form);
         setResult(response.data);
       }
-      console.log(result);
-      navigate("/result");
+
+      await navigate("/result");
     }, 3000);
 
     return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머 해제
