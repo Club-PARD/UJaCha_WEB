@@ -198,6 +198,7 @@ const Button = styled.div`
   font-weight: 600;
   line-height: 150%;
   margin-top: 57px;
+  cursor: pointer;
 `;
 
 export default ResultContents;

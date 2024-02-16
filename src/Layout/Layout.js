@@ -35,6 +35,7 @@ export const ButtonOpacity50 = styled.button`
 export const ImgOpacity50 = styled(Img)`
   &:hover {
     opacity: 50%;
+    cursor: pointer;
   }
 `;
 
