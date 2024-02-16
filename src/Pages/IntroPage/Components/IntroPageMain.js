@@ -118,7 +118,7 @@ export const ButtonItems = () => {
   return (
     <div>
       <Link to="/test">
-        <Button backgroundColor="black" color="white">
+        <Button backgroundColor="#1e1e1e" color="white">
           테스트 시작
         </Button>
       </Link>
