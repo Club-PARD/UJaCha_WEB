@@ -53,3 +53,21 @@ export const deleteUser = async () => {
     console.error("delete error:", error);
   }
 };
+
+export const getUserData = async () => {
+  try {
+    const jwtToken = sessionStorage.getItem("jwtToken");
+    console.log(jwtToken);
+    const response = await instance.get("/api/member", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: jwtToken,
+      },
+    });
+    // console.log(response);
+    return response;
+  } catch (error) {
+    console.log("post error");
+  }
+};
+
