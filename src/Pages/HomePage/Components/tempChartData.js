@@ -87,10 +87,21 @@ export const tempChartData = [
 
 // handler : date를 기준으로 test 정보 정렬
 export const getLatestData = (data) => {
-    // 데이터를 date를 기준으로 오름차순으로 정렬합니다.
-    const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // date 속성이 있는 데이터와 없는 데이터로 분류합니다.
+    const dataWithDate = data.filter(item => item.date);
+    const dataWithoutDate = data.filter(item => !item.date);
+
+    // date 속성이 있는 데이터를 date를 기준으로 오름차순으로 정렬합니다.
+    const sortedDataWithDate = dataWithDate.sort((a, b) => new Date(a.date) - new Date(b.date));
     // 정렬된 데이터에서 최신 7개의 데이터를 추출합니다.
-    const latestData = sortedData.slice(-7);
+    const latestDataWithDate = sortedDataWithDate.slice(-7);
+
+    // date 속성이 없는 데이터는 뒤로 정렬되어야 하므로 뒤에 추가합니다.
+    const sortedDataWithoutDate = dataWithoutDate.sort((a, b) => data.indexOf(a) - data.indexOf(b));
+    
+    // 최신 데이터와 date가 없는 데이터를 합칩니다.
+    const latestData = [...latestDataWithDate, ...sortedDataWithoutDate];
+    
     return latestData;
 };
 
