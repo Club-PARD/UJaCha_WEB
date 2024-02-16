@@ -37,7 +37,7 @@ const IntroPageSubContainer = styled(Container)`
     
     border-radius: 36px;
         
-    background-image: url("img/section3BG.png"); // 배경 이미지 추가
+    background-image: url("img/asap.png"); // 배경 이미지 추가
     background-size: cover; // 이미지를 컨테이너에 맞게 조절
     background-position: center; // 이미지를 가운데 정렬
 `

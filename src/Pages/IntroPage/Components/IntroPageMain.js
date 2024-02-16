@@ -16,13 +16,13 @@ function IntroPageMain() {
   return (
     <IntroPageMainContainer>
       {/* Content 영역 */}
-      <DivContent margin="55px 0px 70px 0px" height="375px">
-        <Img src="img/onePercent.png" width="206px" alt="1 percent logo" />
+      <DivContent margin="0px 0px 130px 0px" height="375px">
+        <Img src="img/onePercent2.png" width="100%" alt="1 percent logo" style={{margin : "10px 0px 45px 0px"}}/>
         <DivContentP>
           <ContentP>
             100명 중 1명은
             <br />
-            <strong>조현병</strong>이라는 사실,
+            조현병이라는 사실,
             <br />
             알고 계셨나요?
           </ContentP>
@@ -79,18 +79,28 @@ const DivContent = styled.div`
 
 // Div - Content 중 문단을 묶는 Div
 const DivContentP = styled.div`
-  height: 210px;
+  height: 252px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   line-height: 30px;
+
+  /* background-color: red; */
+
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+
+  color: ${theme.colors.black_100};
+  opacity: 80%;
 `;
 
 // Component - Content로 쓰이는 문단의 스타일
 const ContentP = styled(P)`
-  font-size: 20px;
+  font-size: inherit;
 `;
 
 // Component - Content 중 Button으로 사용하는 스타일

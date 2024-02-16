@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Container} from "../../../Layout/Layout";
+import {Container, Img} from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
 
 // [ 바로가기 ]
@@ -25,7 +25,8 @@ function IntroPageContent() {
             <WrapperContent>
             {
                 contentData.content.map((contents, index) => (
-                    <WrapperContentItem key={index} textAlign={index === 1 ? "right" : "left"}>
+                    <WrapperContentItem key={index} alignItems={index === 1 ? "end" : "start"}>
+                        <Img src = {`img/count0`+(index+1)+`.png`} height="74.81px"/>
                         <ContentTitle>{contents.title}</ContentTitle>
                         <ContentContent>{contents.content}</ContentContent>
                     </WrapperContentItem>
@@ -42,15 +43,15 @@ const contentData = {
     title: "조현병에 관한 진실",
     content: [
         {
-            title: "01.\n조현병은 특이한\n사람만 걸린다?",
+            title: "조현병은 특이한\n사람만 걸린다?",
             content: "조현병의 유병률은 1%로, 이는 결코 적은 것이\n아닙니다. 많은 사람이 앓는 흔한 병이지만\n상당수가 치료를 받지 못하고 방치되어 있습니다" +
                     "."
         }, {
-            title: "02.\n조현병 환자는 위험하니\n무조건 피해야 하나?",
+            title: "조현병 환자는 위험하니\n무조건 피해야 하나?",
             content: "조현병은 뇌 기능이 제대로 조율되지 않아서\n발생한 질환일 뿐입니다. 안정적으로\n치료받으면서 조절되고 있는 환자들은\n위험의 여지가 거의 " +
                     "없습니다."
         }, {
-            title: "03.\n조현병은 치료가 어려운\n고질병인가?",
+            title: "조현병은 치료가 어려운\n고질병인가?",
             content: "조현병은 주로 10대 후반부터 20대에 시작하여\n만성적 경과를 보입니다. 그러나 발병 초기인\n청소년기에 치료하면 안정적인 성인으로\n성장할 수 있습니다."
         }
     ]
@@ -59,7 +60,7 @@ const contentData = {
 // Container : IntroPageContent
 const IntroPageContentContainer = styled(Container)`
     width: 100%;
-    height : 833px;
+    height : 1289px;
     
     display: flex;
     flex-direction: column;
@@ -69,10 +70,10 @@ const IntroPageContentContainer = styled(Container)`
     padding : 15px;
     box-sizing: border-box;
 
-    /* background-color: ${theme.colors.peach_100}; */
-    background-image: url("img/section2BG.png"); // 배경 이미지 추가
+    background-color: ${theme.colors.pink_100};
+    /* background-image: url("img/section2BG.png"); // 배경 이미지 추가
     background-size: cover; // 이미지를 컨테이너에 맞게 조절
-    background-position: center; // 이미지를 가운데 정렬
+    background-position: center; // 이미지를 가운데 정렬 */
     
     border-radius : 36px;
 `
@@ -85,6 +86,8 @@ const WrapperTitle = styled.div `
     margin : 40px 0px;
 
     /* background-color: wheat; */
+
+    text-align: center;
 `
 
 // Component : Title (조현병에 관한 진실)
@@ -105,23 +108,25 @@ const WrapperContent = styled.div `
 // Wrapper : ContentItem
 const WrapperContentItem = styled.div `
     width: 100%;
-    height: auto;
+    height: 270px;
 
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 
     /* background-color: green; */
-    
-    text-align: ${props => props.textAlign};
 
     &:last-child{
         margin-bottom: 0;
     }
 
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: ${props => props.alignItems };
+
 `;
 
 // Component : Content의 Title
 const ContentTitle = styled.p `  
-    margin-bottom: 18px;
 
     font-size: 20px;
     font-weight: 500;
