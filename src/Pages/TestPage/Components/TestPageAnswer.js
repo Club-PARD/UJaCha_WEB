@@ -16,6 +16,10 @@ function TestPageAnswer() {
     console.log(form);
   }, [answer]);
 
+  useEffect(() => {
+    setAnswer(0);
+  }, [page]);
+
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleButtonClick = (hoverColor, index) => {
