@@ -39,6 +39,7 @@ const MyHeader = ({ location }) => {
     const jwtToken = sessionStorage.getItem("jwtToken");
     useEffect(() => {
         if (!jwtToken) {
+            alert("로그인해주세요");
             navigate("/");
         }
     }, [jwtToken, navigate]);
@@ -48,7 +49,7 @@ const MyHeader = ({ location }) => {
             <WrapperMyHeader>
                 <DivHeader>
                     <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
-                    <ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" />
+                    <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" /></MyLink>
                 </DivHeader>
             </WrapperMyHeader>
 
