@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container, ImgOpacity50, MyLink, P } from "../../../Layout/Layout";
+import { Container, Img, ImgOpacity50, MyLink, P } from "../../../Layout/Layout";
 
 // [ 바로가기 ]
 // Container : IntroPageHeader
@@ -9,17 +9,15 @@ function IntroPageHeader() {
   return (
     <IntroPageHeaderContainer>
       <IntroPageHeaderWrapper>
-        <MyLink to="/">
-          <ImgOpacity50 src="img/tune_logo.png" alt="logo_tune" height="21px" />
-        </MyLink>
-        <MyLink to="/mypage">
-          <ImgOpacity50
+          <Img src="img/tune_logo.png" alt="logo_tune" height="21px" />
+
+          <Img
             src="img/user-02.png"
             alt="user-02"
             width="24px"
-            height="24px"
+          height="24px"
+          onClick={() => { alert("로그인 후 이용 가능합니다.") }}
           />
-        </MyLink>
       </IntroPageHeaderWrapper>
     </IntroPageHeaderContainer>
   );
