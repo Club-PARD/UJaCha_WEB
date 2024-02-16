@@ -121,8 +121,8 @@ function RegisterPage() {
             tempUserInfo
           );
           console.log("post result", response);
-          console.log("jwt: ", response.data);
-          // sessionStorage.setItem()
+          await console.log("jwt: ", response.data);
+          sessionStorage.setItem("jwtToken", response.data);
           navigate("/home");
         } else {
           alert("중복된 이름입니다.");
@@ -357,8 +357,7 @@ const DulButton = styled(Button)`
 `;
 
 export const ErrorMessage = styled.p`
-  color: ${(props) =>
-    props.available ? props.trueColor : props.falseColor};
+  color: ${(props) => (props.available ? props.trueColor : props.falseColor)};
   font-size: 14px;
   /* margin-top: 5px; */
 `;

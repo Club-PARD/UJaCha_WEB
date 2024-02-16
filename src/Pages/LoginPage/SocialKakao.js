@@ -84,10 +84,12 @@ const SocialKakao = ({ page }) => {
   // 카카오 로그인 버튼
   const KakaoLoginButton = styled(Button)`
     background-color: ${(props) => props.backgroundcolor || "transparent"};
-    color: ${({ theme }) => theme.colors.black_100};
+    color: ${(props) => props.color};
     cursor: pointer;
     &:hover {
-      background-color: ${theme.colors.pruple_bold};
+      background-color: ${({ theme }) => theme.colors.black_80};
+      color: ${({ theme }) => theme.colors.white_100};
+      border: none;
     }
   `;
 
@@ -102,14 +104,14 @@ const SocialKakao = ({ page }) => {
           page === "result" ? (
             <KakaoLoginButton
               onClick={onClick}
-              backgroundcolor="theme.colors.black_100"
-              color="white"
+              backgroundcolor="#1e1e1e"
+              color="#FEFEFE"
               margintop="57px"
             >
               카카오 로그인
             </KakaoLoginButton>
           ) : (
-            <KakaoLoginButton onClick={onClick}>
+            <KakaoLoginButton onClick={onClick} color="#1e1e1e">
               {" "}
               카카오 로그인
             </KakaoLoginButton>
