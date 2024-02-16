@@ -107,6 +107,7 @@ export const Button = styled.button`
   box-sizing: border-box;
 
   margin-top: ${(props) => props.margintop};
+  cursor: pointer;
 
   &:first-child {
     margin-bottom: 10px;

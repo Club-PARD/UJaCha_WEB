@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Img } from "../../../Layout/Layout";
+import { Img, ImgOpacity50 } from "../../../Layout/Layout";
 import { useRecoilValue } from "recoil";
 import { pageState, formState } from "../../../Atoms";
 import { useNavigate } from "react-router-dom";
@@ -40,10 +40,9 @@ function TestHeader() {
   return (
     <>
       <HeaderContainer style={{ opacity: showHeader ? 1 : 0 }}>
-        <Img
+        <ImgOpacity50
           src="img/x-close.png"
           alt="x-close"
-          width="30px"
           height="30px"
           onClick={handleCloseButton}
         />
@@ -59,7 +58,7 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <Img src="img/user-02.png" alt="user-02" width="24px" height="24px" />
+        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" />
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
