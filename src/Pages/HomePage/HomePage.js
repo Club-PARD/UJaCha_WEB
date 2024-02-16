@@ -8,6 +8,8 @@ import { LeftRightPadding20px, MiniSquare, MyLink } from "../../Layout/Layout";
 import { useEffect, useState } from "react";
 import { getUserData } from "../../Api/test";
 import { Modal2 } from "../../Layout/Modal2";
+import { Modal } from "../../Layout/Modal";
+import { getExistToday } from "../../Api/test";
 
 // [ 바로가기 ] Container: HomePage Wrapper: HomePage(Chart / Result) Component:
 // Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리) handler : 추가할 빈 데이터 생성 함수
@@ -21,7 +23,16 @@ function HomePage() {
     .reverse()
     .find((item) => item.date);
 
+  const [isModal2Open, setIsModal2Open] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal2 = () => {
+    setIsModal2Open(true);
+  };
+
+  const closeModal2 = () => {
+    setIsModal2Open(false);
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -32,6 +43,15 @@ function HomePage() {
   };
 
   const navigate = useNavigate();
+
+  const handleAddSympton = async () => {
+    const response = await getExistToday();
+    if (response.data) {
+      openModal();
+    } else {
+      navigate("/test");
+    }
+  };
 
   const hanlderCheckDataLength = (data) => {
     console.log(data.length);
@@ -103,19 +123,27 @@ function HomePage() {
       </HomePageWrapper>
 
       {/* Buttons */}
-      <MyLink to="/test">
-        <Button height="56px" backgroundColor={theme.colors.purple_100}>
-          오늘의 증상 추가하기
-        </Button>
-      </MyLink>
+      <Button
+        height="56px"
+        backgroundColor={theme.colors.purple_100}
+        onClick={handleAddSympton}
+      >
+        오늘의 증상 추가하기
+      </Button>
       <Button
         height="56px"
         backgroundColor={theme.colors.white_100}
-        onClick={openModal}
+        onClick={openModal2}
       >
         기록 공유하기
       </Button>
       <Modal2
+        isOpen={isModal2Open}
+        closeModal={closeModal2}
+        navigate={navigate}
+        page="home"
+      />
+      <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
@@ -167,6 +195,7 @@ const Button = styled.button`
   font-weight: 500;
   line-height: 30px;
   color: black;
+  cursor: pointer;
 
   &:hover {
     background-color: #8280ff;

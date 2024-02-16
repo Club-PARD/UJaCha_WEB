@@ -11,11 +11,15 @@ export const Modal = ({ isOpen, closeModal, navigate, page }) => {
             <MainText>
               {page === "test"
                 ? "테스트를 중단하시겠어요?"
+                : page === "home"
+                ? "오늘 이미 기록이 존재합니다."
                 : "회원가입을 중단하시겠습니까?"}
             </MainText>
             <SubText>
               {page === "test"
                 ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
+                : page === "home"
+                ? "증상을 새로 추가하면\n오늘의 이전 기록은 사라집니다."
                 : "지금 나가시면, 회원가입이\n완료되지 않습니다."}
             </SubText>
             <DivButtonItems>
@@ -23,10 +27,14 @@ export const Modal = ({ isOpen, closeModal, navigate, page }) => {
               <Button
                 style={{ color: "#FF2946" }}
                 onClick={() =>
-                  page === "test" ? navigate("/") : navigate("/home")
+                  page === "test"
+                    ? navigate("/")
+                    : page === "home"
+                    ? navigate("/test")
+                    : navigate("/home")
                 }
               >
-                나가기
+                {page === "home" ? "추가하기" : "나가기"}
               </Button>
             </DivButtonItems>
           </DivModal>

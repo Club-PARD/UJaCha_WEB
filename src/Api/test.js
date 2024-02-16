@@ -86,3 +86,19 @@ export const postReliableName = async (data) => {
     console.log("post error", error);
   }
 };
+
+export const getExistToday = async () => {
+  try {
+    const jwtToken = sessionStorage.getItem("jwtToken");
+    const response = await instance.get("/api/test/exist-today", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + jwtToken,
+      },
+    });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log("get today test error:", error);
+  }
+};
