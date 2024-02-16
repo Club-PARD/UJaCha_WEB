@@ -39,8 +39,8 @@ const MyHeader = ({ location }) => {
     const jwtToken = sessionStorage.getItem("jwtToken");
     useEffect(() => {
         if (!jwtToken) {
-            alert("로그인해주세요");
-            navigate("/");
+            // alert("로그인해주세요");
+            // navigate("/");
         }
     }, [jwtToken, navigate]);
     return (
