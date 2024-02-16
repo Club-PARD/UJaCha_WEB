@@ -109,7 +109,7 @@ export const Button = styled.button`
   height: 56px;
 
   background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.color};
+  color: ${(props) => props.color || "black"};
 
   border-radius: 16px;
   font-size: 20px;

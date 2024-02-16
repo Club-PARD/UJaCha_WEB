@@ -38,13 +38,13 @@ function RegisterPage() {
   // console.log("tempUserInfo", tempUserInfo); }, [tempUserInfo]); 로그인 정보가 없을 때
   // 이동
   useEffect(() => {
-    if (userInfoData.uid === "") navigate("/");
+    // if (userInfoData.uid === "") navigate("/");
   });
 
   const userKakaoId = sessionStorage.getItem("userKakaoId");
   useEffect(() => {
     if (!userKakaoId) {
-      navigate("/");
+      // navigate("/");
     }
   }, [userKakaoId, navigate]);
   // 회원가입 버튼 활성화 여부 확인
@@ -86,28 +86,32 @@ function RegisterPage() {
 
   const handleCheckDuplicate = () => {
     console.log("nickname type:", typeof tempUserInfo.nickname);
-    axios
-      .get(
-        process.env.REACT_APP_URL +
+    if (tempUserInfo.nickname != "") {
+      axios
+        .get(
+          process.env.REACT_APP_URL +
           "/api/member/duplicate?nickname=" +
           tempUserInfo.nickname
-      )
-      .then(function (response) {
-        // HTTP GET 요청에 대한 응답을 비동기적으로 처리합니다.
-        setIsDuplicate(response.data); // 중복 여부 업데이트
-        console.log("responseDuplicate", response.data);
-        if (response.data) {
-          setDuplicateErrorMessage("이미 존재하는 닉네임입니다."); // 중복일 경우 에러 메시지 설정
-        } else {
-          setDuplicateErrorMessage("사용 가능한 닉네임입니다."); // 중복이 아닐 경우 에러 메시지 초기화
-        }
-        // 이제 response.data를 사용하여 false 값을 얻을 수 있습니다. 아래는 필요에 따라 추가적인 작업을 할 수 있습니다. 예를
-        // 들어, 응답에 따라 조건부로 다른 동작을 수행할 수 있습니다.
-      })
-      .catch(function (error) {
-        // 오류 처리
-        console.error("Error sending first data : ", error);
-      });
+        )
+        .then(function (response) {
+          // HTTP GET 요청에 대한 응답을 비동기적으로 처리합니다.
+          setIsDuplicate(response.data); // 중복 여부 업데이트
+          console.log("responseDuplicate", response.data);
+          if (response.data) {
+            setDuplicateErrorMessage("이미 존재하는 닉네임입니다."); // 중복일 경우 에러 메시지 설정
+          } else {
+            setDuplicateErrorMessage("사용 가능한 닉네임입니다."); // 중복이 아닐 경우 에러 메시지 초기화
+          }
+          // 이제 response.data를 사용하여 false 값을 얻을 수 있습니다. 아래는 필요에 따라 추가적인 작업을 할 수 있습니다. 예를
+          // 들어, 응답에 따라 조건부로 다른 동작을 수행할 수 있습니다.
+        })
+        .catch(function (error) {
+          // 오류 처리
+          console.error("Error sending first data : ", error);
+        });
+    } else {
+      setDuplicateErrorMessage("닉네임을 입력해주세요.");
+    }
   };
 
   const handleRegister = async () => {
@@ -181,7 +185,7 @@ function RegisterPage() {
               </DivButton>
             </DivInputInner>
             {duplicateErrorMessage && (
-              <ErrorMessage available={isDuplicate}>
+              <ErrorMessage available={isDuplicate} paddingLeft = "10px">
                 {duplicateErrorMessage}
               </ErrorMessage>
             )}
@@ -289,7 +293,9 @@ const Input = styled.input`
   height: 44px;
   background: none;
   border: none;
-  border-bottom: 1px solid white;
+  /* border-bottom: 1px solid white; */
+
+  box-shadow: 0px 10px 0px -9px white;
   padding-left: 10px;
 
   font-size: 16px;
@@ -360,5 +366,6 @@ export const ErrorMessage = styled.p`
   color: ${(props) => (props.available ? props.trueColor : props.falseColor)};
   font-size: 14px;
   /* margin-top: 5px; */
+  padding-left: ${props => props.paddingLeft};
 `;
 export default RegisterPage;

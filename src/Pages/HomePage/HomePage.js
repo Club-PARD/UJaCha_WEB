@@ -114,10 +114,10 @@ function HomePage() {
     <HomePageContainer>
       {/* 카테고리 / Chart */}
       <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
-        <LeftRightPadding20px>
+        <div>
           <LegendDiv />
           <HomePageChart tempChartData={latestSevenData} />
-        </LeftRightPadding20px>
+        </div>
       </HomePageWrapper>
 
       <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
@@ -162,6 +162,13 @@ const HomePageContainer = styled.div`
   width: 100%;
   height: auto;
   /* background-color: white; */
+
+  padding-bottom: 150px;
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 `;
 
 // Wrapper : HomePage (Chart / Result)

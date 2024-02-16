@@ -18,10 +18,12 @@ function MyPage() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   width: 100vw;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.black_100};
+
+  margin-bottom: 200px;
 `;
 
 export default MyPage;

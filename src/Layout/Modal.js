@@ -28,7 +28,7 @@ export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
               <Button
                 style={{ color: "#FF2946" }}
                 onClick={() =>
-                  exception
+                  exception == "/mypage"
                     ? navigate(exception)
                     :
                   page === "test"

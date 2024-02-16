@@ -98,6 +98,7 @@ const WrapperContent = styled.div`
     width: 100%;
     height : 500px;
     overflow-y: auto;
+    margin-bottom: 100px;
     
 `
 const PostItem = styled.div`
