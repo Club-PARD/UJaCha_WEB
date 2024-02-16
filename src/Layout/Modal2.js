@@ -94,7 +94,7 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                         <div>
                             <BlackOverlay onClick={closeModal}/>
                                 {!isShared ? (
-                                    <DivModal width="374px" height="329px" padding="20px" style={{ justifyContent : "space-between" }}>
+                                    <DivModal width="330px" height="329px" padding="20px" style={{ justifyContent : "space-between" }}>
                                         <ModalTitle style={{ justifyContent : "space-between" }}>
                                             <span>닉네임 입력</span>
                                             <Img src="img/x-closeBlack.png" alt="out" width="24px" height="24px" onClick={() => { closeModal(); setReliableName(""); setExitMessage(null)}}/>
@@ -292,8 +292,8 @@ const ModalInput = styled.input`
 
     margin-bottom: 30px;
 
-    border-bottom: 1px solid black;
-
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0px 10px 0px -9px black;
     /* padding-left: 20px; */
 
     &:focus{
@@ -311,6 +311,7 @@ const ModalButton = styled.button`
     line-height: 30px;
 
     border-radius: 16px;
+    color : ${theme.colors.black_100};
 
     &:hover{
         background-color: ${theme.colors.pruple_bold};
