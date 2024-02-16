@@ -81,6 +81,11 @@ const ButtonBack = styled.button`
   border-radius: 16px;
   margin-right: 8px;
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.black_80};
+    color: ${({ theme }) => theme.colors.white_100};
+    border: none;
+  }
 `;
 
 const ButtonNext = styled.button`
@@ -95,5 +100,10 @@ const ButtonNext = styled.button`
   border-radius: 16px;
   color: ${(props) => (props.disabled ? "#868686" : "white")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.black_80};
+    color: ${({ theme }) => theme.colors.white_100};
+    border: none;
+  }
 `;
 export default TestPageButton;
