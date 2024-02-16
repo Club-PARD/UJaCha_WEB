@@ -10,12 +10,15 @@ import { getUserData } from "../../Api/test";
 import { Modal2 } from "../../Layout/Modal2";
 import { Modal } from "../../Layout/Modal";
 import { getExistToday } from "../../Api/test";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { userInfo } from "../../Atoms";
 
 // [ 바로가기 ] Container: HomePage Wrapper: HomePage(Chart / Result) Component:
 // Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리) handler : 추가할 빈 데이터 생성 함수
 
 function HomePage() {
   const [userData, setUserData] = useState([]);
+  const [userDataRecoil, setUserDataRecoil] = useRecoilState(userInfo);
   const latestSevenData = getLatestData(userData);
   const dataLength = latestSevenData.length;
   const lastDataWithDate = latestSevenData
@@ -71,6 +74,7 @@ function HomePage() {
 
         if (userData1) {
           console.log("result", userData1.data);
+          setUserDataRecoil(userData1.data);
           return userData1.data.test;
         }
       } catch (error) {
