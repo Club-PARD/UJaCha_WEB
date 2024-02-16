@@ -5,6 +5,7 @@ import TestPageButton from "./Components/TestPageButton";
 import { useEffect } from "react";
 import TestHeader from "./Components/TestHeader";
 import TestLoading from "./Components/TestLoading";
+import { useLocation } from "react-router";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { pageState, formState, resultState } from "../../Atoms";
 
@@ -13,6 +14,11 @@ function TestPage() {
   const [page, setPage] = useRecoilState(pageState);
   const setForm = useSetRecoilState(formState);
   const setResult = useSetRecoilState(resultState);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     setPage(0);
@@ -75,14 +81,13 @@ const QuestionContainer = styled.div`
 
   /* 애니메이션 부분 */
   animation: transY 1.3s ease-out;
-
   @keyframes transY {
     0% {
-      transform: translateY(500px);
+      transform: translateY(50vh);
       opacity: 0.2;
     }
     100% {
-      transform: translateY(0px);
+      transform: translateY(0vh);
       opacity: 1;
     }
   }
