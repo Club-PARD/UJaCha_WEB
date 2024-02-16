@@ -356,10 +356,10 @@ const DulButton = styled(Button)`
   }
 `;
 
-const ErrorMessage = styled.p`
+export const ErrorMessage = styled.p`
   color: ${(props) =>
-    props.available ? theme.colors.red_100 : theme.colors.green_100};
+    props.available ? props.trueColor : props.falseColor};
   font-size: 14px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 `;
 export default RegisterPage;

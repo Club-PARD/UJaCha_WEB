@@ -22,10 +22,10 @@ function CommunityPageContent() {
     return (
         <CommuniPageContentContainer>
             <WrapperButton>
-                <Button active={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
+                <Button isActive={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
                     최신순
                 </Button>
-                <Button active={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
+                <Button isActive={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
                     인기순
                 </Button>
             </WrapperButton>
@@ -84,7 +84,7 @@ const Button = styled.button`
     background-color: transparent;
     color :  #9b9b9b;
     ${(props) =>
-        props.active &&
+        props.isActive &&
         css`
             border : none;
             background-color: ${theme.colors.white_100};

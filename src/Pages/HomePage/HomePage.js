@@ -3,10 +3,11 @@ import {theme} from "../../Styles/theme";
 import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
 import {getLatestData, tempChartData} from "./Components/tempChartData";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {LeftRightPadding20px, MiniSquare, MyLink} from "../../Layout/Layout";
 import {useEffect, useState} from "react";
 import {getUserData} from "../../Api/test";
+import { Modal } from "../../Layout/Modal";
 
 // [ 바로가기 ] 
 // Container: HomePage 
@@ -19,6 +20,18 @@ function HomePage() {
     const latestSevenData = getLatestData(userData);
     const dataLength = latestSevenData.length;
     const lastDataWithDate = latestSevenData.slice().reverse().find(item => item.date);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+    
+    const navigate = useNavigate();
 
 
     const hanlderCheckDataLength = (data) => {
@@ -37,30 +50,40 @@ function HomePage() {
         const fetchData = async () => {
             try {
                 const userData1 = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
-                console.log("result", userData1.data);
-                return userData1.data.test;
+
+                if (userData1) {
+                    console.log("result", userData1.data);
+                    return userData1.data.test
+                }
             } catch (error) {
                 console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
             }
         };
 
         fetchData().then(data => {
-            console.log("pangil", data);
-            // const limitedData = data.slice(-7);
+            if (data) {
+                console.log("pangil", data);
+                // const limitedData = data.slice(-7);
 
-            // 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
-            const modifiedData2 = data.map((item, index) => ({ ...item, testId: index + 1 }));
-            const modifiedData = modifiedData2.slice(-7);
-            // fetchData 함수의 반환 값을 상태에 설정합니다.
-            setUserData(modifiedData);
+                // 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
+                const modifiedData2 = data.map((item, index) => (
+                    { ...item, testId: index + 1 }
+                ));
+                const modifiedData = modifiedData2.slice(-7);
+                // fetchData 함수의 반환 값을 상태에 설정합니다.
+                setUserData(modifiedData);
 
-            // setUserData가 완료된 후에 hanlderCheckDataLength 함수를 호출합니다.
-            console.log("userData123", userData);
-            hanlderCheckDataLength(modifiedData);
-            console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
+                // setUserData가 완료된 후에 hanlderCheckDataLength 함수를 호출합니다.
+                console.log("userData123", userData);
+                hanlderCheckDataLength(modifiedData);
+                console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
             
-            // setUserData가 완료된 후에 testId 값을 확인합니다.
-            console.log("testId!!!", modifiedData);
+                // setUserData가 완료된 후에 testId 값을 확인합니다.
+                console.log("testId!!!", modifiedData);
+            } else {
+                alert("다시 로그인을 해주세요.");
+                navigate("/");
+            }
         });
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
 
@@ -86,7 +109,10 @@ function HomePage() {
             <MyLink to="/test">
                 <Button height="56px" backgroundColor={theme.colors.purple_100}>오늘의 증상 추가하기</Button>
             </MyLink>
-            <Button height="56px" backgroundColor={theme.colors.white_100}>기록 공유하기</Button>
+            <Button height="56px" backgroundColor={theme.colors.white_100} onClick={openModal}>
+                기록 공유하기
+            </Button>
+            <Modal isOpen={isModalOpen} closeModal={closeModal} navigate={navigate} page="home"/>
         </HomePageContainer>
     );
 }
