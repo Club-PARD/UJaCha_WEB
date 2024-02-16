@@ -16,6 +16,10 @@ function TestPageAnswer() {
     console.log(form);
   }, [answer]);
 
+  useEffect(() => {
+    setAnswer(0);
+  }, [page]);
+
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleButtonClick = (hoverColor, index) => {
@@ -64,9 +68,10 @@ const RoundButton = styled.button`
   background: none;
   margin: 0px 14px 0px 14px;
   border-radius: 100%;
-  border: 2px solid ${(props) => props.borderColor};
+  border: 2px solid ${({ theme }) => theme.colors.black_100};
   background-color: ${(props) =>
     props.selected ? props.hoverColor : "transparent"};
+  cursor: pointer;
 
   img {
     width: 28px;
@@ -89,7 +94,7 @@ const WrapperRoundButtonTitle = styled.div`
 
 const ButtonTitle = styled.p`
   font-size: 17px;
-  color: "#000000";
+  color: ${({ theme }) => theme.colors.black_100};
 `;
 
 const WrapperRoundButtonItems = (props) => {

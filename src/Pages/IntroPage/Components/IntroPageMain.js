@@ -15,19 +15,22 @@ import { Link } from "react-router-dom";
 function IntroPageMain() {
   return (
     <IntroPageMainContainer>
-      
       {/* Content 영역 */}
       <DivContent margin="55px 0px 70px 0px" height="375px">
         <Img src="img/onePercent.png" width="206px" alt="1 percent logo" />
         <DivContentP>
           <ContentP>
-            100명 중 1명은<br/>
-            <strong>조현병</strong>이라는 사실,<br/>
+            100명 중 1명은
+            <br />
+            <strong>조현병</strong>이라는 사실,
+            <br />
             알고 계셨나요?
           </ContentP>
           <ContentP>
-            초기에 발견할수록<br/>
-            치료가 수월한 조현병<br/>
+            초기에 발견할수록
+            <br />
+            치료가 수월한 조현병
+            <br />
             지금부터 예방해봐요!
           </ContentP>
         </DivContentP>
@@ -49,11 +52,11 @@ const IntroPageMainContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   margin-bottom: 8px;
   padding: 15px;
   box-sizing: border-box;
-  
+
   border-radius: 36px;
 
   background-color: ${theme.colors.purple_100};
@@ -63,12 +66,12 @@ const IntroPageMainContainer = styled(Container)`
 const DivContent = styled.div`
   width: 100%;
   height: ${(props) => props.height || "auto"};
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  
+
   margin: ${(props) => props.margin};
 
   /* background-color: yellow; */
@@ -100,7 +103,7 @@ export const Button = styled.button`
 
   border-radius: 16px;
   font-size: 20px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.colors.black_100};
   box-sizing: border-box;
 
   margin-top: ${(props) => props.margintop};
@@ -115,7 +118,9 @@ export const ButtonItems = () => {
   return (
     <div>
       <Link to="/test">
-        <Button backgroundColor="black" color="white">테스트 시작</Button>
+        <Button backgroundColor="#1e1e1e" color="white">
+          테스트 시작
+        </Button>
       </Link>
       <SocialKakao />
     </div>

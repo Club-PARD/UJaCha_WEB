@@ -21,7 +21,6 @@ const SocialKakao = ({ page }) => {
 
   // handler
   const KakaoOnSuccess = async (data) => {
-
     // sessionStorage 초기화
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -29,7 +28,7 @@ const SocialKakao = ({ page }) => {
     // sessionStorage 저장
     sessionStorage.setItem("userKakaoId", data.profile.id);
     sessionStorage.setItem("kakaoAccessToken", data.response.access_token);
-    
+
     // kakao login을 위한 request 정보
     const loginData = {
       // kakaoAccessToken: data.response.access_token
@@ -39,7 +38,6 @@ const SocialKakao = ({ page }) => {
 
     // 로그인 성공 시 SignupPage 페이지로 이동
     try {
-
       // 로그인 시도
       const response = await axios.post(
         process.env.REACT_APP_URL + "/api/member/login",
@@ -51,7 +49,6 @@ const SocialKakao = ({ page }) => {
 
       // 처음 접속 여부 판단
       if (response.data.first === true) {
-        
         // uid를 recoil로 context 저장하기 위한 변수 선언
         const tempUserInfoData = {
           nickname: "",
@@ -63,7 +60,7 @@ const SocialKakao = ({ page }) => {
         // 유저 정보context 저장
         setUserInfoData(tempUserInfoData);
 
-        // 회원가입 페이지로 이동 
+        // 회원가입 페이지로 이동
         navigate("/register");
       } else {
         // 처음 접속이 아닌 경우
@@ -74,7 +71,6 @@ const SocialKakao = ({ page }) => {
         // 홈페이지로 이동
         navigate("/home");
       }
-
     } catch (error) {
       console.error("Error sending login data:", error);
     }
@@ -87,12 +83,12 @@ const SocialKakao = ({ page }) => {
 
   // 카카오 로그인 버튼
   const KakaoLoginButton = styled(Button)`
-    background-color: ${props => props.backgroundcolor || "transparent"};
-    color : black;
-    &:hover{
+    background-color: ${(props) => props.backgroundcolor || "transparent"};
+    color: ${({ theme }) => theme.colors.black_100};
+    &:hover {
       background-color: ${theme.colors.pruple_bold};
     }
-  `
+  `;
 
   return (
     <div>
@@ -103,16 +99,24 @@ const SocialKakao = ({ page }) => {
         onFail={kakaoOnFailure}
         render={({ onClick }) =>
           page === "result" ? (
-            <KakaoLoginButton onClick={onClick} backgroundcolor="black" color="white" margintop="57px" >카카오 로그인</KakaoLoginButton>
+            <KakaoLoginButton
+              onClick={onClick}
+              backgroundcolor="theme.colors.black_100"
+              color="white"
+              margintop="57px"
+            >
+              카카오 로그인
+            </KakaoLoginButton>
           ) : (
-            <KakaoLoginButton onClick={onClick}> 카카오 로그인</KakaoLoginButton>
+            <KakaoLoginButton onClick={onClick}>
+              {" "}
+              카카오 로그인
+            </KakaoLoginButton>
           )
         }
       />{" "}
     </div>
   );
 };
-
-
 
 export default SocialKakao;

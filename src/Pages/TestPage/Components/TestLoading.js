@@ -53,7 +53,7 @@ const LodingContainer = styled.div`
   transition: opacity 1s ease;
 `;
 const Text = styled.div`
-  color: var(--Black, #1e1e1e);
+  color: ${({ theme }) => theme.colors.black_100};
   text-align: center;
   font-family: "Pretendard Variable";
   font-size: 24px;

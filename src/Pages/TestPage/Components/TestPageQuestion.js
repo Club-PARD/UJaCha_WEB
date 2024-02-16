@@ -34,6 +34,7 @@ const Order = styled.div`
   font-weight: 400;
   line-height: 140%; /* 39.2px */
   margin-bottom: 24px;
+  color: ${({ theme }) => theme.colors.black_100};
 `;
 
 const Question = styled.div`
@@ -45,5 +46,6 @@ const Question = styled.div`
   font-weight: 400;
   line-height: 140%; /* 33.6px */
   white-space: pre-wrap;
+  color: ${({ theme }) => theme.colors.black_100};
 `;
 export default TestPageQuestion;

@@ -73,9 +73,11 @@ const ButtonBack = styled.button`
   height: 56px;
   font-size: 15px;
   background: none;
-  color: ${(props) => (props.disabled ? "#868686" : "black")};
-  border: ${(props) =>
-    props.disabled ? "1px solid #868686" : "1px solid black"};
+  color: ${(props) =>
+    props.disabled ? "#868686" : props.theme.colors.black_100};
+  border: 1px solid;
+  border-color: ${(props) =>
+    props.disabled ? "#868686" : props.theme.colors.black_100};
   border-radius: 16px;
   margin-right: 8px;
 `;
@@ -84,9 +86,11 @@ const ButtonNext = styled.button`
   width: 167px;
   height: 56px;
   font-size: 15px;
-  background: ${(props) => (props.disabled ? "none" : "black")};
-  border: ${(props) =>
-    props.disabled ? "1px solid #868686" : "1px solid black"};
+  background: ${(props) =>
+    props.disabled ? "none" : props.theme.colors.black_100};
+  border: 1px solid;
+  border-color: ${(props) =>
+    props.disabled ? "#868686" : props.theme.colors.black_100};
   border-radius: 16px;
   color: ${(props) => (props.disabled ? "#868686" : "white")};
 `;
