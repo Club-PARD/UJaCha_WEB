@@ -67,6 +67,7 @@ const RoundButton = styled.button`
   border: 2px solid ${(props) => props.borderColor};
   background-color: ${(props) =>
     props.selected ? props.hoverColor : "transparent"};
+  cursor: pointer;
 
   img {
     width: 28px;
