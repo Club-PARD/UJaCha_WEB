@@ -12,6 +12,7 @@ function TestHeader() {
   const form = useRecoilValue(formState);
   const [showHeader, setShowHeader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [exceptionLink, setExceptionLink] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,14 +63,14 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" onClick={() => { openModal(); }} />
+        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" onClick={() => { setExceptionLink("/mypage");  openModal(); }} />
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
         page="test"
-        exception = "/mypage"
+        exception = {exceptionLink}
       />
     </>
   );
