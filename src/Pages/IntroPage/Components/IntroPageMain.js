@@ -103,7 +103,8 @@ export const Button = styled.button`
 
   border-radius: 16px;
   font-size: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.black_100};
+  border: 1px solid;
+  border-color: ${theme.colors.black_100};
   box-sizing: border-box;
 
   margin-top: ${(props) => props.margintop};
@@ -112,6 +113,12 @@ export const Button = styled.button`
   &:first-child {
     margin-bottom: 10px;
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.black_80};
+    color: ${({ theme }) => theme.colors.white_100};
+    border: none;
+  }
 `;
 
 // ComponentList : Button 모음
@@ -119,7 +126,7 @@ export const ButtonItems = () => {
   return (
     <div>
       <Link to="/test">
-        <Button backgroundColor="#1e1e1e" color="white">
+        <Button backgroundColor="#1e1e1e" color="#FEFEFE">
           테스트 시작
         </Button>
       </Link>
