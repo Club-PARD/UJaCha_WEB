@@ -5,16 +5,68 @@ import HomePageChartResult from "./Components/HomePageChartResult";
 import { getLatestData, tempChartData } from "./Components/tempChartData";
 import { Link } from "react-router-dom";
 import { LeftRightPadding20px, MiniSquare, MyLink } from "../../Layout/Layout";
+import { useEffect, useState } from "react";
+import { getUserData } from "../../Api/test";
 
 // [ 바로가기 ]
-// Container : HomePage
-// Wrapper : HomePage (Chart / Result)
-// Component : Button (오늘의 증상 추가하기 / 기록 공유하기)
-// Div : Legend (카테고리)
+// Container: HomePage
+// Wrapper: HomePage(Chart / Result)
+// Component: Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리)
+// handler : 추가할 빈 데이터 생성 함수
 
 function HomePage() {
-  const latestSevenData = getLatestData(tempChartData);
+  const [userData, setUserData] = useState([]);
+  const latestSevenData = getLatestData(userData);
   const dataLength = latestSevenData.length;
+  const lastDataWithDate = latestSevenData
+    .slice()
+    .reverse()
+    .find((item) => item.date);
+
+  const hanlderCheckDataLength = (data) => {
+    console.log(data.length);
+    const dataLengthToAdd = 7 - data.length;
+    console.log(dataLengthToAdd);
+    if (dataLengthToAdd > 0) {
+      const newData = generateEmptyData(dataLengthToAdd); // 추가할 빈 데이터 생성
+      const updatedData = [...data, ...newData]; // 기존 데이터와 새로운 데이터 합치기
+      setUserData(updatedData); // 상태 업데이트
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData1 = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
+        console.log("result", userData1.data);
+        return userData1.data.test;
+      } catch (error) {
+        console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
+      }
+    };
+
+    fetchData().then((data) => {
+      console.log("pangil", data);
+      // const limitedData = data.slice(-7);
+
+      // 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
+      const modifiedData2 = data.map((item, index) => ({
+        ...item,
+        testId: index + 1,
+      }));
+      const modifiedData = modifiedData2.slice(-7);
+      // fetchData 함수의 반환 값을 상태에 설정합니다.
+      setUserData(modifiedData);
+
+      // setUserData가 완료된 후에 hanlderCheckDataLength 함수를 호출합니다.
+      console.log("userData123", userData);
+      hanlderCheckDataLength(modifiedData);
+      console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
+
+      // setUserData가 완료된 후에 testId 값을 확인합니다.
+      console.log("testId!!!", modifiedData);
+    });
+  }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
 
   return (
     <HomePageContainer>
@@ -26,12 +78,9 @@ function HomePage() {
         </LeftRightPadding20px>
       </HomePageWrapper>
 
-      {/* 증상 Result */}
       <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
         <HomePageChartResult
-          lastedData={
-            latestSevenData.length !== 0 ? latestSevenData[dataLength - 1] : []
-          }
+          lastedData={lastDataWithDate ? lastDataWithDate : []}
         />
       </HomePageWrapper>
 
@@ -89,8 +138,7 @@ const Button = styled.button`
   font-size: 20px;
   font-weight: 500;
   line-height: 30px;
-
-  cursor: pointer;
+  color: black;
 
   &:hover {
     background-color: #8280ff;
@@ -139,24 +187,46 @@ const LegendDiv = () => {
     <LegendDivContainer>
       <Row>
         <Item>
-          <MiniSquare backgroundColor={theme.colors.green_100} /> 망상
+          <MiniSquare backgroundColor={theme.colors.green_100} />
+          망상
         </Item>
         <Item>
-          <MiniSquare backgroundColor={theme.colors.pink_100} /> 환각/환청
+          <MiniSquare backgroundColor={theme.colors.pink_100} />
+          환각/환청
         </Item>
         <Item>
-          <MiniSquare backgroundColor={theme.colors.purple_100} /> 이상 행동
+          <MiniSquare backgroundColor={theme.colors.purple_100} />
+          이상 행동
         </Item>
       </Row>
       <Row>
         <Item>
-          <MiniSquare backgroundColor={theme.colors.lemon_100} /> 감정 변화
+          <MiniSquare backgroundColor={theme.colors.lemon_100} />
+          감정 변화
         </Item>
         <Item>
-          <MiniSquare backgroundColor={theme.colors.black_100} /> 의심 정도
+          <MiniSquare backgroundColor={theme.colors.black_100} />
+          의심 정도
         </Item>
       </Row>
     </LegendDivContainer>
   );
+};
+
+// handler : 추가할 빈 데이터 생성 함수
+const generateEmptyData = (count) => {
+  const emptyData = [];
+  for (let i = 0; i < count; i++) {
+    emptyData.push({
+      testId: null,
+      hallucination: null,
+      abnormalBehavior: null,
+      moody: null,
+      delusion: null,
+      total: null,
+      date: null,
+    });
+  }
+  return emptyData;
 };
 export default HomePage;
