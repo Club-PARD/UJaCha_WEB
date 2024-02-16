@@ -39,8 +39,8 @@ export const Modal = ({ isOpen, closeModal, navigate, page }) => {
                 setUserInfoData(tempUserData);
 
             } else {
-                alert("다시 로그인을 해주세요.");
-                navigate("/");
+                // alert("다시 로그인을 해주세요.");
+                // navigate("/");
             }
         });
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
