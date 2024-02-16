@@ -1,23 +1,27 @@
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { userInfo } from "../../../Atoms";
 
 function Record() {
+  const userData = useRecoilValue(userInfo);
+  console.log(userData);
   const data = [
     {
-      nickname: "방구응아",
+      nickname: userData.reliableName,
       shared: "2024.02.08",
     },
-    {
-      nickname: "찬이맘",
-      shared: "2024.02.09",
-    },
-    {
-      nickname: "경아빠",
-      shared: "2024.02.09",
-    },
-    {
-      nickname: "람언니",
-      shared: "2024.02.09",
-    },
+    // {
+    //   nickname: "찬이맘",
+    //   shared: "2024.02.09",
+    // },
+    // {
+    //   nickname: "경아빠",
+    //   shared: "2024.02.09",
+    // },
+    // {
+    //   nickname: "람언니",
+    //   shared: "2024.02.09",
+    // },
   ];
 
   return (

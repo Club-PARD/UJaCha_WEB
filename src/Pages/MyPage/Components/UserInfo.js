@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { Img } from "../../../Layout/Layout";
+import { useRecoilValue } from "recoil";
+import { userInfo } from "../../../Atoms";
 
 function UserInfo() {
+  const userData = useRecoilValue(userInfo);
+  
   return (
     <Container>
       <NameBox>
-        <p>유자차장님</p>
+        <p>{userData.nickname}</p>
         <Img
           src="img/pencil-line.png"
           alt="pencil-line"
