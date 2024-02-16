@@ -71,9 +71,8 @@ const HeaderContainer = styled.div`
 const WrapperOutletMain = styled.div `
     width: 390px;
     height : auto;
-
-    padding : 0px 8px;
     box-sizing: border-box;
+    padding : 0px 8px;
     
     /* background-color: yellow; */
 `
