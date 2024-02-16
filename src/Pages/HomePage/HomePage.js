@@ -7,7 +7,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {LeftRightPadding20px, MiniSquare, MyLink} from "../../Layout/Layout";
 import {useEffect, useState} from "react";
 import {getUserData} from "../../Api/test";
-import {Modal} from "../../Layout/Modal";
+import {Modal2} from "../../Layout/Modal2";
 
 // [ 바로가기 ] Container: HomePage Wrapper: HomePage(Chart / Result) Component:
 // Button (오늘의 증상 추가하기 / 기록 공유하기) Div : Legend (카테고리) handler : 추가할 빈 데이터 생성 함수
@@ -116,7 +116,7 @@ function HomePage() {
                 onClick={openModal}>
                 기록 공유하기
             </Button>
-            <Modal
+            <Modal2
                 isOpen={isModalOpen}
                 closeModal={closeModal}
                 navigate={navigate}
