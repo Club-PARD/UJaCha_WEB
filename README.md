@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-    <img src = "./readme/tune.png">
+    <img src="./readme/Tune.png">
   <br>
 </p>
 
