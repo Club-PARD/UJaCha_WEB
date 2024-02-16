@@ -1,23 +1,19 @@
 import styled from "styled-components";
 import CommunityPageSearch from "./Components/CommunityPageSearch";
 import CommunityPageContent from "./Components/CommunityPageContent";
-;
-
 function CommunityPage() {
-    
-    return (
-        <CommunityPageContainer>
-            <CommunityPageSearch />
-            <CommunityPageContent/>
-        </CommunityPageContainer>
-    );
+  return (
+    <CommunityPageContainer>
+      <CommunityPageSearch />
+      <CommunityPageContent />
+    </CommunityPageContainer>
+  );
 }
 
 const CommunityPageContainer = styled.div`
-    width : 100%;
-    height : auto;
+  width: 100%;
+  height: auto;
 
-    /* background-color: yellow; */
-
-`
+  /* background-color: yellow; */
+`;
 export default CommunityPage;

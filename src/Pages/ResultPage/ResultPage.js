@@ -17,7 +17,7 @@ const ResultPageContainer = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black_100};
   display: flex;
   justify-content: center;
 `;

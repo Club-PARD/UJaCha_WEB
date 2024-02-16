@@ -43,9 +43,9 @@ function RegisterPage() {
 
   const userKakaoId = sessionStorage.getItem("userKakaoId");
   useEffect(() => {
-      if (!userKakaoId) {
-          navigate("/");
-      }
+    if (!userKakaoId) {
+      navigate("/");
+    }
   }, [userKakaoId, navigate]);
   // 회원가입 버튼 활성화 여부 확인
   useEffect(() => {
@@ -110,17 +110,19 @@ function RegisterPage() {
       });
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     try {
       if (isRegisterButtonEnabled) {
         console.log("tempUserInfo", tempUserInfo);
 
         if (isDuplicate === false) {
-          const response = axios.post(
+          const response = await axios.post(
             process.env.REACT_APP_URL + "/api/member/first",
             tempUserInfo
           );
           console.log("post result", response);
+          console.log("jwt: ", response.data);
+          // sessionStorage.setItem()
           navigate("/home");
         } else {
           alert("중복된 이름입니다.");
@@ -228,7 +230,7 @@ const WrapperButton = styled(Button)`
   border: ${(props) =>
     props.isRegisterButtonEnabled === true ? "none" : "1px solid white"};
   color: ${(props) =>
-    props.isRegisterButtonEnabled === true ? "black" : "white"};
+    props.isRegisterButtonEnabled === true ? "#1e1e1e" : "white"};
 
   font-size: 20px;
   font-weight: 500;
@@ -246,7 +248,7 @@ const WrapperButton = styled(Button)`
       props.isRegisterButtonEnabled === true
         ? "#8280FF"
         : theme.colors.purple_100};
-    color: black;
+    color: ${({ theme }) => theme.colors.black_100};
   }
 `;
 

@@ -107,6 +107,7 @@ const Title = styled.div`
   font-weight: 700;
   line-height: 150%;
   margin-top: 39px;
+  color: ${({ theme }) => theme.colors.black_100};
 `;
 
 const Ratio = styled.div`
@@ -165,10 +166,11 @@ const SymptonContents = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
+  color: ${({ theme }) => theme.colors.black_100};
 `;
 
 const Explanation = styled.div`
-  color: "#1e1e1e";
+  color: ${({ theme }) => theme.colors.black_100};
   font-family: "Pretendard Variable";
   font-size: 20px;
   font-style: normal;
