@@ -13,7 +13,6 @@ export const postFirstData = async (data) => {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.log("post error");
@@ -23,14 +22,12 @@ export const postFirstData = async (data) => {
 export const postData = async (data) => {
   try {
     const jwtToken = sessionStorage.getItem("jwtToken");
-    console.log(jwtToken);
     const response = await instance.post("/api/test", data, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + jwtToken,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.log("post error");
@@ -40,14 +37,12 @@ export const postData = async (data) => {
 export const deleteUser = async () => {
   try {
     const jwtToken = sessionStorage.getItem("jwtToken");
-    console.log(jwtToken);
     const response = await instance.delete("/api/member/delete", {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + jwtToken,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.error("delete error:", error);
@@ -57,7 +52,6 @@ export const deleteUser = async () => {
 export const getUserData = async () => {
   try {
     const jwtToken = sessionStorage.getItem("jwtToken");
-    console.log(jwtToken);
     const response = await instance.get("/api/member", {
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +74,6 @@ export const postReliableName = async (data) => {
         Authorization: "Bearer " + jwtToken,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.log("post error", error);
@@ -96,7 +89,6 @@ export const getExistToday = async () => {
         Authorization: "Bearer " + jwtToken,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.log("get today test error:", error);
