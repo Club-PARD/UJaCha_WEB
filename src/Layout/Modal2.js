@@ -121,6 +121,7 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                                         <ModalButton onClick={() => {
                                             closeModal();
                                             setIsShared(false);
+                                            setExitMessage("");
                                         }}>확인</ModalButton>
                                     </DivModal>
                                 )
