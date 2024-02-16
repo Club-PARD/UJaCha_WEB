@@ -67,7 +67,7 @@ export const getUserData = async () => {
     // console.log(response);
     return response;
   } catch (error) {
-    console.log("post error", error);
+    console.log("get error", error);
   }
 };
 
