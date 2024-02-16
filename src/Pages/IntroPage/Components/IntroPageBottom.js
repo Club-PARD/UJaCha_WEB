@@ -41,13 +41,13 @@ const WrapperLinkTable = () => {
         <LinkTable>
             <tr>
                 <td>
-                    <LinkA href = "" onClick={hanlderOnClick}>tune&nbsp;</LinkA>
+                    <LinkA href = "https://glaze-avenue-3eb.notion.site/6ecea8823b954ed182e9480cde29c9ec" >tune&nbsp;</LinkA>
                 </td>
                 <td>
                     <LinkA href = "" onClick={hanlderOnClick}>Instargram</LinkA>
                 </td>
                 <td>
-                    <LinkA href = "" onClick={hanlderOnClick}>&nbsp;Team</LinkA>
+                    <LinkA href = "https://we-pard.com" >&nbsp;PARD</LinkA>
                 </td>
             </tr>
         </LinkTable>
