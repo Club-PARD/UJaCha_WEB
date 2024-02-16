@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Img, ImgOpacity50 } from "../../../Layout/Layout";
+import { Img, ImgOpacity50, MyLink } from "../../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 
 function ResultHeader() {
@@ -32,7 +32,7 @@ function ResultHeader() {
         onClick={handleCloseButton}
       />
       <Img src="img/logo.png" alt="logo" width="56.384px" height="21.388px" />
-      <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" />
+      <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" /></MyLink>
     </HeaderContainer>
   );
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { P } from "./Layout";
 
-export const Modal = ({ isOpen, closeModal, navigate, page }) => {
+export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
   const jwtToken = sessionStorage.getItem("jwtToken");
   return (
     <div>
@@ -28,6 +28,9 @@ export const Modal = ({ isOpen, closeModal, navigate, page }) => {
               <Button
                 style={{ color: "#FF2946" }}
                 onClick={() =>
+                  exception
+                    ? navigate(exception)
+                    :
                   page === "test"
                     ? jwtToken
                       ? navigate("/home")

@@ -62,13 +62,14 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" />
+        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" onClick={() => { openModal(); }} />
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
         page="test"
+        exception = "/mypage"
       />
     </>
   );
