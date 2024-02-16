@@ -56,7 +56,7 @@ const MyHeader = ({ location }) => {
             {/* Link 영역 */}
             <WrapperButton>
                 <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
-                <MenuItem to="/community" isActive={isActive("/community")}>커뮤니티</MenuItem>
+                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communitydetail")}>커뮤니티</MenuItem>
             </WrapperButton>
         </ContainerMyHeader>
     );

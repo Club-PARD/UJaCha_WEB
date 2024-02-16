@@ -17,9 +17,8 @@ export const theme = {
     red_100: "#FF2946",
 
     black_100: "#1E1E1E",
-    black_20: "1E1E1E20",
+    black_20 : "#1E1E1E20",
     black_80: "rgba(30, 30, 30, 0.8)",
-
     white_100: "#FEFEFE",
   },
 };
