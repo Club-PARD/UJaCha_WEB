@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {A, Container, MyLink} from "../../../Layout/Layout";
+import {A, Container} from "../../../Layout/Layout";
 
 // [ 바로가기 ]
 // Container : IntroPageBottom
