@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { tempCommunityData } from "./tempCommunityData";
 import { theme } from "../../../Styles/theme";
-import { P } from "../../../Layout/Layout";
+import { MyLink, P } from "../../../Layout/Layout";
 import { useState } from "react";
 
 function truncateText(text, maxLength) {
@@ -32,15 +32,17 @@ function CommunityPageContent() {
             <WrapperContent>
                 {
                     tempCommunityData.map((data, index) => (
-                        <PostItem key={index}>
-                            <PostTitle>{data.title}</PostTitle>
-                            <PostContent>{truncateText(data.content, 67)}</PostContent>
-                            <PostBottom>
-                                <PostTimestamp>{data.timestamp}</PostTimestamp>
-                                <P>&nbsp;|&nbsp;</P>
-                                <PostWritter>{data.writter}</PostWritter>
-                            </PostBottom>
-                        </PostItem>
+                        <MyLink to={`/communitydetail?postid=${index}`}>
+                            <PostItem key={index}>
+                                <PostTitle>{data.title}</PostTitle>
+                                <PostContent>{truncateText(data.content, 67)}</PostContent>
+                                <PostBottom>
+                                    <PostTimestamp>{data.timestamp}</PostTimestamp>
+                                    <P>&nbsp;|&nbsp;</P>
+                                    <PostWritter>{data.writter}</PostWritter>
+                                </PostBottom>
+                            </PostItem>
+                        </MyLink>
                     ))
                 }
             </WrapperContent>
@@ -112,6 +114,11 @@ const PostItem = styled.div`
     justify-content: space-between;
 
     background-color: ${theme.colors.white_100};
+
+    &:hover{
+        opacity: 50%;
+
+    }
 
 `;
 
