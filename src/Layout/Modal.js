@@ -3,6 +3,12 @@ import { P } from "./Layout";
 
 export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
   const jwtToken = sessionStorage.getItem("jwtToken");
+
+  const handleAccount = () => {
+    window.sessionStorage.clear();
+    navigate("/");
+  };
+
   return (
     <div>
       {isOpen && (
@@ -14,6 +20,8 @@ export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
                 ? "테스트를 중단하시겠어요?"
                 : page === "home"
                 ? "오늘 이미 기록이 존재합니다."
+                : page === "account"
+                ? "정말 탈퇴하시겠습니까?"
                 : "회원가입을 중단하시겠습니까?"}
             </MainText>
             <SubText>
@@ -21,6 +29,8 @@ export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
                 ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
                 : page === "home"
                 ? "증상을 새로 추가하면\n오늘의 이전 기록은 사라집니다."
+                : page === "account"
+                ? "이전의 기록했던\n모든 기록이 사라집니다."
                 : "지금 나가시면, 회원가입이\n완료되지 않습니다."}
             </SubText>
             <DivButtonItems>
@@ -30,17 +40,22 @@ export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
                 onClick={() =>
                   exception == "/mypage"
                     ? navigate(exception)
-                    :
-                  page === "test"
+                    : page === "test"
                     ? jwtToken
                       ? navigate("/home")
                       : navigate("/")
                     : page === "home"
                     ? navigate("/test")
+                    : page === "account"
+                    ? handleAccount()
                     : navigate("/home")
                 }
               >
-                {page === "home" ? "추가하기" : "나가기"}
+                {page === "home"
+                  ? "추가하기"
+                  : page === "account"
+                  ? "탈퇴하기"
+                  : "나가기"}
               </Button>
             </DivButtonItems>
           </DivModal>
@@ -98,6 +113,7 @@ const Button = styled.button`
   font-weight: 500;
   line-height: 150%;
   background-color: white;
+  cursor: pointer;
   &:hover {
     opacity: 0.5;
   }

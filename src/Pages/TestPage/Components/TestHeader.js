@@ -35,10 +35,6 @@ function TestHeader() {
     if (form.question1 !== 0) {
       openModal();
     } else {
-      if(jwtToken)
-        navigate("/home");
-      else
-        navigate("/");
     }
   };
 
@@ -63,14 +59,12 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" onClick={() => { setExceptionLink("/mypage");  openModal(); }} />
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
         page="test"
-        exception = {exceptionLink}
       />
     </>
   );
