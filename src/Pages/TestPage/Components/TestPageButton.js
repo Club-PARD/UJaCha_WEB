@@ -71,7 +71,7 @@ const WrapperButton = styled.div`
 const ButtonBack = styled.button`
   width: 167px;
   height: 56px;
-  font-size: 15px;
+  font-size: 20px;
   background: none;
   color: ${(props) =>
     props.disabled ? "#868686" : props.theme.colors.black_100};
@@ -91,7 +91,7 @@ const ButtonBack = styled.button`
 const ButtonNext = styled.button`
   width: 167px;
   height: 56px;
-  font-size: 15px;
+  font-size: 20px;
   background: ${(props) =>
     props.disabled ? "none" : props.theme.colors.black_100};
   border: 1px solid;

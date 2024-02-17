@@ -78,7 +78,7 @@ const DivModal = styled.div`
   flex-direction: column;
   align-items: center;
 
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   z-index: 1000;
   border-radius: 24px;
   white-space: pre-wrap;
