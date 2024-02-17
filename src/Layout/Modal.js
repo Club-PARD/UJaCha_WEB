@@ -48,6 +48,8 @@ export const Modal = ({ isOpen, closeModal, navigate, page, exception }) => {
                     ? navigate("/test")
                     : page === "account"
                     ? handleAccount()
+                    : page === "register"
+                    ? navigate("/")
                     : navigate("/home")
                 }
               >
