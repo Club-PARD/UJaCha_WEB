@@ -25,7 +25,7 @@ export const Questions = [
   },
   {
     order: "07",
-    item: "가끔 혼자서 실없이 웃음을 짓거나\n운다.",
+    item: "가끔 혼자서 실없이 웃음을\n짓거나 운다.",
   },
   {
     order: "08",
@@ -45,6 +45,6 @@ export const Questions = [
   },
   {
     order: "12",
-    item: "누군가를 경계하며 긴장한 상태를\n보인다.",
+    item: "누군가를 경계하며\n긴장한 상태를 보인다.",
   },
 ];

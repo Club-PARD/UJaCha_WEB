@@ -70,14 +70,14 @@ const DivModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 297px;
-  height: 203px;
-  background-color: white;
-  color: black;
+  width: 326px;
+  height: 265px;
+  background-color: ${({ theme }) => theme.colors.white_100};
+  color: ${({ theme }) => theme.colors.black_100};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
   box-sizing: border-box;
   z-index: 1000;
   border-radius: 24px;
@@ -86,16 +86,16 @@ const DivModal = styled.div`
 
 const MainText = styled.p`
   font-family: "Pretendard Variable";
-  font-size: 19px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 10px 0px 18px 0px;
+  margin: 48px 0px 24px 0px;
 `;
 
 const SubText = styled.p`
   font-family: "Pretendard Variable";
-  font-size: 15px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -109,10 +109,11 @@ const Button = styled.button`
   width: 128px;
   height: 35px;
   border: none;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 150%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white_100};
+  color: ${({ theme }) => theme.colors.black_100};
   cursor: pointer;
   &:hover {
     opacity: 0.5;
