@@ -13,6 +13,7 @@ function TestHeader() {
   const [showHeader, setShowHeader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [exceptionLink, setExceptionLink] = useState("");
+  const jwt = sessionStorage.getItem("jwtToken");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -69,12 +70,16 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <ImgOpacity50
-          src="img/user-02.png"
-          alt="user-02"
-          height="24px"
-          onClick={handleMypageButton}
-        />
+        {jwt ? (
+          <ImgOpacity50
+            src="img/user-02.png"
+            alt="user-02"
+            height="24px"
+            onClick={handleMypageButton}
+          />
+        ) : (
+          <Box></Box>
+        )}
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
@@ -116,6 +121,11 @@ const ProgressBar = styled.div`
     border-radius: 19px;
     background-color: var(--Lemon, #fee28d);
   }
+`;
+
+const Box = styled.div`
+  width: 24px;
+  height: 24px;
 `;
 
 export default TestHeader;
