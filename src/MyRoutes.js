@@ -11,6 +11,7 @@ import ResultPage from "./Pages/ResultPage/ResultPage";
 import CommunityPage from "./Pages/CommunityPage/CommunityPage";
 import MyPage from "./Pages/MyPage/MyPage";
 import CommunityPageDetail from "./Pages/CommunityPage/CommunityPageDetail/CommunityPageDetail";
+import CommunityPageAddPost from "./Pages/CommunityPage/CommunityPageAddPost/CommunityPageAddPost";
 
 function MyRoutes() {
   return (
@@ -26,8 +27,9 @@ function MyRoutes() {
         <Route path="/userInfoChange" element={<UserInfoChange />} />
         <Route path="/test1" element={<GraphTest />} />
         <Route path="/community" element={<CommunityPage />}/>
+        <Route path="/communityaddpost" element={<CommunityPageAddPost/>}/>
       </Route>
-      <Route path="/communitydetail" element={<CommunityPageDetail/>}/>
+      <Route path="/communitydetail" element={<CommunityPageDetail />} />
     </Routes>
   );
 }

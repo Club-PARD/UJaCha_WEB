@@ -39,7 +39,7 @@ function UserInfo() {
           height="26px"
         />
       </NameBox>
-      <JoinDate>가입일: 2024.02.01</JoinDate>
+      <JoinDate>가입일: 2024.02.10</JoinDate>
     </Container>
   );
 }

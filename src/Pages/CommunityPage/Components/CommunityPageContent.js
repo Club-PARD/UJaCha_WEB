@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { tempCommunityData } from "./tempCommunityData";
 import { theme } from "../../../Styles/theme";
-import { MyLink, P } from "../../../Layout/Layout";
+import { Img, MyLink, P } from "../../../Layout/Layout";
 import { useState } from "react";
 
 function truncateText(text, maxLength) {
@@ -30,6 +30,12 @@ function CommunityPageContent() {
                 </Button>
             </WrapperButton>
             <WrapperContent>
+                <MyLink to="/communityaddpost">
+                    <WrapperAddPost>
+                    <Span>새 글을 작성해주세요.</Span>
+                    <Img src = "img/pencil-02.png" alt = "add Post Icon" width = "21px" height = "21px"/>
+                    </WrapperAddPost>
+                </MyLink>
                 {
                     tempCommunityData.map((data, index) => (
                         <MyLink to={`/communitydetail?postid=${index}`}>
@@ -101,6 +107,29 @@ const WrapperContent = styled.div`
     margin-bottom: 100px;
     
 `
+
+const WrapperAddPost = styled.div`
+    width: 100%;
+    height : 49px;
+    background-color: yellow;
+    margin-bottom :  15px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0px 20px;
+
+    border-radius: 16px;
+    background-color: #DCDCEB;
+`
+
+const Span = styled.div`
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color : ${theme.colors.purple_light};
+`
 const PostItem = styled.div`
     width: 100%;
     height: 158px;
@@ -117,7 +146,7 @@ const PostItem = styled.div`
     background-color: ${theme.colors.white_100};
 
     &:hover{
-        opacity: 50%;
+        opacity: 90%;
 
     }
 
