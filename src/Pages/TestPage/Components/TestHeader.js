@@ -13,6 +13,7 @@ function TestHeader() {
   const [showHeader, setShowHeader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [exceptionLink, setExceptionLink] = useState("");
+  const jwt = sessionStorage.getItem("jwtToken");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,15 +31,21 @@ function TestHeader() {
     setIsModalOpen(false);
   };
 
+  const handleMypageButton = () => {
+    if (form.question1 !== 0) {
+      setExceptionLink("/mypage");
+      openModal();
+    } else {
+      navigate("/mypage");
+    }
+  };
+
   const handleCloseButton = () => {
     const jwtToken = sessionStorage.getItem("jwtToken");
     if (form.question1 !== 0) {
       openModal();
     } else {
-      if(jwtToken)
-        navigate("/home");
-      else
-        navigate("/");
+      navigate("/");
     }
   };
 
@@ -63,14 +70,23 @@ function TestHeader() {
             height="21.388px"
           />
         )}
-        <ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" onClick={() => { setExceptionLink("/mypage");  openModal(); }} />
+        {jwt ? (
+          <ImgOpacity50
+            src="img/user-02.png"
+            alt="user-02"
+            height="24px"
+            onClick={handleMypageButton}
+          />
+        ) : (
+          <Box></Box>
+        )}
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
         page="test"
-        exception = {exceptionLink}
+        exception={exceptionLink}
       />
     </>
   );
@@ -105,6 +121,11 @@ const ProgressBar = styled.div`
     border-radius: 19px;
     background-color: var(--Lemon, #fee28d);
   }
+`;
+
+const Box = styled.div`
+  width: 24px;
+  height: 24px;
 `;
 
 export default TestHeader;
