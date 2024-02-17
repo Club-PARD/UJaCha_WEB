@@ -30,11 +30,21 @@ function TestHeader() {
     setIsModalOpen(false);
   };
 
+  const handleMypageButton = () => {
+    if (form.question1 !== 0) {
+      setExceptionLink("/mypage");
+      openModal();
+    } else {
+      navigate("/mypage");
+    }
+  };
+
   const handleCloseButton = () => {
     const jwtToken = sessionStorage.getItem("jwtToken");
     if (form.question1 !== 0) {
       openModal();
     } else {
+      navigate("/");
     }
   };
 
@@ -59,12 +69,19 @@ function TestHeader() {
             height="21.388px"
           />
         )}
+        <ImgOpacity50
+          src="img/user-02.png"
+          alt="user-02"
+          height="24px"
+          onClick={handleMypageButton}
+        />
       </HeaderContainer>
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
         navigate={navigate}
         page="test"
+        exception={exceptionLink}
       />
     </>
   );
