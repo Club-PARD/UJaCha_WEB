@@ -293,9 +293,9 @@ const Input = styled.input`
   height: 44px;
   background: none;
   border: none;
-  /* border-bottom: 1px solid white; */
-
-  box-shadow: 0px 10px 0px -9px white;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  /* box-shadow: 0px 10px 0px -9px white; */
   padding-left: 10px;
 
   font-size: 16px;
