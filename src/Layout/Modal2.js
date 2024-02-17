@@ -118,10 +118,11 @@ export const Modal2 = ({isOpen, closeModal, navigate, page }) => {
                                     </DivModal>
                                     )
                                 : (
-                                    <DivModal width="374px" height="329px" padding="20px" style={{ justifyContent: "space-between" }}>
-                                        <ModalTitle style={{ justifyContent : "center" }}>
-                                            공유 완료
+                                    <DivModal width="326px" height="305px" padding="20px" style={{ justifyContent: "space-between" }}  alignItems = "center">
+                                        <ModalTitle style={{ justifyContent : "center", marginTop : "15px"}}>
+                                            공유 완료!
                                         </ModalTitle>
+                                        <Img src = "img/check-circle-broken.png" alt = "check image" width = "90px" height = "90px"/>
                                         <ModalButton onClick={() => {
                                             closeModal();
                                             setIsShared(false);
@@ -181,7 +182,7 @@ const DivModal = styled.div `
 
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: ${props => props.alignItems || "start"};
   justify-content: ${props => props.justifyContent || "center"};
 
   position: fixed;
@@ -301,7 +302,7 @@ const ModalInput = styled.input`
 
     border-bottom: 1px solid black;
     /* box-shadow: 0px 10px 0px -9px black; */
-    /* padding-left: 20px; */
+    padding-left: 5px;
 
     &:focus{
         outline: none;
