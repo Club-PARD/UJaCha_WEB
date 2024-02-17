@@ -1,7 +1,7 @@
 export const tempCommunityData = [
     {
-        title: "이럴 때 어떻게 해야하나요..? ",
-        content: "망상 증상이 4일째 높게 나오고 있어요.. 아직 아이도 익숙하지 않은 것 같은데,, 제가 부모로써 해줄 수 있는게...",
+        title: "이럴 때 어떻게 해야하나요? ",
+        content: "망상 증상이 4일째 높게 나오고 있어요. 아직 아이도 익숙하지 않은 것 같은데, 제가 부모로써 해줄 수 있는게 없는 것 같아서 걱정이에요.",
         timestamp: "1시간 전",
         writter: "세이호",
         heartCount: 22,
@@ -23,7 +23,7 @@ export const tempCommunityData = [
         ]
     }, {
         title: "포항시 병원 추천",
-        content: "이번에 포항으로 이사를 가게되어 아이 병원도 옮기려고 합니다.포항 사는 분 있으시면 추천 해주실 수 있을까...",
+        content: "이번에 포항으로 이사를 가게되어 아이 병원도 옮기려고 합니다. 포항 사는 분 있으시면 추천 해주실 수 있을까요? 진심으로 도움이 필요한 상황입니다.",
         timestamp: "1시간 전",
         writter: "믿을만한사람",
         heartCount: 15,
@@ -44,7 +44,7 @@ export const tempCommunityData = [
         ]
     }, {
         title: "점점 증상이 완화되고 있어요!",
-        content: "초기에 발견하고 치료하는게 가장 중요하다던데, tune으로 초기에 발견해서 정말 다행이에요! 아이의 감정변...",
+        content: "초기에 발견하고 치료하는게 가장 중요하다던데, tune으로 초기에 발견해서 정말 다행이에요! 아이의 감정변화를 잘 파악하는 게 좋을 것 같아요.",
         timestamp: "1시간 전",
         writter: "김현승1",
         heartCount: 12,
@@ -65,7 +65,7 @@ export const tempCommunityData = [
         ]
     }, {
         title: "조금 지치네요😔",
-        content: "초기에 잡지 못하는 바람에 우리 아이는 벌써 20대 후반이 되었어요.. 혹시 저처럼 후회하시는 부모님들 계실까...",
+        content: "초기에 잡지 못하는 바람에 우리 아이는 벌써 20대 후반이 되었어요. 혹시 저처럼 후회하시는 부모님들 계실까요?",
         timestamp: "2시간 전",
         writter: "파드득",
         heartCount: 28,

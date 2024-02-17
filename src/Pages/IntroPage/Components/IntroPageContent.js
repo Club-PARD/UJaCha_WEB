@@ -25,7 +25,7 @@ function IntroPageContent() {
             <WrapperContent>
             {
                 contentData.content.map((contents, index) => (
-                    <WrapperContentItem key={index} alignItems={index === 1 ? "end" : "start"}>
+                    <WrapperContentItem key={index} alignItems={index === 1 ? "end" : "start"} textAlign={index ===1 ? "right" : ""}>
                         <Img src = {`img/count0`+(index+1)+`.png`} height="74.81px"/>
                         <ContentTitle>{contents.title}</ContentTitle>
                         <ContentContent>{contents.content}</ContentContent>
@@ -122,6 +122,8 @@ const WrapperContentItem = styled.div `
     flex-direction : column;
     justify-content: space-between;
     align-items: ${props => props.alignItems };
+
+    text-align: ${props => props.textAlign};
 
 `;
 
