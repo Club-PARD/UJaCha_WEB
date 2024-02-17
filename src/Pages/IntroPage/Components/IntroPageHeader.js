@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Container, Img, ImgOpacity50, MyLink, P } from "../../../Layout/Layout";
+import SocialKakao from "../../LoginPage/SocialKakao";
 
 // [ 바로가기 ]
 // Container : IntroPageHeader
@@ -11,13 +12,14 @@ function IntroPageHeader() {
       <IntroPageHeaderWrapper>
           <Img src="img/tune_logo.png" alt="logo_tune" height="21px" />
 
-          <Img
+          {/* <Img
             src="img/user-02.png"
             alt="user-02"
             width="24px"
           height="24px"
-          onClick={() => { alert("로그인 후 이용 가능합니다.") }}
-          />
+          onClick={() => { alert("로그인 후 이용 가능합니다.") }}>
+          
+          </Img> */}
       </IntroPageHeaderWrapper>
     </IntroPageHeaderContainer>
   );
@@ -43,7 +45,7 @@ const IntroPageHeaderWrapper = styled.div`
   height: auto;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   /* background-color: aliceblue; */
