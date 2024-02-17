@@ -117,7 +117,7 @@ const PostItem = styled.div`
     background-color: ${theme.colors.white_100};
 
     &:hover{
-        opacity: 50%;
+        opacity: 90%;
 
     }
 
