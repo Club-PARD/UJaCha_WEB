@@ -185,7 +185,7 @@ function RegisterPage() {
               </DivButton>
             </DivInputInner>
             {duplicateErrorMessage && (
-              <ErrorMessage available={isDuplicate} paddingLeft = "10px">
+              <ErrorMessage available={isDuplicate} trueColor = {theme.colors.red_100} falseColor = {theme.colors.pruple_bold}>
                 {duplicateErrorMessage}
               </ErrorMessage>
             )}
@@ -265,7 +265,7 @@ const WrapperInput = styled.div`
 
 const DivInput = styled.div`
   width: 100%;
-  height: 80px;
+  height: 90px;
 
   &:first-child {
     margin-bottom: 40px;
@@ -284,6 +284,7 @@ const InputTitle = styled.p`
   opacity: 50%;
 
   margin-bottom: 10px;
+  box-sizing: border-box;
 `;
 
 const Input = styled.input`
@@ -293,9 +294,9 @@ const Input = styled.input`
   height: 44px;
   background: none;
   border: none;
-  /* border-bottom: 1px solid white; */
-
-  box-shadow: 0px 10px 0px -9px white;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  /* box-shadow: 0px 10px 0px -9px white; */
   padding-left: 10px;
 
   font-size: 16px;
