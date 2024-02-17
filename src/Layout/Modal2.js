@@ -8,7 +8,7 @@ import { getUserData, postReliableName } from "../Api/test";
 import { useRecoilState } from "recoil";
 import { userInfo } from "../Atoms";
 
-export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
+export const Modal2 = ({isOpen, closeModal, navigate, page }) => {
 
     const [reliableName, setReliableName] = useState("");
     const [isExit, setIsExit] = useState(true);
@@ -83,7 +83,7 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                 setIsShared(true); // 공유 여부를 true로 설정
                 // closeModal();
             } else {
-                setExitMessage("*존재하지 않는 닉네임입니다. 다시 입력해주세요. "); // 중복이 아닐 경우 에러 메시지 초기화
+                setExitMessage("*존재하지 않는 닉네임입니다."); // 중복이 아닐 경우 에러 메시지 초기화
             }
         } catch (error) {
             console.error("Error sending first data : ", error);
@@ -99,9 +99,9 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                             <BlackOverlay onClick={closeModal}/>
                                 {!isShared ? (
                                     <DivModal width="330px" height="329px" padding="20px" style={{ justifyContent : "space-between" }}>
-                                        <ModalTitle style={{ justifyContent : "space-between" }}>
+                                        <ModalTitle style={{ justifyContent : "space-between", padding : "5px 0px 0px 5px" }}>
                                             <span>닉네임 입력</span>
-                                            <Img src="img/x-closeBlack.png" alt="out" width="24px" height="24px" onClick={() => { closeModal(); setReliableName(""); setExitMessage(null)}}/>
+                                            <Img src="img/x-closeBlack.png" alt="out" width="25px" height="25px" onClick={() => { closeModal(); setReliableName(""); setExitMessage(null)}}/>
                                         </ModalTitle>
                                         <ModalContent>
                                             기록을 공유하고자 하는<br />사용자의 닉네임을 입력해주세요.
@@ -135,8 +135,9 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                     ))
                     : (isOpen && (
                         <div>
-                            <BlackOverlay onClick={closeModal}/>
-                            <DivModal width = "297px" height = "203px">
+                            <BlackOverlay onClick={closeModal} />
+                            
+                            <DivModal width = "326px" height = "305px">
                                 <MainText>
                                     {
                                         page === "test"
@@ -281,14 +282,16 @@ const ModalContent = styled.div`
     font-weight: 400;
     line-height: 28px;
     margin-top: 20px;
+    padding-left: 5px;
 
 `
 const ModalInput = styled.input`
     width: 100%;
     height : 56px;
     box-sizing: border-box;
-    border: none;
-    /* background-color: yellow; */
+    border : none;
+    background-color: transparent;
+    border-radius: 0 !important;
 
     font-size: 20px;
     font-weight: 500;
@@ -296,12 +299,15 @@ const ModalInput = styled.input`
 
     margin-bottom: 30px;
 
-    /* border-bottom: 1px solid black; */
-    box-shadow: 0px 10px 0px -9px black;
+    border-bottom: 1px solid black;
+    /* box-shadow: 0px 10px 0px -9px black; */
     /* padding-left: 20px; */
 
     &:focus{
         outline: none;
+    }
+    &::placeholder{
+        color : #868686;
     }
 `
 const ModalButton = styled.button`
@@ -320,4 +326,6 @@ const ModalButton = styled.button`
     &:hover{
         background-color: ${theme.colors.pruple_bold};
     }
+
+    margin-bottom: 5px;
 `
