@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container, Img, P } from "../../../Layout/Layout";
+import { Container, Img, MyLink, P } from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
 import SocialKakao from "../../LoginPage/SocialKakao";
 import { Link } from "react-router-dom";
@@ -135,11 +135,11 @@ export const Button = styled.button`
 export const ButtonItems = () => {
   return (
     <div>
-      <Link to="/test">
+      <MyLink to="/test">
         <Button backgroundColor="#1e1e1e" color="#FEFEFE">
           테스트 시작
         </Button>
-      </Link>
+      </MyLink>
       <SocialKakao />
     </div>
   );
