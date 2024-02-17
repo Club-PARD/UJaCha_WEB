@@ -3,6 +3,7 @@ import { Modal2 } from "../../../Layout/Modal2";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUserData } from "../../../Api/test";
+import { theme } from "../../../Styles/theme";
 
 function Record() {
   const [isModal2Open, setIsModal2Open] = useState(false);
@@ -43,7 +44,7 @@ function Record() {
   const data = [
     {
       nickname: userData.reliableName,
-      shared: "2024.02.08",
+      shared: "2024.02.12",
     },
     // {
     //   nickname: "찬이맘",
@@ -75,7 +76,7 @@ function Record() {
           <DetailText>{item.shared}</DetailText>
         </RowDataContainer>
       ))}
-      <Button onClick={openModal2}>기록 공유하기</Button>
+      <SharedButton onClick={openModal2}>공유 유저 수정하기</SharedButton>
       <Modal2
         isOpen={isModal2Open}
         closeModal={closeModal2}
@@ -153,5 +154,11 @@ const Button = styled.div`
   line-height: 150%; /* 24px */
   margin: 33px 16px 16px 16px;
 `;
+
+const SharedButton = styled(Button)`
+  &:hover{
+    background-color: ${theme.colors.pruple_bold};
+  }
+`
 
 export default Record;
