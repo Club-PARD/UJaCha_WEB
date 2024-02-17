@@ -1,10 +1,32 @@
 import styled from "styled-components";
 import { Img } from "../../../Layout/Layout";
-import { useRecoilValue } from "recoil";
-import { userInfo } from "../../../Atoms";
+import { useEffect, useState } from "react";
+import { getUserData } from "../../../Api/test";
 
 function UserInfo() {
-  const userData = useRecoilValue(userInfo);
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const userData1 = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
+
+          if (userData1) {
+            console.log("result", userData1.data);
+            setUserData(userData1.data);
+            return userData1.data.test;
+          }
+        } catch (error) {
+          console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
+        }
+      };
+
+      console.log(fetchData);
+
+      fetchData().then((data) => {
+
+      });
+    }, []);
   
   return (
     <Container>

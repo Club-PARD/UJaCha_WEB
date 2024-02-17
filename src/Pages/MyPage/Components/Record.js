@@ -1,10 +1,45 @@
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { userInfo } from "../../../Atoms";
+import { Modal2 } from "../../../Layout/Modal2";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUserData } from "../../../Api/test";
 
 function Record() {
-  const userData = useRecoilValue(userInfo);
-  console.log(userData);
+  const [isModal2Open, setIsModal2Open] = useState(false);
+  const navigate = useNavigate();
+  const openModal2 = () => {
+    setIsModal2Open(true);
+  };
+  
+  const closeModal2 = () => {
+    setIsModal2Open(false);
+  };
+  
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData1 = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
+
+        if (userData1) {
+          console.log("result", userData1.data);
+          setUserData(userData1.data);
+          return userData1.data.test;
+        }
+      } catch (error) {
+        console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
+      }
+    };
+
+    console.log(fetchData);
+
+    fetchData().then((data) => {
+
+    });
+  }, []);
+
+
   const data = [
     {
       nickname: userData.reliableName,
@@ -40,7 +75,13 @@ function Record() {
           <DetailText>{item.shared}</DetailText>
         </RowDataContainer>
       ))}
-      <Button>기록 공유하기</Button>
+      <Button onClick={openModal2}>기록 공유하기</Button>
+      <Modal2
+        isOpen={isModal2Open}
+        closeModal={closeModal2}
+        navigate={navigate}
+        page="home"
+      />
     </Container>
   );
 }

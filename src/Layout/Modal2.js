@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../Styles/theme";
-import { Img, P } from "./Layout";
+import { Img} from "./Layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ErrorMessage } from "../Pages/LoginPage/RegisterPage";
 import { getUserData, postReliableName } from "../Api/test";
+import { useRecoilState } from "recoil";
+import { userInfo } from "../Atoms";
 
 export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
 
@@ -13,6 +15,7 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
     const [isExitMessage, setExitMessage] = useState(""); // 중복 에러 메시지
     const [isAblePatch, setIsAblePatch] = useState(false);
     const [isShared, setIsShared] = useState(false); // 공유 여부 상태 추가
+    const [userDataRecoil, setUserDataRecoil] = useRecoilState(userInfo);
     
     const [userInfoData, setUserInfoData] = useState();
     
@@ -74,6 +77,7 @@ export const Modal2 = ({ isOpen, closeModal, navigate, page }) => {
                     ...prevData,
                     reliableName: reliableName
                 }));
+                setUserDataRecoil(userInfoData);
                 setIsAblePatch(true);
                 setReliableName("");
                 setIsShared(true); // 공유 여부를 true로 설정
