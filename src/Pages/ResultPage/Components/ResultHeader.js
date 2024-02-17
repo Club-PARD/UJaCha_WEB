@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Img, ImgOpacity50, MyLink } from "../../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "../../../Layout/Modal";
 
 function ResultHeader() {
   const navigate = useNavigate();
   const [showHeader, setShowHeader] = useState(false);
+  const jwt = sessionStorage.getItem("jwtToken");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +25,10 @@ function ResultHeader() {
     }
   };
 
+  const handleMypageButton = () => {
+    navigate("/mypage");
+  };
+
   return (
     <HeaderContainer style={{ opacity: showHeader ? 1 : 0 }}>
       <ImgOpacity50
@@ -32,7 +38,16 @@ function ResultHeader() {
         onClick={handleCloseButton}
       />
       <Img src="img/logo.png" alt="logo" width="56.384px" height="21.388px" />
-      <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" height="24px" /></MyLink>
+      {jwt ? (
+        <ImgOpacity50
+          src="img/user-02.png"
+          alt="user-02"
+          height="24px"
+          onClick={handleMypageButton}
+        />
+      ) : (
+        <Box></Box>
+      )}
     </HeaderContainer>
   );
 }
@@ -45,6 +60,11 @@ const HeaderContainer = styled.div`
   top: 6%;
   position: absolute;
   transition: opacity 1.5s ease;
+`;
+
+const Box = styled.div`
+  width: 24px;
+  height: 24px;
 `;
 
 export default ResultHeader;
