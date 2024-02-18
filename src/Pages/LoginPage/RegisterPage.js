@@ -90,8 +90,8 @@ function RegisterPage() {
       axios
         .get(
           process.env.REACT_APP_URL +
-          "/api/member/duplicate?nickname=" +
-          tempUserInfo.nickname
+            "/api/member/duplicate?nickname=" +
+            tempUserInfo.nickname
         )
         .then(function (response) {
           // HTTP GET 요청에 대한 응답을 비동기적으로 처리합니다.
@@ -185,7 +185,11 @@ function RegisterPage() {
               </DivButton>
             </DivInputInner>
             {duplicateErrorMessage && (
-              <ErrorMessage available={isDuplicate} trueColor = {theme.colors.red_100} falseColor = {theme.colors.pruple_bold}>
+              <ErrorMessage
+                available={isDuplicate}
+                trueColor={theme.colors.red_100}
+                falseColor={theme.colors.pruple_bold}
+              >
                 {duplicateErrorMessage}
               </ErrorMessage>
             )}
@@ -215,7 +219,7 @@ function RegisterPage() {
 const RegisterPageContainer = styled(Container)`
   height: 844px;
 
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black_100};
   color: white;
 
   padding: 24px;
@@ -367,6 +371,6 @@ export const ErrorMessage = styled.p`
   color: ${(props) => (props.available ? props.trueColor : props.falseColor)};
   font-size: 14px;
   /* margin-top: 5px; */
-  padding-left: ${props => props.paddingLeft};
+  padding-left: ${(props) => props.paddingLeft};
 `;
 export default RegisterPage;
