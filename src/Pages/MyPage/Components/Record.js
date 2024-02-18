@@ -44,7 +44,7 @@ function Record() {
   const data = [
     {
       nickname: userData.reliableName,
-      shared: "2024.02.12",
+      shared: "2024.02.17",
     },
     // {
     //   nickname: "찬이맘",
