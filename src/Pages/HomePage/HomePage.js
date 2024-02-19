@@ -5,19 +5,18 @@ import {useEffect, useState} from "react";
 import {useRecoilState} from "recoil";
 import {userInfo} from "../../Atoms";
 
-import {theme} from "../../Styles/theme";
-
 import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
 import {getLatestData} from "./Components/tempChartData";
 
 import {Img, MiniSquare} from "../../Layout/Layout";
-import {getUserData} from "../../Api/test";
 import {Modal2} from "../../Layout/Modal2";
 import {Modal} from "../../Layout/Modal";
 
+import {getUserData} from "../../Api/test";
 import {getExistToday} from "../../Api/test";
 
+import {theme} from "../../Styles/theme";
 // [ 바로가기 ] 
 // 변수 선언 
 // 핸들러 선언 openModal, closeModal, openMdal2, closeModal2: 모달 창 관련
