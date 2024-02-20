@@ -4,12 +4,13 @@ import {sortByMaxValue} from "./tempChartData";
 import {theme} from "../../../Styles/theme";
 
 // [ 바로가기 ]
-// Container : HomePageChartResult
-// Wrapper : Content (잦은 증상 순위)
-// handler 증상에 따라 배경색을 반환하는 함수
-// handler : 각 증상에 따라 symbol을 반환하는 함수
-// Component : 증상 별 사각형 색상 아이콘
-// Component : styled Hr 태그
+// 변수 선언
+// HomePageChartResultContainer : HomePageChartResult
+// WrapperContent : 잦은 증상 순위
+// StyledMiniSquare : 증상 별 사각형 색상 아이콘
+// Hr : styled Hr 태그
+// handleGetBackgroundColor : 증상에 따라 배경색을 반환하는 함수
+// handleGetSymbol : 각 증상에 따라 symbol을 반환하는 함수
 
 const HomePageChartResult = (e) => {
 
@@ -19,16 +20,14 @@ const HomePageChartResult = (e) => {
     const topThreeLastedData = Object
         .entries(sortedLastedData)
         .filter(([key]) => key !== 'total') // total 제외
-        .sort(([
-            , valueA
-        ], [, valueB]) => valueB - valueA) // 값에 따라 내림차순 정렬
+        .sort(([, valueA], [, valueB]) => valueB - valueA) // 값에 따라 내림차순 정렬
         .slice(0, 3); // 상위 3개 항목 선택
 
     // console.log(topThreeLastedData);  가장 높은 수치의 세 가지 '증상' 출력
 
     return (
-        <HomePageChartResultContainer>
-            {/* 가장 잦은 증상*/}
+        <ContainerHomePageChartResult>
+            {/* 가장 잦은 증상 타이틀*/}
             <P fontSize="16px" fontWeight="500">가장 잦은 증상</P>
 
             {/* 잦은 증상 순위*/}
@@ -36,29 +35,31 @@ const HomePageChartResult = (e) => {
                 {
                     topThreeLastedData.map(([symptom, value], index) => (
                         <P fontSize="14px" fontWeight="400" key={index}>
-                            <StyledMiniSquare backgroundColor={getBackgroundColor(symptom)} />
-                            {getSymbol(symptom)} 증상이 평균 {value}%로 {resultEndString[index]}
+                            <StyledMiniSquare backgroundColor={handleGetBackgroundColor(symptom)} />
+                            {handleGetSymbol(symptom)} 증상이 평균 {value}%로 {resultEndString[index]}
                             {/* ex) 감정 변화 증상이 평균 65%로 가장 잦습니다. */}
                         </P>
                     ))
                 }
             </WrapperContent>
 
-            <MyHr />
-            
+            <Hr />
+
+            {/* 조현병 의심 정도 */}
             <P fontSize="14px" fontWeight="400"><MiniSquare backgroundColor="black"/>조현병 의심 정도는 {sortedLastedData.total}%입니다.</P>
-        </HomePageChartResultContainer>
+        </ContainerHomePageChartResult>
     );
 }
 
-// Container : HomePageChartResult
-const HomePageChartResultContainer = styled.div `
+// HomePageChartResultContainer : HomePageChartResult
+const ContainerHomePageChartResult = styled.div `
     width: 100%;
     height : 100%;
 
     /* background-color: yellow; */
 `
-// Wrapper : Content (잦은 증상 순위)
+
+// WrapperContent : 잦은 증상 순위
 const WrapperContent = styled.div `
     width: 100%;
     height :80px;
@@ -71,8 +72,21 @@ const WrapperContent = styled.div `
     /* background-color: red; */
 `
 
-// handler 증상에 따라 배경색을 반환하는 함수
-const getBackgroundColor = (symptom) => {
+// StyledMiniSquare : 증상 별 사각형 색상 아이콘
+const StyledMiniSquare = styled(MiniSquare)`
+    background-color: ${props => props.backgroundColor};
+`;
+
+// Hr : styled Hr 태그
+const Hr = styled.hr `
+    margin : 15px 0px;
+    
+    border : none;
+    border-bottom : 1px solid gray;
+`
+
+// handleGetBackgroundColor : 증상에 따라 배경색을 반환하는 함수
+const handleGetBackgroundColor = (symptom) => {
     switch (symptom) {
         case 'hallucination':
             return theme.colors.pink_100;
@@ -87,8 +101,8 @@ const getBackgroundColor = (symptom) => {
     }
 }
 
-// handler : 각 증상에 따라 symbol을 반환하는 함수
-const getSymbol = (symptom) => {
+// handleGetSymbol : 각 증상에 따라 symbol을 반환하는 함수
+const handleGetSymbol = (symptom) => {
     switch (symptom) {
         case 'hallucination':
             return '환청/환각';
@@ -103,16 +117,4 @@ const getSymbol = (symptom) => {
     }
 }
 
-// Component : 증상 별 사각형 색상 아이콘
-const StyledMiniSquare = styled(MiniSquare)`
-    background-color: ${props => props.backgroundColor};
-`;
-
-// Component : styled Hr 태그
-const MyHr = styled.hr `
-    margin : 15px 0px;
-    
-    border : none;
-    border-bottom : 1px solid gray;
-`
 export default HomePageChartResult;

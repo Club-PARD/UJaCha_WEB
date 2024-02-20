@@ -35,8 +35,8 @@ function HomePage() {
     const [userDataRecoil, setUserDataRecoil] = useRecoilState(userInfo);
     const latestSevenData = getLatestData(userData);
     const lastDataWithDate = latestSevenData.slice().reverse().find((item) => item.date);
-    const [isModal2Open, setIsModal2Open] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModal2Open, setIsModal2Open] = useState(false);
 
     // 핸들러 선언 openModal, closeModal, openMdal2, closeModal2 : 모달 창 관련 핸들러
     const openModal = () => {
