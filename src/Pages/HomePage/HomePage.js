@@ -24,9 +24,13 @@ import {theme} from "../../Styles/theme";
 // handleAddSympton: 
 // hanlderCheckDatahanldeCheckDataLengthLength: Data 길이를 체크하고, 부족한 개수 만큼 빈 데이터를 추가하여 반환하는 핸들러 
 // useEffect: 유저 정보 가져오는 부분 (test 정보를 가져온다.) 
-// Wrapper: HomePage(Chart / Result) 
-// Component: Button(오늘의 증상 추가하기 / 기록 공유하기) 
-// Div: Legend(카테고리) 
+// HomePageContainer : HomePage
+// WraHomePageWrapperpper : HomePage (Chart / Result)
+// Button : Button (오늘의 증상 추가하기 / 기록 공유하기)
+// LegendDiv : Legend (카테고리)
+// LegendDivContainer : LegendDiv
+// Row : Row (두 개의 행)
+// Item : Item (각 카테고리)
 // handleGenerateEmptyData : 추가할 빈 데이터 생성 함수
 
 function HomePage() {
@@ -146,7 +150,7 @@ function HomePage() {
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
 
     return (
-        <HomePageContainer>
+        <ContainerHomePage>
             {
                 userDataRecoil.test
                     ? (
@@ -224,12 +228,12 @@ function HomePage() {
                 closeModal={closeModal2}
                 navigate={navigate}
                 page="home"/>
-        </HomePageContainer>
+        </ContainerHomePage>
     );
 }
 
-// Container : HomePage
-const HomePageContainer = styled.div `
+// HomePageContainer : HomePage
+const ContainerHomePage = styled.div `
     width: 100%;
     height: auto;
     /* background-color: white; */
@@ -242,7 +246,7 @@ const HomePageContainer = styled.div `
     justify-content: start;
 `;
 
-// Wrapper : HomePage (Chart / Result)
+// WraHomePageWrapperpper : HomePage (Chart / Result)
 const HomePageWrapper = styled.div `
     width: 100%;
     height: ${ (props) => props.height};
@@ -261,7 +265,7 @@ const HomePageWrapper = styled.div `
     border-radius: 20px;
 `;
 
-// Component : Button (오늘의 증상 추가하기 / 기록 공유하기)
+// Button : Button (오늘의 증상 추가하기 / 기록 공유하기)
 const Button = styled.button `
     width: 100%;
     height: ${ (props) => props.height};
@@ -284,7 +288,7 @@ const Button = styled.button `
     }
 `;
 
-// ComponetList : Legend (카테고리)
+// LegendDiv : Legend (카테고리)
 const LegendDiv = () => {
     return (
         <LegendDivContainer>
@@ -316,7 +320,7 @@ const LegendDiv = () => {
     );
 };
 
-// Container : LegendDiv
+// LegendDivContainer : LegendDiv
 const LegendDivContainer = styled.div `
     width: 100%;
     height: 50px;
@@ -327,7 +331,7 @@ const LegendDivContainer = styled.div `
     /* background-color: yellow; */
 `;
 
-// Component : Row (두 개의 행)
+// Row : Row (두 개의 행)
 const Row = styled.div `
     display: flex;
     justify-content: end;
@@ -337,7 +341,7 @@ const Row = styled.div `
     }
 `;
 
-// Componet : Item (각 카테고리)
+// Item : Item (각 카테고리)
 const Item = styled.div `
     display: flex;
     align-items: center;
