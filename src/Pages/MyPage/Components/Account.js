@@ -27,8 +27,7 @@ function Account() {
 
   // handler delete User
   const handleClick = async () => {
-    await openModal();
-    const response = await deleteUser();
+    openModal();
   };
   return (
     <Container>
