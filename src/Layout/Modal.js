@@ -86,59 +86,69 @@ const handleGetButtonMessage = (page) => {
   }
 }
 
-const DivModal = styled.div `
+const DivModal = styled.div`
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
     width: 326px;
     height: 265px;
-    background-color: ${ ({
-    theme}) => theme.colors.white_100};
-    color: ${ ({
-        theme}) => theme.colors.black_100};
+    
+    background-color: ${({ theme }) => theme.colors.white_100};
+    color: ${({theme}) => theme.colors.black_100};
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
     z-index: 1000;
+    
     border-radius: 24px;
     white-space: pre-wrap;
 `;
 
-        const MainText = styled.p `
+const MainText = styled.p`
     font-family: "Pretendard Variable";
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
     margin: 48px 0px 24px 0px;
 `;
 
-        const SubText = styled.p `
+const SubText = styled.p`
     font-family: "Pretendard Variable";
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
+    
     text-align: center;
+
     margin-bottom: 30px;
 `;
 
-        const DivButtonItems = styled.div ``;
+const DivButtonItems = styled.div`
+`;
 
-        const Button = styled.button `
+const Button = styled.button`
     width: 128px;
     height: 35px;
+
     border: none;
+    
     font-size: 20px;
     font-weight: 500;
     line-height: 150%;
+    
     background-color: ${ ({
             theme}) => theme.colors.white_100};
     color: ${ ({
                 theme}) => theme.colors.black_100};
     cursor: pointer;
+    
     &:hover {
         opacity: 0.5;
     }
@@ -147,12 +157,15 @@ const DivModal = styled.div `
     }
 `;
 
-                const BlackOverlay = styled.div `
+const BlackOverlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    
     width: 100%;
     height: 100%;
+    
     background-color: rgba(0, 0, 0, 0.5);
+    
     z-index: 999;
 `;
