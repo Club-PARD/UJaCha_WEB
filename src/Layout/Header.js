@@ -1,19 +1,8 @@
-import {Outlet, useNavigate} from "react-router-dom";
-import styled, { css } from "styled-components";
+import {Outlet} from "react-router-dom";
+import styled from "styled-components";
 import {BlackContainer, ImgOpacity50, MyLink} from "./Layout";
 import {theme} from "../Styles/theme";
 import { useLocation } from 'react-router-dom';
-import { useEffect } from "react";
-
-
-// [ 바로가기 ]
-// Container : Header
-// Wrapper : Outlet 영역
-// Container : MainHeader
-// Wrapper : MainHeader 영역
-// Div : Header Item
-// Wrapper : Button
-// Component : MenuItem (요약 / 커뮤니티)
 
 function Header() {
     const location = useLocation();
