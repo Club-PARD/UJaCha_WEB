@@ -9,8 +9,8 @@ import { useEffect } from "react";
 // [ 바로가기 ]
 // Container : Header
 // Wrapper : Outlet 영역
-// Container : MyHeader
-// Wrapper : MyHeader 영역
+// Container : MainHeader
+// Wrapper : MainHeader 영역
 // Div : Header Item
 // Wrapper : Button
 // Component : MenuItem (요약 / 커뮤니티)
@@ -20,55 +20,48 @@ function Header() {
     
     return (
         <BlackContainer flexDirection="row" height="100vh" mobileHeight="auto" desktopHeight="100vh">
-            <HeaderContainer>
-                <MyHeader location={location}/>
-                {/* <IntroPageHeader/> */}
-                <WrapperOutletMain>
+            <ContainerHeader>
+                {/* Wrapper : Header */}
+                <WrapperHeader location={location} />
+                
+                {/* Wrapper : Outlet */}
+                <WrapperOutlet>
                     <Outlet/>
-                </WrapperOutletMain>
-            </HeaderContainer>
+                </WrapperOutlet>
+            </ContainerHeader>
         </BlackContainer>
     );
 }
 
-// Component : Header
-const MyHeader = ({ location }) => {
-    const navigate = useNavigate();
+const ContainerHeader = styled.div`
+    width : 390px;
+`
+
+const WrapperHeader = ({ location }) => {
     const isActive = (path) => location.pathname === path;
-    
     const jwtToken = sessionStorage.getItem("jwtToken");
-    useEffect(() => {
-        if (!jwtToken) {
-            // alert("로그인해주세요");
-            // navigate("/");
-        }
-    }, [jwtToken, navigate]);
+
     return (
-        <ContainerMyHeader>
+        <ContainerWrapperHeader>
             {/* 로고/이미지 영역 */}
-            <WrapperMyHeader>
+            <WrapperRow1>
                 <DivHeader>
                     <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
                     <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" /></MyLink>
                 </DivHeader>
-            </WrapperMyHeader>
+            </WrapperRow1>
 
             {/* Link 영역 */}
-            <WrapperButton>
+            <WrapperRow2>
                 <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
                 <MenuItem to="/community" isActive={isActive("/community") || isActive("/communitydetail")}>커뮤니티</MenuItem>
-            </WrapperButton>
-        </ContainerMyHeader>
+            </WrapperRow2>
+        </ContainerWrapperHeader>
     );
 }
 
-// Container : Header
-const HeaderContainer = styled.div`
-    width : 390px;
-`
 
-// Wrapper : Outlet 영역
-const WrapperOutletMain = styled.div `
+const WrapperOutlet = styled.div `
     width: 390px;
     height : auto;
     box-sizing: border-box;
@@ -77,8 +70,11 @@ const WrapperOutletMain = styled.div `
     /* background-color: yellow; */
 `
 
-// Container : MyHeader
-const ContainerMyHeader = styled.div `
+
+
+// WrapperHeader Components List
+
+const ContainerWrapperHeader = styled.div `
     width : 100%;
     height: 165px;
 
@@ -91,8 +87,7 @@ const ContainerMyHeader = styled.div `
     /* background-color: red; */
 `
 
-// Wrapper : MyHeader 영역
-const WrapperMyHeader = styled.div `
+const WrapperRow1 = styled.div `
     width: 100%;
     height : 100px;
 
@@ -105,7 +100,6 @@ const WrapperMyHeader = styled.div `
     /* background-color: skyblue; */
 `
 
-// Div : Header Item
 const DivHeader = styled.div`
     width: 100%;
     display: flex;
@@ -114,7 +108,7 @@ const DivHeader = styled.div`
 `
 
 // Wrapper : Button
-const WrapperButton = styled.div `
+const WrapperRow2 = styled.div `
     /* width: 100%; */
     height : 65px;
     /* background-color: green; */
