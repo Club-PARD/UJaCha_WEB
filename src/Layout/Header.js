@@ -9,8 +9,8 @@ import { useEffect } from "react";
 // [ 바로가기 ]
 // Container : Header
 // Wrapper : Outlet 영역
-// Container : MyHeader
-// Wrapper : MyHeader 영역
+// Container : MainHeader
+// Wrapper : MainHeader 영역
 // Div : Header Item
 // Wrapper : Button
 // Component : MenuItem (요약 / 커뮤니티)
@@ -20,55 +20,46 @@ function Header() {
     
     return (
         <BlackContainer flexDirection="row" height="100vh" mobileHeight="auto" desktopHeight="100vh">
-            <HeaderContainer>
-                <MyHeader location={location}/>
-                {/* <IntroPageHeader/> */}
-                <WrapperOutletMain>
+            <ContainerHeader>
+                {/* Wrapper : Header */}
+                <WrapperHeader location={location} />
+                
+                {/* Wrapper : Outlet */}
+                <WrapperOutlet>
                     <Outlet/>
-                </WrapperOutletMain>
-            </HeaderContainer>
+                </WrapperOutlet>
+            </ContainerHeader>
         </BlackContainer>
     );
 }
 
-// Component : Header
-const MyHeader = ({ location }) => {
-    const navigate = useNavigate();
-    const isActive = (path) => location.pathname === path;
-    
-    const jwtToken = sessionStorage.getItem("jwtToken");
-    useEffect(() => {
-        if (!jwtToken) {
-            // alert("로그인해주세요");
-            // navigate("/");
-        }
-    }, [jwtToken, navigate]);
-    return (
-        <ContainerMyHeader>
-            {/* 로고/이미지 영역 */}
-            <WrapperMyHeader>
-                <DivHeader>
-                    <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
-                    <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" /></MyLink>
-                </DivHeader>
-            </WrapperMyHeader>
-
-            {/* Link 영역 */}
-            <WrapperButton>
-                <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
-                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communitydetail")}>커뮤니티</MenuItem>
-            </WrapperButton>
-        </ContainerMyHeader>
-    );
-}
-
-// Container : Header
-const HeaderContainer = styled.div`
+const ContainerHeader = styled.div`
     width : 390px;
 `
 
-// Wrapper : Outlet 영역
-const WrapperOutletMain = styled.div `
+const WrapperHeader = ({ location }) => {
+    const isActive = (path) => location.pathname === path;
+    const jwtToken = sessionStorage.getItem("jwtToken");
+
+    return (
+        <ContainerWrapperHeader>
+            {/* 로고/이미지 영역 */}
+            <WrapperRow1>
+                    <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
+                    <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" /></MyLink>
+            </WrapperRow1>
+
+            {/* Link 영역 */}
+            <WrapperRow2>
+                <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
+                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communityaddpost")}>커뮤니티</MenuItem>
+            </WrapperRow2>
+        </ContainerWrapperHeader>
+    );
+}
+
+
+const WrapperOutlet = styled.div `
     width: 390px;
     height : auto;
     box-sizing: border-box;
@@ -77,8 +68,11 @@ const WrapperOutletMain = styled.div `
     /* background-color: yellow; */
 `
 
-// Container : MyHeader
-const ContainerMyHeader = styled.div `
+
+
+// WrapperHeader Components List
+
+const ContainerWrapperHeader = styled.div `
     width : 100%;
     height: 165px;
 
@@ -91,30 +85,24 @@ const ContainerMyHeader = styled.div `
     /* background-color: red; */
 `
 
-// Wrapper : MyHeader 영역
-const WrapperMyHeader = styled.div `
+// tune 로고, 사용자 로고를 담고 있는 행
+const WrapperRow1 = styled.div `
     width: 100%;
-    height : 100px;
 
     display: flex;
+    justify-content: space-between;
     align-items: end;
 
-    padding : 20px 20px 15px 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding : 0px 20px;
     box-sizing: border-box;
     
     /* background-color: skyblue; */
 `
 
-// Div : Header Item
-const DivHeader = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-
-// Wrapper : Button
-const WrapperButton = styled.div `
+// 요약, 커뮤니티 버튼을 담고 있는 행
+const WrapperRow2 = styled.div `
     /* width: 100%; */
     height : 65px;
     /* background-color: green; */
@@ -128,7 +116,6 @@ const WrapperButton = styled.div `
     align-items: center;
 `
 
-// Component : MenuItem (요약 / 커뮤니티)
 const MenuItem = styled(MyLink)`
     color: ${props => props.isActive ? theme.colors.lemon_100 : '#727272'};
     &:hover {
