@@ -52,7 +52,7 @@ const WrapperHeader = ({ location }) => {
             {/* Link 영역 */}
             <WrapperRow2>
                 <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
-                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communitydetail")}>커뮤니티</MenuItem>
+                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communityaddpost")}>커뮤니티</MenuItem>
             </WrapperRow2>
         </ContainerWrapperHeader>
     );
@@ -85,9 +85,9 @@ const ContainerWrapperHeader = styled.div `
     /* background-color: red; */
 `
 
+// tune 로고, 사용자 로고를 담고 있는 행
 const WrapperRow1 = styled.div `
     width: 100%;
-    /* height : 100px; */
 
     display: flex;
     justify-content: space-between;
@@ -101,14 +101,7 @@ const WrapperRow1 = styled.div `
     /* background-color: skyblue; */
 `
 
-const DivHeader = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-
-// Wrapper : Button
+// 요약, 커뮤니티 버튼을 담고 있는 행
 const WrapperRow2 = styled.div `
     /* width: 100%; */
     height : 65px;
@@ -123,7 +116,6 @@ const WrapperRow2 = styled.div `
     align-items: center;
 `
 
-// Component : MenuItem (요약 / 커뮤니티)
 const MenuItem = styled(MyLink)`
     color: ${props => props.isActive ? theme.colors.lemon_100 : '#727272'};
     &:hover {
