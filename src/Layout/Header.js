@@ -45,10 +45,8 @@ const WrapperHeader = ({ location }) => {
         <ContainerWrapperHeader>
             {/* 로고/이미지 영역 */}
             <WrapperRow1>
-                <DivHeader>
                     <MyLink to = {jwtToken ? "/home" : "/"}><ImgOpacity50 src="img/tune_logo.png" alt="tune_logo" height = "21px"/></MyLink>
                     <MyLink to = "/mypage"><ImgOpacity50 src="img/user-02.png" alt="user-02" width="24px" height="24px" /></MyLink>
-                </DivHeader>
             </WrapperRow1>
 
             {/* Link 영역 */}
@@ -89,12 +87,15 @@ const ContainerWrapperHeader = styled.div `
 
 const WrapperRow1 = styled.div `
     width: 100%;
-    height : 100px;
+    /* height : 100px; */
 
     display: flex;
+    justify-content: space-between;
     align-items: end;
 
-    padding : 20px 20px 15px 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding : 0px 20px;
     box-sizing: border-box;
     
     /* background-color: skyblue; */
