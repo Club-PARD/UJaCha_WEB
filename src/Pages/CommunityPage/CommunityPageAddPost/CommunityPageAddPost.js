@@ -11,10 +11,9 @@ function CommunityPageAddPost() {
 }
 
 const CommunityPageAddPostContainer = styled(Container)`
-    /* height: auto; */
+    width: 374px;
     height: 600px;
 
-    padding: 0px 8px;
     box-sizing: border-box;
     
     /* background-color: red; */
