@@ -8,7 +8,7 @@ import { getUserData, postReliableName } from "../Api/test";
 import { useRecoilState } from "recoil";
 import { userInfo } from "../Atoms";
 
-export const Modal2 = ({isOpen, closeModal, navigate, page }) => {
+export const Modal2 = ({isOpen, closeModal}) => {
 
     const [reliableName, setReliableName] = useState("");
     const [isExit, setIsExit] = useState(true);
@@ -19,42 +19,29 @@ export const Modal2 = ({isOpen, closeModal, navigate, page }) => {
     
     const [userInfoData, setUserInfoData] = useState();
     
+    // 로그인한 유저의 정보를 불러오는 로직
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userData = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
-
+                const userData = await getUserData();
                 if (userData) {
-                    return userData.data
+                    const tempUserData = { nickname: userData.data.nickname, childAge: userData.data.childAge };
+                    setUserInfoData(tempUserData);
                 }
             } catch (error) {
-                console.error("Error fetching user data", error); // 오류 메시지를 콘솔에 출력합니다.
+                console.error("Error fetching user data", error);
             }
         };
+        
+        fetchData();
+    }, []);
 
-        fetchData().then(data => {
-            if (data) {
-                console.log("pangil", data);
-                const tempUserData = {
-                    nickname: data.nickname,
-                    childAge: data.childAge,
-                }
-                setUserInfoData(tempUserData);
+    // 변경 여부를 판단하는 로직
+    // useEffect(() => {
+    //     console.log("test", userInfoData);
+    // }, [userInfoData]);
 
-            } else {
-                // alert("다시 로그인을 해주세요.");
-                // navigate("/");
-            }
-        });
-    }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
-    
-    const handleInputChange = (e) => {
-        setReliableName(e.target.value); // e.target.value를 새로운 reliableName으로 설정
-    }
-    useEffect(() => {
-        console.log("test", userInfoData);
-    }, [userInfoData]);
-
+    // 수정 여부를 판단하는 로직 (isAblePatch 변수가 true이면 post를 진행한다.)
     useEffect(() => {
         if (isAblePatch) {
             postReliableName(userInfoData);
@@ -62,204 +49,126 @@ export const Modal2 = ({isOpen, closeModal, navigate, page }) => {
         }
     }, [isAblePatch]);
 
-    const handlerCheckSharingAble = async () => {
+    // 공유 가능 여부를 판단하는 핸들러
+    const handleCheckSharingAble = async () => {
         try {
-            const response = await axios.get(
-                process.env.REACT_APP_URL + "/api/member/duplicate?nickname=" + reliableName
-            );
-
-            setIsExit(response.data); // 중복 여부 업데이트
-            console.log("responseDuplicate", response.data);
+            const response = await axios.get(`${process.env.REACT_APP_URL}/api/member/duplicate?nickname=${reliableName}`);
+            setIsExit(response.data);
+            setExitMessage(response.data ? "공유 가능한 닉네임입니다." : "*존재하지 않는 닉네임입니다.");
 
             if (response.data) {
-                setExitMessage("공유 가능한 닉네임입니다."); // 중복일 경우 에러 메시지 설정
-                setUserInfoData(prevData => ({
-                    ...prevData,
-                    reliableName: reliableName
-                }));
+                setUserInfoData(prevData => ({ ...prevData, reliableName }));
                 setUserDataRecoil(userInfoData);
                 setIsAblePatch(true);
                 setReliableName("");
-                setIsShared(true); // 공유 여부를 true로 설정
-                // closeModal();
-            } else {
-                setExitMessage("*존재하지 않는 닉네임입니다."); // 중복이 아닐 경우 에러 메시지 초기화
+                setIsShared(true);
             }
         } catch (error) {
-            console.error("Error sending first data : ", error);
+            console.error("Error sending first data:", error);
         }
+    };
+    // 입력창의 값 변경 시 실행되는 핸들러
+    const handleInputChange = (e) => {
+        setReliableName(e.target.value); // e.target.value를 새로운 reliableName으로 설정
     }
-
+    // 성공적으로 공유가 완료되었을 때 실행되는 핸들러
+    const handleSuccessSharing = () => {
+        closeModal();
+        setIsShared(false);
+        setExitMessage("");
+        window.location.reload();
+    }
+    // 입력 취소가 진행되었을 때 실행되는 핸들러
+    const handleCancleInput = () => {
+        closeModal();
+        setReliableName("");
+        setExitMessage(null)
+    }
     return (
         <div>
             {
-                page == "home"
-                    ? (isOpen && (
+                isOpen && (
                         <div>
                             <BlackOverlay onClick={closeModal}/>
-                                {!isShared ? (
+                            {
+                                !isShared
+                                ? (
                                     <DivModal width="330px" height="329px" padding="20px" style={{ justifyContent : "space-between" }}>
                                         <ModalTitle style={{ justifyContent : "space-between", padding : "5px 0px 0px 5px" }}>
                                             <span>닉네임 입력</span>
-                                            <Img src="img/x-closeBlack.png" alt="out" width="25px" height="25px" onClick={() => { closeModal(); setReliableName(""); setExitMessage(null)}}/>
+                                            <Img src="img/x-closeBlack.png" alt="out" width="25px" height="25px"
+                                                onClick={handleCancleInput} />
                                         </ModalTitle>
                                         <ModalContent>
                                             기록을 공유하고자 하는<br />사용자의 닉네임을 입력해주세요.
-                                        {isExitMessage && (
-                                            <ErrorMessage 
-                                                available={isExit.toString()} 
-                                                style={{ color: isExit ? theme.colors.pruple_bold : theme.colors.red_100 }}>
-                                                {isExitMessage}
-                                            </ErrorMessage>
-                                        )}
+                                            {isExitMessage && (
+                                                <ErrorMessage 
+                                                    available={isExit.toString()} 
+                                                    style={{ color: isExit ? theme.colors.pruple_bold : theme.colors.red_100 }}>
+                                                    {isExitMessage}
+                                                </ErrorMessage>
+                                            )}
                                         </ModalContent>
                                         <ModalInput type = "text" placeholder="닉네임을 입력해주세요" value={reliableName} onChange={handleInputChange}/>
-                                        <ModalButton onClick={handlerCheckSharingAble}>기록 공유하기</ModalButton>
+                                        <ModalButton onClick={handleCheckSharingAble}>기록 공유하기</ModalButton>
                                     </DivModal>
-                                    )
+                                )
                                 : (
                                     <DivModal width="326px" height="305px" padding="20px" style={{ justifyContent: "space-between" }}  alignItems = "center">
                                         <ModalTitle style={{ justifyContent : "center", marginTop : "15px"}}>
                                             공유 완료!
                                         </ModalTitle>
                                         <Img src = "img/check-circle-broken.png" alt = "check image" width = "90px" height = "90px"/>
-                                        <ModalButton onClick={() => {
-                                            closeModal();
-                                            setIsShared(false);
-                                            setExitMessage("");
-                                            window.location.reload();
-                                        }}>확인</ModalButton>
+                                        <ModalButton onClick={handleSuccessSharing}>확인</ModalButton>
                                     </DivModal>
                                 )
-                                }
-                            </div>
-                    ))
-                    : (isOpen && (
-                        <div>
-                            <BlackOverlay onClick={closeModal} />
-                            
-                            <DivModal width = "326px" height = "305px">
-                                <MainText>
-                                    {
-                                        page === "test"
-                                            ? "테스트를 중단하시겠어요?"
-                                            : "회원가입을 중단하시겠습니까?"
-                                    }
-                                </MainText>
-                                <SubText>
-                                    {
-                                        page === "test"
-                                            ? "지금 나가시면, 기록하신 데이터는\n저장되지 않습니다."
-                                            : "지금 나가시면, 회원가입이\n완료되지 않습니다."
-                                    }
-                                </SubText>
-                                <DivButtonItems>
-                                    <Button onClick={closeModal}>취소</Button>
-                                    <Button
-                                        style={{
-                                            color: "#FF2946"
-                                        }}
-                                        onClick={(
-                                            ) => page === "test"
-                                            ? navigate("/")
-                                            : page === "register"
-                                                ? navigate("/")
-                                                : navigate("/home")}>
-                                        나가기
-                                    </Button>
-                                </DivButtonItems>
-                            </DivModal>
+                            }
                         </div>
-                    ))
+                    )
             }
         </div>
     );
 };
 
 const DivModal = styled.div `
-  width:${props => props.width};
-  height:${props => props.height};
+    width:${props => props.width};
+    height:${props => props.height};
 
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.alignItems || "start"};
-  justify-content: ${props => props.justifyContent || "center"};
+    display: flex;
+    flex-direction: column;
+    align-items: ${props => props.alignItems || "start"};
+    justify-content: ${props => props.justifyContent || "center"};
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 
-  color: ${ ({
-    theme}) => theme.colors.black_100};
-  background-color: white;
+    color: ${ ({
+        theme}) => theme.colors.black_100};
+    background-color: white;
 
-  border-radius: 24px;
+    border-radius: 24px;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 
-  padding : ${props => props.padding};
+    padding : ${props => props.padding};
 `;
 
-const MainText = styled.p `
-  margin: 10px 0px 18px 0px;
+const BlackOverlay = styled.div `
+    width: 100%;
+    height: 100%;
 
-  font-family: "Pretendard Variable";
-  font-size: 19px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    background-color: rgba(0, 0, 0, 0.5);
 `;
-
-const SubText = styled.p `
-  margin-bottom: 30px;
-
-  font-family: "Pretendard Variable";
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  text-align: center;
-`;
-
-const DivButtonItems = styled.div ``;
-
-const Button = styled.button `
-  width: 128px;
-  height: 35px;
-
-  border: none;
-
-  background-color: white;
-
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 150%;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &:first-child {
-    margin-right: 10px;
-  }
-`;
-
-    const BlackOverlay = styled.div `
-  width: 100%;
-  height: 100%;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-
-  background-color: rgba(0, 0, 0, 0.5);
-`;
-
 
 const ModalTitle = styled.div`
     width: 100%;
@@ -274,6 +183,7 @@ const ModalTitle = styled.div`
     justify-content: ${props => props.justifyContent};
     align-items: center;
 `
+
 const ModalContent = styled.div`
     width: 100%;
     height: 80px;
@@ -286,6 +196,7 @@ const ModalContent = styled.div`
     padding-left: 5px;
 
 `
+
 const ModalInput = styled.input`
     width: 100%;
     height : 56px;
@@ -311,6 +222,7 @@ const ModalInput = styled.input`
         color : #868686;
     }
 `
+
 const ModalButton = styled.button`
     width: 100%;
     height : 56px;
