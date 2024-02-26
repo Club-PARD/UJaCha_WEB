@@ -61,11 +61,11 @@ function HomePage() {
     const hanldeCheckDataLength = (data) => {
 
         // 현재 갖고 있는 Data 길이 출력
-        console.log("Data Length", data.length);
+        // console.log("Data Length", data.length);
 
         // 추가해야 할 Data 길이 계산 후 출력
         const dataLengthToAdd = 7 - data.length;
-        console.log("Data Length to Add", dataLengthToAdd);
+        // console.log("Data Length to Add", dataLengthToAdd);
 
         // 추가해야 할 데이터가 0개보다 큰 경우, 추가할 빈 데이터를 생성하여 추가
         if (dataLengthToAdd > 0) {
@@ -92,7 +92,7 @@ function HomePage() {
                 const getUserDataResponse = await getUserData(); // 비동기 함수 호출을 await로 감쌉니다.
 
                 if (getUserDataResponse) {
-                    console.log("result", getUserDataResponse.data);
+                    // console.log("getUserData result", getUserDataResponse.data);
                     setUserDataRecoil(getUserDataResponse.data);
                     return getUserDataResponse.data.test;
                 }
@@ -105,7 +105,7 @@ function HomePage() {
         fetchData().then((data) => {
             if (data) {
                 // response된 모든 test 결과 출력
-                console.log(" All test result in response", data);
+                // console.log("All test result in response", data);
 
                 // const limitedData = data.slice(-7); 데이터의 각 값의 testId를 길이의 순서대로 변경합니다.
                 // modifiedDataAddTestid = 객체 속성에 'testid'를 추가한 배열을 반환하여 저장한다.
@@ -119,14 +119,14 @@ function HomePage() {
 
                 // fetchData 함수의 반환 값을 상태에 저장.
                 setUserData(modifiedDataSliced);
-                console.log("modifiedDataSliced reulst", userData);
+                // console.log("modifiedDataSliced reulst", userData);
 
                 // setUserData가 완료된 후에 hanldeCheckDataLength 함수를 호출
                 hanldeCheckDataLength(modifiedDataSliced);
-                console.log("Get data", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
+                // console.log("testId 재설정 전", data); // 데이터를 상태에 설정한 후에 콘솔에 데이터를 출력합니다.
 
                 // setUserData가 완료된 후에 testId 값을 확인합니다.
-                console.log("testId!!!", modifiedDataSliced);
+                // console.log("testId 재설정 후", modifiedDataSliced);
             } else {
                 alert("다시 로그인을 해주세요.");
                 navigate("/");
