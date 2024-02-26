@@ -49,8 +49,8 @@ export const MyLink = styled(Link)`
 `;
 
 // Component : 증상을 나타내는 색상 사각형
-export const MiniSquare = styled.div`
-  background-color: ${(props) => props.backgroundColor};
+export const MiniSquare = styled.span`
+  background-color: ${(props) => props['data-backgroundcolor']};
   width: 12px;
   height: 12px;
   margin-right: 10px;
@@ -65,16 +65,16 @@ export const BlackContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: ${(props) => props.alignItems};
-  flex-direction: ${(props) => props.flexDirection};
+  flex-direction: ${(props) => props['data-flexdirection']};
 
   background-color: ${({ theme }) => theme.colors.black_100};
 
   @media screen and (max-width: 768px) {
-    height: ${(props) => props.mobileHeight};
+    height: ${(props) => props['data-mobileheight']};
   }
 
   @media screen and (min-width: 769px) {
-    height: ${(props) => props.desktopHeight};
+    height: ${(props) => props['data-desktopheight']};
   }
 `;
 
@@ -84,4 +84,11 @@ export const OutletContainer = styled.div`
 
   padding-bottom: 150px;
   box-sizing: border-box;
-`
+`;
+
+export const Div100per49px = styled.div`
+    width: 100%;
+    height : 49px;
+
+    border-radius: 16px;
+`;

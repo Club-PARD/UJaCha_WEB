@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { tempCommunityData } from "./tempCommunityData";
 import { theme } from "../../../Styles/theme";
-import { Img, MyLink, P } from "../../../Layout/Layout";
+import { Div100per49px, Img, MyLink, P } from "../../../Layout/Layout";
 import { useState } from "react";
 
 function truncateText(text, maxLength) {
@@ -22,24 +22,24 @@ function CommunityPageContent() {
     return (
         <CommuniPageContentContainer>
             <WrapperButton>
-                <Button isActive={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
+                <Button data-isactive={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
                     최신순
                 </Button>
-                <Button isActive={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
+                <Button data-isactive={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
                     인기순
                 </Button>
             </WrapperButton>
             <WrapperContent>
                 <MyLink to="/communityaddpost">
                     <WrapperAddPost>
-                    <Span>새 글을 작성해주세요.</Span>
-                    <Img src = "img/pencil-02.png" alt = "add Post Icon" width = "21px" height = "21px"/>
+                        <Span>새 글을 작성해주세요.</Span>
+                        <Img src = "img/pencil-02.png" alt = "add Post Icon" width = "21px" height = "21px"/>
                     </WrapperAddPost>
                 </MyLink>
                 {
                     tempCommunityData.map((data, index) => (
-                        <MyLink to={`/communitydetail?postid=${index}`}>
-                            <PostItem key={index}>
+                        <MyLink to={`/communitydetail?postid=${index}`} key={index}>
+                            <PostItem>
                                 <PostTitle>{data.title}</PostTitle>
                                 <PostContent>{truncateText(data.content, 67)}</PostContent>
                                 <PostBottom>
@@ -92,7 +92,7 @@ const Button = styled.button`
     background-color: transparent;
     color :  #9b9b9b;
     ${(props) =>
-        props.isActive &&
+        props['data-isactive'] &&
         css`
             border : none;
             background-color: ${theme.colors.white_100};
@@ -108,11 +108,11 @@ const WrapperContent = styled.div`
     
 `
 
-const WrapperAddPost = styled.div`
+const WrapperAddPost = styled(Div100per49px)`
     width: 100%;
     height : 49px;
     background-color: yellow;
-    margin-bottom :  15px;
+    margin-bottom : 15px;
     box-sizing: border-box;
 
     display: flex;

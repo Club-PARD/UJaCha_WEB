@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Img } from "../../../Layout/Layout";
+import { Div100per49px, Img } from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
 import { useState } from "react";
 
@@ -25,25 +25,23 @@ function CommunityPageSearch() {
 
 const CommuniPageSearchContainer = styled.div`
     width: 100%;
-    height : 49px;
+    height : auto;
 
     margin-bottom: 15px;
     /* background-color: yellow; */
 `
 
-const WrapperSearch = styled.div`
-    width: 100%;
-    height : 100%;
-
+const WrapperSearch = styled(Div100per49px)`
     display: flex;
     align-items: center;
 
-    border-radius: 16px;
-    
     background-color: #313131;
+`
 
-    & > Img {
-        margin: 0 15px;
+const SearchImg = styled(Img)`
+    margin: 0 15px;
+    &:hover{
+        opacity: 50%;
     }
 `
 
@@ -65,11 +63,5 @@ const SearchInput = styled.input`
         outline: none;
     }
 
-`
-
-const SearchImg = styled(Img)`
-    &:hover{
-        opacity: 50%;
-    }
 `
 export default CommunityPageSearch;

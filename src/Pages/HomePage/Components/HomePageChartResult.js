@@ -35,7 +35,7 @@ const HomePageChartResult = (e) => {
                 {
                     topThreeLastedData.map(([symptom, value], index) => (
                         <P fontSize="14px" fontWeight="400" key={index}>
-                            <StyledMiniSquare backgroundColor={handleGetBackgroundColor(symptom)} />
+                            <StyledMiniSquare data-backgroundcolor={handleGetBackgroundColor(symptom)} />
                             {handleGetSymbol(symptom)} 증상이 평균 {value}%로 {resultEndString[index]}
                             {/* ex) 감정 변화 증상이 평균 65%로 가장 잦습니다. */}
                         </P>
@@ -46,7 +46,7 @@ const HomePageChartResult = (e) => {
             <Hr />
 
             {/* 조현병 의심 정도 */}
-            <P fontSize="14px" fontWeight="400"><MiniSquare backgroundColor="black"/>조현병 의심 정도는 {sortedLastedData.total}%입니다.</P>
+            <P fontSize="14px" fontWeight="400"><MiniSquare data-backgroundcolor="black"/>조현병 의심 정도는 {sortedLastedData.total}%입니다.</P>
         </ContainerHomePageChartResult>
     );
 }
@@ -74,7 +74,7 @@ const WrapperContent = styled.div `
 
 // StyledMiniSquare : 증상 별 사각형 색상 아이콘
 const StyledMiniSquare = styled(MiniSquare)`
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props['data-backgroundcolor']};
 `;
 
 // Hr : styled Hr 태그
