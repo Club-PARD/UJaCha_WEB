@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { tempCommunityData } from "./tempCommunityData";
 import { theme } from "../../../Styles/theme";
-import { Img, MyLink, P } from "../../../Layout/Layout";
+import { Div100per49px, Img, MyLink, P } from "../../../Layout/Layout";
 import { useState } from "react";
 
 function truncateText(text, maxLength) {
@@ -32,8 +32,8 @@ function CommunityPageContent() {
             <WrapperContent>
                 <MyLink to="/communityaddpost">
                     <WrapperAddPost>
-                    <Span>새 글을 작성해주세요.</Span>
-                    <Img src = "img/pencil-02.png" alt = "add Post Icon" width = "21px" height = "21px"/>
+                        <Span>새 글을 작성해주세요.</Span>
+                        <Img src = "img/pencil-02.png" alt = "add Post Icon" width = "21px" height = "21px"/>
                     </WrapperAddPost>
                 </MyLink>
                 {
@@ -108,11 +108,11 @@ const WrapperContent = styled.div`
     
 `
 
-const WrapperAddPost = styled.div`
+const WrapperAddPost = styled(Div100per49px)`
     width: 100%;
     height : 49px;
     background-color: yellow;
-    margin-bottom :  15px;
+    margin-bottom : 15px;
     box-sizing: border-box;
 
     display: flex;

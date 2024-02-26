@@ -84,4 +84,11 @@ export const OutletContainer = styled.div`
 
   padding-bottom: 150px;
   box-sizing: border-box;
-`
+`;
+
+export const Div100per49px = styled.div`
+    width: 100%;
+    height : 49px;
+    
+    border-radius: 16px;
+`;
