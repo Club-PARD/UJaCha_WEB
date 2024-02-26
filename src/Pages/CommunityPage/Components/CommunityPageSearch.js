@@ -1,13 +1,22 @@
 import styled from "styled-components";
 import { Img } from "../../../Layout/Layout";
 import { theme } from "../../../Styles/theme";
+import { useState } from "react";
 
 function CommunityPageSearch() {
+
+    // 검색을 위한 변수 및 set함수
+    const [serachInputData, setSearchInputData] = useState("");
+
+    // 입력값 변경 핸들러
+    const handleInputChange = (e) => {
+        setSearchInputData(e.target.value); // e.target.value를 새로운 reliableName으로 설정
+    }
     return (
         <CommuniPageSearchContainer>
             <WrapperSearch>
-                <Img src="img/search-sm.png" alt="searchIcon" width="24px" height="24px" />
-                <Input placeholder="검색어를 입력해주세요."/>
+                <SearchImg src="img/search-sm.png" alt="searchIcon" width="24px" height="24px" />
+                <SearchInput placeholder="검색어를 입력해주세요." value={serachInputData} onChange={handleInputChange}/>
             </WrapperSearch>
         </CommuniPageSearchContainer>
     );
@@ -38,7 +47,7 @@ const WrapperSearch = styled.div`
     }
 `
 
-const Input = styled.input`
+const SearchInput = styled.input`
     color : ${theme.colors.white_100};
 
     border : none;
@@ -56,5 +65,11 @@ const Input = styled.input`
         outline: none;
     }
 
+`
+
+const SearchImg = styled(Img)`
+    &:hover{
+        opacity: 50%;
+    }
 `
 export default CommunityPageSearch;

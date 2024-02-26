@@ -40,8 +40,8 @@ const WrapperHeader = ({ location }) => {
 
             {/* Link 영역 */}
             <WrapperRow2>
-                <MenuItem to="/home" isActive={isActive("/home")}>요약</MenuItem>
-                <MenuItem to="/community" isActive={isActive("/community") || isActive("/communityaddpost")}>커뮤니티</MenuItem>
+                <MenuItem to="/home" data-isactive={isActive("/home")}>요약</MenuItem>
+                <MenuItem to="/community" data-isactive={isActive("/community") || isActive("/communityaddpost")}>커뮤니티</MenuItem>
             </WrapperRow2>
         </ContainerWrapperHeader>
     );
@@ -106,7 +106,7 @@ const WrapperRow2 = styled.div `
 `
 
 const MenuItem = styled(MyLink)`
-    color: ${props => props.isActive ? theme.colors.lemon_100 : '#727272'};
+    color: ${props => props['data-isactive'] ? theme.colors.lemon_100 : '#727272'};
     &:hover {
         opacity: 50%;
     }
