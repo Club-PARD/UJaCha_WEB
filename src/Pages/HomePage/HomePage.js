@@ -219,7 +219,7 @@ function HomePage() {
 }
 
 const HomePageContainer = styled(OutletContainer) `
-    background-color: red;
+    /* background-color: red; */
 
     display: flex;
     flex-direction: column;
