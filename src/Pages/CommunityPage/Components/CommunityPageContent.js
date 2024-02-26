@@ -22,10 +22,10 @@ function CommunityPageContent() {
     return (
         <CommuniPageContentContainer>
             <WrapperButton>
-                <Button isActive={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
+                <Button data-isactive={sortBy === "최신순"} onClick={() => handleSortBy("최신순")}>
                     최신순
                 </Button>
-                <Button isActive={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
+                <Button data-isactive={sortBy === "인기순"} onClick={() => handleSortBy("인기순")}>
                     인기순
                 </Button>
             </WrapperButton>
@@ -38,8 +38,8 @@ function CommunityPageContent() {
                 </MyLink>
                 {
                     tempCommunityData.map((data, index) => (
-                        <MyLink to={`/communitydetail?postid=${index}`}>
-                            <PostItem key={index}>
+                        <MyLink to={`/communitydetail?postid=${index}`} key={index}>
+                            <PostItem>
                                 <PostTitle>{data.title}</PostTitle>
                                 <PostContent>{truncateText(data.content, 67)}</PostContent>
                                 <PostBottom>
@@ -92,7 +92,7 @@ const Button = styled.button`
     background-color: transparent;
     color :  #9b9b9b;
     ${(props) =>
-        props.isActive &&
+        props['data-isactive'] &&
         css`
             border : none;
             background-color: ${theme.colors.white_100};

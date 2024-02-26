@@ -164,13 +164,13 @@ function HomePage() {
                             : (
                                 // test의 결과가 1개 이상일 경우
                                 <div>
-                                    < HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
+                                    < HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}>
                                         <div>
                                             <LegendDiv/>
                                             <HomePageChart tempChartData={latestSevenData}/>
                                         </div>
                                     </HomePageWrapper>
-                                    <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
+                                    <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}>
                                         <HomePageChartResult
                                             lastedData={lastDataWithDate
                                                 ? lastDataWithDate
@@ -182,8 +182,8 @@ function HomePage() {
                     : ( 
                         // Loading을 위한 배경화면
                         <div>
-                            <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}/>
-                            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}/>
+                            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}/>
+                            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}/>
                         </div>
                     )
 
@@ -192,13 +192,13 @@ function HomePage() {
             {/* Buttons */}
             <Button
                 height="56px"
-                backgroundColor={theme.colors.purple_100}
+                data-backgroundcolor={theme.colors.purple_100}
                 onClick={handleAddSympton}>
                 오늘의 증상 추가하기
             </Button>
             <Button
                 height="56px"
-                backgroundColor={theme.colors.white_100}
+                data-backgroundcolor={theme.colors.white_100}
                 onClick={openModal2}>
                 기록 공유하기
             </Button>
@@ -239,7 +239,7 @@ const HomePageWrapper = styled.div `
     padding: 20px 30px;
     box-sizing: border-box;
 
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props['data-backgroundcolor']};
 
     border-radius: 20px;
 `;
@@ -253,7 +253,7 @@ const Button = styled.button `
     border: none;
     border-radius: 20px;
 
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props['data-backgroundcolor']};
 
     font-size: 20px;
     font-weight: 500;
@@ -271,25 +271,25 @@ const LegendDiv = () => {
         <LegendDivContainer>
             <Row>
                 <Item>
-                    <MiniSquare backgroundColor={theme.colors.green_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.green_100}/>
                     망상
                 </Item>
                 <Item>
-                    <MiniSquare backgroundColor={theme.colors.pink_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.pink_100}/>
                     환각/환청
                 </Item>
                 <Item>
-                    <MiniSquare backgroundColor={theme.colors.purple_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.purple_100}/>
                     이상 행동
                 </Item>
             </Row>
             <Row>
                 <Item>
-                    <MiniSquare backgroundColor={theme.colors.lemon_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.lemon_100}/>
                     감정 변화
                 </Item>
                 <Item>
-                    <MiniSquare backgroundColor={theme.colors.black_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.black_100}/>
                     의심 정도
                 </Item>
             </Row>
