@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import { BlackContainer, Container } from "../../Layout/Layout";
+import { BlackContainer, OutletContainer } from "../../Layout/Layout";
 import IntroPageContent from "./Components/IntroPageContent";
 import IntroPageMain from "./Components/IntroPageMain";
 import IntroPageSub from "./Components/IntroPageSub";
 import IntroPageBottom from "./Components/IntroPageBottom";
 import IntroPageHeader from "./Components/IntroPageHeader";
-
-// [ 바로가기 ]
-// Container : IntroPage
 
 function IntroPage() {
   return (
@@ -23,8 +20,8 @@ function IntroPage() {
   );
 }
 
-// Container : IntroPage
-const IntroPageContainer = styled(Container)`
+const IntroPageContainer = styled(OutletContainer)`
+  width: 390px;
   height: auto;
 
   padding: 0px 8px;

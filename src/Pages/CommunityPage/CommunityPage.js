@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CommunityPageSearch from "./Components/CommunityPageSearch";
 import CommunityPageContent from "./Components/CommunityPageContent";
+import { OutletContainer } from "../../Layout/Layout";
 function CommunityPage() {
   return (
     <CommunityPageContainer>
@@ -10,10 +11,7 @@ function CommunityPage() {
   );
 }
 
-const CommunityPageContainer = styled.div`
-  width: 100%;
-  height: auto;
-
-  /* background-color: yellow; */
+const CommunityPageContainer = styled(OutletContainer)`
+  background-color: yellow;
 `;
 export default CommunityPage;

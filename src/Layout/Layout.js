@@ -77,3 +77,11 @@ export const BlackContainer = styled.div`
     height: ${(props) => props.desktopHeight};
   }
 `;
+
+export const OutletContainer = styled.div`
+  width: 100%;
+  height : auto;
+
+  padding-bottom: 150px;
+  box-sizing: border-box;
+`

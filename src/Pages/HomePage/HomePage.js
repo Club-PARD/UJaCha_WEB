@@ -9,7 +9,7 @@ import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
 import {getLatestData} from "./Components/tempChartData";
 
-import {Img, MiniSquare} from "../../Layout/Layout";
+import {Img, MiniSquare, OutletContainer} from "../../Layout/Layout";
 import {Modal2} from "../../Layout/Modal2";
 import {Modal} from "../../Layout/Modal";
 
@@ -17,21 +17,6 @@ import {getUserData} from "../../Api/test";
 import {getExistToday} from "../../Api/test";
 
 import {theme} from "../../Styles/theme";
-// [ 바로가기 ] 
-// 변수 선언 
-// 핸들러 선언 openModal, closeModal, openMdal2, closeModal2: 모달 창 관련
-// 핸들러 navigate : 이동을 위한 핸들러 
-// handleAddSympton: 
-// hanlderCheckDatahanldeCheckDataLengthLength: Data 길이를 체크하고, 부족한 개수 만큼 빈 데이터를 추가하여 반환하는 핸들러 
-// useEffect: 유저 정보 가져오는 부분 (test 정보를 가져온다.) 
-// HomePageContainer : HomePage
-// WraHomePageWrapperpper : HomePage (Chart / Result)
-// Button : Button (오늘의 증상 추가하기 / 기록 공유하기)
-// LegendDiv : Legend (카테고리)
-// LegendDivContainer : LegendDiv
-// Row : Row (두 개의 행)
-// Item : Item (각 카테고리)
-// handleGenerateEmptyData : 추가할 빈 데이터 생성 함수
 
 function HomePage() {
     // 변수 선언
@@ -150,54 +135,55 @@ function HomePage() {
     }, []); // useEffect 의존성 배열이 비어 있으므로 한 번만 호출됩니다.
 
     return (
-        <ContainerHomePage>
+        <HomePageContainer>
             {
+                // userData의 test 유무 판단
                 userDataRecoil.test
                     ? (
-
+                        // userData의 test 결과 개수 판단
                         userDataRecoil.test.length <= 0
                             ? (
                                 // test의 결과가 0개보다 적을 경우
-                                        <div>
-                                            <Img
-                                                src="img/noDataImage1.png"
-                                                width="100%"
-                                                height="225px"
-                                                style={{
-                                                    marginBottom: "10px"
-                                                }}/>
-                                            <Img
-                                                src="img/noDataImage2.png"
-                                                width="100%"
-                                                height="215px"
-                                                style={{
-                                                    marginBottom: "10px"
-                                                }}/>
-                                        </div>
+                                <div>
+                                    <Img
+                                        src="img/noDataImage1.png"
+                                        width="100%"
+                                        height="225px"
+                                        style={{
+                                            marginBottom: "10px"
+                                        }}/>
+                                    <Img
+                                        src="img/noDataImage2.png"
+                                        width="100%"
+                                        height="215px"
+                                        style={{
+                                            marginBottom: "10px"
+                                        }}/>
+                                </div>
                             )
                             : (
                                 // test의 결과가 1개 이상일 경우
+                                <div>
+                                    < HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
                                         <div>
-                                            < HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}>
-                                                <div>
-                                                    <LegendDiv/>
-                                                    <HomePageChart tempChartData={latestSevenData}/>
-                                                </div>
-                                            </HomePageWrapper>
-                                            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
-                                                <HomePageChartResult
-                                                    lastedData={lastDataWithDate
-                                                        ? lastDataWithDate
-                                                        : ""}/>
-                                            </HomePageWrapper>
+                                            <LegendDiv/>
+                                            <HomePageChart tempChartData={latestSevenData}/>
                                         </div>
+                                    </HomePageWrapper>
+                                    <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}>
+                                        <HomePageChartResult
+                                            lastedData={lastDataWithDate
+                                                ? lastDataWithDate
+                                                : ""}/>
+                                    </HomePageWrapper>
+                                </div>
                             )
                     )
                     : ( 
                         // Loading을 위한 배경화면
                         <div>
-                            < HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}/>
-                            < HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}/>
+                            <HomePageWrapper height="225px" backgroundColor={theme.colors.white_100}/>
+                            <HomePageWrapper height="215px" backgroundColor={theme.colors.white_100}/>
                         </div>
                     )
 
@@ -228,25 +214,18 @@ function HomePage() {
                 closeModal={closeModal2}
                 navigate={navigate}
                 page="home"/>
-        </ContainerHomePage>
+        </HomePageContainer>
     );
 }
 
-// HomePageContainer : HomePage
-const ContainerHomePage = styled.div `
-    width: 100%;
-    height: auto;
-    /* background-color: white; */
+const HomePageContainer = styled(OutletContainer) `
+    background-color: red;
 
-    padding-bottom: 150px;
-    box-sizing: border-box;
-    
     display: flex;
     flex-direction: column;
     justify-content: start;
 `;
 
-// WraHomePageWrapperpper : HomePage (Chart / Result)
 const HomePageWrapper = styled.div `
     width: 100%;
     height: ${ (props) => props.height};
@@ -265,7 +244,6 @@ const HomePageWrapper = styled.div `
     border-radius: 20px;
 `;
 
-// Button : Button (오늘의 증상 추가하기 / 기록 공유하기)
 const Button = styled.button `
     width: 100%;
     height: ${ (props) => props.height};
@@ -288,7 +266,6 @@ const Button = styled.button `
     }
 `;
 
-// LegendDiv : Legend (카테고리)
 const LegendDiv = () => {
     return (
         <LegendDivContainer>
@@ -320,7 +297,6 @@ const LegendDiv = () => {
     );
 };
 
-// LegendDivContainer : LegendDiv
 const LegendDivContainer = styled.div `
     width: 100%;
     height: 50px;
@@ -331,7 +307,6 @@ const LegendDivContainer = styled.div `
     /* background-color: yellow; */
 `;
 
-// Row : Row (두 개의 행)
 const Row = styled.div `
     display: flex;
     justify-content: end;
@@ -341,7 +316,6 @@ const Row = styled.div `
     }
 `;
 
-// Item : Item (각 카테고리)
 const Item = styled.div `
     display: flex;
     align-items: center;
