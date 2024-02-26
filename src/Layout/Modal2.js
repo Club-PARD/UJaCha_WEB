@@ -93,7 +93,7 @@ export const Modal2 = ({isOpen, closeModal}) => {
                             {
                                 !isShared
                                 ? (
-                                    <DivModal width="330px" height="329px" padding="20px" style={{ justifyContent : "space-between" }}>
+                                    <DivModal width="330px" height="329px" style={{ justifyContent : "space-between" }}>
                                         <ModalTitle style={{ justifyContent : "space-between", padding : "5px 0px 0px 5px" }}>
                                             <span>닉네임 입력</span>
                                             <Img src="img/x-closeBlack.png" alt="out" width="25px" height="25px"
@@ -114,7 +114,7 @@ export const Modal2 = ({isOpen, closeModal}) => {
                                     </DivModal>
                                 )
                                 : (
-                                    <DivModal width="326px" height="305px" padding="20px" style={{ justifyContent: "space-between" }}  alignItems = "center">
+                                    <DivModal width="326px" height="305px" style={{ justifyContent: "space-between" }}  data-alignitems = "center">
                                         <ModalTitle style={{ justifyContent : "center", marginTop : "15px"}}>
                                             공유 완료!
                                         </ModalTitle>
@@ -136,7 +136,7 @@ const DivModal = styled.div `
 
     display: flex;
     flex-direction: column;
-    align-items: ${props => props.alignItems || "start"};
+    align-items: ${props => props['data-alignitems'] || "start"};
     justify-content: ${props => props.justifyContent || "center"};
 
     position: fixed;
@@ -155,7 +155,7 @@ const DivModal = styled.div `
 
     white-space: pre-wrap;
 
-    padding : ${props => props.padding};
+    padding : 20px;
 `;
 
 const BlackOverlay = styled.div `
