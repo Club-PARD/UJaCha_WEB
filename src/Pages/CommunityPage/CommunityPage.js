@@ -12,6 +12,6 @@ function CommunityPage() {
 }
 
 const CommunityPageContainer = styled(OutletContainer)`
-  background-color: yellow;
+  /* background-color: yellow; */
 `;
 export default CommunityPage;
