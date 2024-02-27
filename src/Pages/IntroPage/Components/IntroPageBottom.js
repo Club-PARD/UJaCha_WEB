@@ -39,17 +39,19 @@ const WrapperLinkTable = () => {
     }
     return (
         <LinkTable>
-            <tr>
-                <td>
-                    <LinkA href = "https://glaze-avenue-3eb.notion.site/6ecea8823b954ed182e9480cde29c9ec" >tune&nbsp;</LinkA>
-                </td>
-                <td>
-                    <LinkA href = "" onClick={hanlderOnClick}>Instargram</LinkA>
-                </td>
-                <td>
-                    <LinkA href = "https://we-pard.com" >&nbsp;PARD</LinkA>
-                </td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>
+                        <LinkA href = "https://glaze-avenue-3eb.notion.site/6ecea8823b954ed182e9480cde29c9ec" >tune&nbsp;</LinkA>
+                    </td>
+                    <td>
+                        <LinkA href = "" onClick={hanlderOnClick}>Instargram</LinkA>
+                    </td>
+                    <td>
+                        <LinkA href = "https://we-pard.com" >&nbsp;PARD</LinkA>
+                    </td>
+                </tr>
+            </tbody>
         </LinkTable>
     );
 }
