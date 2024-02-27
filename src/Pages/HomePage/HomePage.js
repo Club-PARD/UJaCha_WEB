@@ -138,53 +138,22 @@ function HomePage() {
         <HomePageContainer>
             {
                 // userData의 test 유무 판단
-                userDataRecoil.test
+                userDataRecoil?.test
                     ? (
                         // userData의 test 결과 개수 판단
-                        userDataRecoil.test.length <= 0
+                        userDataRecoil?.test.length <= 0
                             ? (
                                 // test의 결과가 0개보다 적을 경우
-                                <div>
-                                    <Img
-                                        src="img/noDataImage1.png"
-                                        width="100%"
-                                        height="225px"
-                                        style={{
-                                            marginBottom: "10px"
-                                        }}/>
-                                    <Img
-                                        src="img/noDataImage2.png"
-                                        width="100%"
-                                        height="215px"
-                                        style={{
-                                            marginBottom: "10px"
-                                        }}/>
-                                </div>
+                                <WrapperForExitDataFalse/>
                             )
                             : (
                                 // test의 결과가 1개 이상일 경우
-                                <div>
-                                    < HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}>
-                                        <div>
-                                            <LegendDiv/>
-                                            <HomePageChart tempChartData={latestSevenData}/>
-                                        </div>
-                                    </HomePageWrapper>
-                                    <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}>
-                                        <HomePageChartResult
-                                            lastedData={lastDataWithDate
-                                                ? lastDataWithDate
-                                                : ""}/>
-                                    </HomePageWrapper>
-                                </div>
+                                <WrapperForExitDataTrue latestSevenData={latestSevenData} lastDataWithDate={lastDataWithDate} />
                             )
                     )
                     : ( 
                         // Loading을 위한 배경화면
-                        <div>
-                            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}/>
-                            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}/>
-                        </div>
+                        <BackgroundForLoading/>
                     )
 
             }
@@ -347,4 +316,52 @@ const handleGenerateEmptyData = (count) => {
     }
     return emptyData;
 };
+
+const BackgroundForLoading = () => {
+    return (
+            <div>
+            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}/>
+            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}/>
+        </div>
+    );
+}
+
+const WrapperForExitDataTrue = ({latestSevenData, lastDataWithDate}) => {
+    return (
+        <div>
+            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}>
+                <div>
+                    <LegendDiv/>
+                    <HomePageChart tempChartData={latestSevenData}/>
+                </div>
+            </HomePageWrapper>
+            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}>
+                <HomePageChartResult
+                    lastedData={lastDataWithDate
+                        ? lastDataWithDate
+                        : ""}/>
+            </HomePageWrapper>
+        </div>
+    )
+}
+const WrapperForExitDataFalse = () => {
+    return (
+        <div>
+            <Img
+                src="img/noDataImage1.png"
+                width="100%"
+                height="225px"
+                style={{
+                    marginBottom: "10px"
+                }}/>
+            <Img
+                src="img/noDataImage2.png"
+                width="100%"
+                height="215px"
+                style={{
+                    marginBottom: "10px"
+                }}/>
+        </div>
+    )
+}
 export default HomePage;
