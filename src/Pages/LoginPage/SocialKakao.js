@@ -45,7 +45,7 @@ const SocialKakao = ({ page }) => {
       );
 
       // 로그인 결과 출력
-      console.log("kako login response", response);
+      // console.log("kako login response", response);
 
       // 처음 접속 여부 판단
       if (response.data.first === true) {
