@@ -108,7 +108,7 @@ export const Button = styled.button`
   width: 342px;
   height: 56px;
 
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props['data-backgroundcolor']};
   color: ${(props) => props.color || "black"};
 
   border-radius: 16px;
@@ -136,7 +136,7 @@ export const ButtonItems = () => {
   return (
     <div>
       <MyLink to="/test">
-        <Button backgroundColor="#1e1e1e" color="#FEFEFE">
+        <Button data-backgroundcolor="#1e1e1e" color="#FEFEFE">
           테스트 시작
         </Button>
       </MyLink>
