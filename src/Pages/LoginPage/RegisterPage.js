@@ -13,12 +13,12 @@ import { formState } from "../../Atoms";
 import { postData } from "../../Api/test";
 
 function RegisterPage() {
-  const [userInfoData, setUserInfoData] = useRecoilState(userInfo); // 유저 정보 저장
-  const [tempUserInfo, setTempUserInfo] = useState(userInfoData);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDuplicate, setIsDuplicate] = useState(true);
+  const [userInfoData, setUserInfoData] = useRecoilState(userInfo); // recoil로 관리하는 유저 데이터 정보
+  const [tempUserInfo, setTempUserInfo] = useState(userInfoData); // 회원가입하는 초기 유저 데이터 정보
+  const [isModalOpen, setIsModalOpen] = useState(false); // modal open 여부
+  const [isDuplicate, setIsDuplicate] = useState(true); // 중복 여부
   const [duplicateErrorMessage, setDuplicateErrorMessage] = useState(""); // 중복 에러 메시지
-  const form = useRecoilValue(formState);
+  const form = useRecoilValue(formState); // 유저의 form 정보 체크
 
   const [isNicknameValid, setIsNicknameValid] = useState(false);
   const [isChildAgeValid, setIsChildAgeValid] = useState(false);
@@ -41,12 +41,14 @@ function RegisterPage() {
     // if (userInfoData.uid === "") navigate("/");
   });
 
+  // userKakaoId 체크
   const userKakaoId = sessionStorage.getItem("userKakaoId");
   useEffect(() => {
     if (!userKakaoId) {
       // navigate("/");
     }
   }, [userKakaoId, navigate]);
+
   // 회원가입 버튼 활성화 여부 확인
   useEffect(() => {
     if (!isDuplicate && isChildAgeValid) {
@@ -57,6 +59,7 @@ function RegisterPage() {
     }
   }, [isDuplicate, isChildAgeValid]);
 
+  // 입력값 변경 시 실행되는 핸들러
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTempUserInfo((prevData) => ({
@@ -65,7 +68,6 @@ function RegisterPage() {
     }));
 
     // 진단 대상자 나이가 입력되었는지 확인하여 상태 업데이트
-
     if (name == "childAge") {
       if (value !== "") {
         setIsChildAgeValid(true);
@@ -114,6 +116,7 @@ function RegisterPage() {
     }
   };
 
+  // 회원가입 진행
   const handleRegister = async () => {
     try {
       if (isRegisterButtonEnabled) {
