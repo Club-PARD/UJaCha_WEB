@@ -1,22 +1,22 @@
 // import
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {useRecoilState} from "recoil";
-import {userInfo} from "../../Atoms";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfo } from "../../Atoms";
 
 import HomePageChart from "./Components/HomePageChart";
 import HomePageChartResult from "./Components/HomePageChartResult";
-import {getLatestData} from "./Components/tempChartData";
+import { getLatestData } from "./Components/tempChartData";
 
-import {Img, MiniSquare, OutletContainer} from "../../Layout/Layout";
-import {Modal2} from "../../Layout/Modal2";
-import {Modal} from "../../Layout/Modal";
+import { Img, MiniSquare, OutletContainer } from "../../Layout/Layout";
+import { Modal2 } from "../../Layout/Modal2";
+import { Modal } from "../../Layout/Modal";
 
-import {getUserData} from "../../Api/test";
-import {getExistToday} from "../../Api/test";
+import { getUserData } from "../../Api/test";
+import { getExistToday } from "../../Api/test";
 
-import {theme} from "../../Styles/theme";
+import { theme } from "../../Styles/theme";
 
 function HomePage() {
     // 변수 선언
@@ -28,6 +28,8 @@ function HomePage() {
     const [isModal2Open, setIsModal2Open] = useState(false);
 
     // 핸들러 선언 openModal, closeModal, openMdal2, closeModal2 : 모달 창 관련 핸들러
+    // const toggleModal = () => setIsModalOpen(!isModalOpen);
+    // const toggleModal2 = () => setIsModal2Open(!isModal2Open);
     const openModal = () => {
         setIsModalOpen(true);
     };
@@ -144,16 +146,16 @@ function HomePage() {
                         userDataRecoil?.test.length <= 0
                             ? (
                                 // test의 결과가 0개보다 적을 경우
-                                <WrapperForExitDataFalse/>
+                                <WrapperForExitDataFalse />
                             )
                             : (
                                 // test의 결과가 1개 이상일 경우
                                 <WrapperForExitDataTrue latestSevenData={latestSevenData} lastDataWithDate={lastDataWithDate} />
                             )
                     )
-                    : ( 
+                    : (
                         // Loading을 위한 배경화면
-                        <BackgroundForLoading/>
+                        <BackgroundForLoading />
                     )
 
             }
@@ -182,12 +184,12 @@ function HomePage() {
                 isOpen={isModal2Open}
                 closeModal={closeModal2}
                 navigate={navigate}
-                page="home"/>
+                page="home" />
         </HomePageContainer>
     );
 }
 
-const HomePageContainer = styled(OutletContainer) `
+const HomePageContainer = styled(OutletContainer)`
     /* background-color: red; */
 
     display: flex;
@@ -195,9 +197,9 @@ const HomePageContainer = styled(OutletContainer) `
     justify-content: start;
 `;
 
-const HomePageWrapper = styled.div `
+const HomePageWrapper = styled.div`
     width: 100%;
-    height: ${ (props) => props.height};
+    height: ${(props) => props.height};
 
     display: flex;
     /* justify-content: center; */
@@ -213,9 +215,9 @@ const HomePageWrapper = styled.div `
     border-radius: 20px;
 `;
 
-const Button = styled.button `
+const Button = styled.button`
     width: 100%;
-    height: ${ (props) => props.height};
+    height: ${(props) => props.height};
 
     margin-bottom: 15px;
 
@@ -240,25 +242,25 @@ const LegendDiv = () => {
         <LegendDivContainer>
             <Row>
                 <Item>
-                    <MiniSquare data-backgroundcolor={theme.colors.green_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.green_100} />
                     망상
                 </Item>
                 <Item>
-                    <MiniSquare data-backgroundcolor={theme.colors.pink_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.pink_100} />
                     환각/환청
                 </Item>
                 <Item>
-                    <MiniSquare data-backgroundcolor={theme.colors.purple_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.purple_100} />
                     이상 행동
                 </Item>
             </Row>
             <Row>
                 <Item>
-                    <MiniSquare data-backgroundcolor={theme.colors.lemon_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.lemon_100} />
                     감정 변화
                 </Item>
                 <Item>
-                    <MiniSquare data-backgroundcolor={theme.colors.black_100}/>
+                    <MiniSquare data-backgroundcolor={theme.colors.black_100} />
                     의심 정도
                 </Item>
             </Row>
@@ -266,7 +268,7 @@ const LegendDiv = () => {
     );
 };
 
-const LegendDivContainer = styled.div `
+const LegendDivContainer = styled.div`
     width: 100%;
     height: 50px;
 
@@ -276,7 +278,7 @@ const LegendDivContainer = styled.div `
     /* background-color: yellow; */
 `;
 
-const Row = styled.div `
+const Row = styled.div`
     display: flex;
     justify-content: end;
 
@@ -285,7 +287,7 @@ const Row = styled.div `
     }
 `;
 
-const Item = styled.div `
+const Item = styled.div`
     display: flex;
     align-items: center;
 
@@ -319,27 +321,27 @@ const handleGenerateEmptyData = (count) => {
 
 const BackgroundForLoading = () => {
     return (
-            <div>
-            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}/>
-            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}/>
+        <div>
+            <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100} />
+            <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100} />
         </div>
     );
 }
 
-const WrapperForExitDataTrue = ({latestSevenData, lastDataWithDate}) => {
+const WrapperForExitDataTrue = ({ latestSevenData, lastDataWithDate }) => {
     return (
         <div>
             <HomePageWrapper height="225px" data-backgroundcolor={theme.colors.white_100}>
                 <div>
-                    <LegendDiv/>
-                    <HomePageChart tempChartData={latestSevenData}/>
+                    <LegendDiv />
+                    <HomePageChart tempChartData={latestSevenData} />
                 </div>
             </HomePageWrapper>
             <HomePageWrapper height="215px" data-backgroundcolor={theme.colors.white_100}>
                 <HomePageChartResult
                     lastedData={lastDataWithDate
                         ? lastDataWithDate
-                        : ""}/>
+                        : ""} />
             </HomePageWrapper>
         </div>
     )
@@ -353,14 +355,14 @@ const WrapperForExitDataFalse = () => {
                 height="225px"
                 style={{
                     marginBottom: "10px"
-                }}/>
+                }} />
             <Img
                 src="img/noDataImage2.png"
                 width="100%"
                 height="215px"
                 style={{
                     marginBottom: "10px"
-                }}/>
+                }} />
         </div>
     )
 }
